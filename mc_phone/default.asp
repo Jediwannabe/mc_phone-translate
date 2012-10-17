@@ -1216,7 +1216,7 @@ Sub ASOptions()
             parentequipmentall = parentequipmentall & "<br/>"
         End If
 	Else
-		Call OutputWAPError("The Asset was not found.")
+		Call OutputWAPError("Keine Ausrüstung gefunden.")
 	End If
 
 	sql = "SELECT ASCount = COUNT(PK) " &_
@@ -1482,7 +1482,7 @@ Sub ASDetails()
                 parentequipmentall = parentequipmentall & "<br/>"
             End If
 	    Else
-		    Call OutputWAPError("The Asset was not found.")
+		    Call OutputWAPError("Keine Ausrüstung gefunden.")
 	    End If
 
 	    sql = _
@@ -1634,13 +1634,13 @@ Sub ASDetailsSave(ByRef db)
 					    Set rs2 = db.RunSQLReturnRS(sql,"")
 					    Call CheckDB(db)
 					    If rs2.eof Then
-						    HeaderMSG = "The Parent ID was not found."
+						    HeaderMSG = "Übergeordnete ID konnte nicht gefunden werden."
 						    ASDetails
 						Else
 						    ParentPK = rs2("AssetPK")
 					    End If
 					Else
-					    HeaderMSG = "The Parent ID is required."
+					    HeaderMSG = "Übergeordnete ID erforderlich."
 					    ASDetails
 					End If
 					Call SaveField(db,"ClassificationID","Classification ID","Classification","","LM","ASDetails",True)
@@ -1650,13 +1650,13 @@ Sub ASDetailsSave(ByRef db)
 					    Set rs2 = db.RunSQLReturnRS(sql,"")
 					    Call CheckDB(db)
 					    If Not rs2.eof Then
-						    HeaderMSG = "The Asset ID has already been assigned to another Asset (" & WAPValidate(NullCheck(rs2("AssetName"))) & ")."
+						    HeaderMSG = "Ausrüstungs ID ist bereits einer anderen Ausrüstung zugeordnet (" & WAPValidate(NullCheck(rs2("AssetName"))) & ")."
 						    ASDetails
 						Else
 						    rs("AssetID") = Trim(Request("AssetID"))
 					    End If
 					Else
-					    HeaderMSG = "The Asset ID is required."
+					    HeaderMSG = "Ausrüstungs ID ist erforderlich."
 					    ASDetails
 					End If
                     Call SaveField(db,"AssetName","Asset Name","","","C","ASDetails",True)
@@ -1770,7 +1770,7 @@ Sub ASMeters()
                 parentequipmentall = parentequipmentall & "<br/>"
             End If
 	    Else
-		    Call OutputWAPError("The Asset was not found.")
+		    Call OutputWAPError("Keine Ausrüstung gefunden.")
 	    End If
 
 	    sql = _
@@ -2000,23 +2000,23 @@ Sub WOSearch()
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=allworkordersu&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Unassigned WOs (<% =wocountu %>)</a><br/>
 		<% End If %>
 		<% Case "1" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>WO&nbsp;#: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>AA&nbsp;#: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Reason: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Grund: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "3" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Asset ID: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Ausrüstungs-ID: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "4" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Asset Name: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Ausrüstungs-Name: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "5" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Procedure ID: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Verfahrens-ID: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "6" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Procedure Name: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Verfahrens-Name: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "7" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Type: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Typ : </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "8" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Priority: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Priorität: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "9" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Sub-Status: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Sub-Zustand: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -3455,7 +3455,7 @@ Sub WOTasksOld()
 
 	Call StartMobileDocument(CardTitle)
 		If rs.eof Then
-			Call OutputWAPMsg("No Tasks Found")
+			Call OutputWAPMsg("Keine Aufgaben gefunden")
 		Else %>
 			<% If IsPocketIE or IsBlackBerry Then %>
 			<p align="center" mode="wrap">
@@ -3545,28 +3545,28 @@ Sub WOTaskSave(ByRef db)
 					rs("HoursActual") =	NullCheck(Request("HoursActual"))
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Hours Actual is invalid."
+					HeaderMSG = "Der Wert für Tatsächliche Stunden ist ungültig."
 					WOTask
 				End If
 				If Not NullCheck(Request("Measurement")) = "" Then
 					rs("Measurement") =	NullCheck(Request("Measurement"))
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Measurement is invalid."
+					HeaderMSG = "Der Wert für Maße ist ungültig."
 					WOTask
 				End If
 				If Not NullCheck(Request("Rate")) = "" Then
 					rs("Rate") = NullCheck(Request("Rate"))
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Rate is invalid."
+					HeaderMSG = "Der Wert für Tarif ist ungültig."
 					WOTask
 				End If
 				If Not NullCheck(Request("Comments")) = "" Then
 					rs("Comments") =	NullCheck(Request("Comments"))
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Comments is invalid."
+					HeaderMSG = "Der Wert für Kommentare ist ungültig."
 					WOTask
 				End If
 				If UCase(NullCheck(Request("Fail"))) = "Y" or UCase(NullCheck(Request("Fail"))) = "2" Then
@@ -3873,7 +3873,7 @@ Sub WOTasks()
 	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and False Then
-			Call OutputWAPMsg("No Tasks Found")
+			Call OutputWAPMsg("Keine Aufgaben gefunden")
 		Else
 		%>
 			<% If Not FromAsset Then %>
@@ -3961,11 +3961,11 @@ Sub WOTasks()
 					If rs("Spec") and Not NullCheck(rs("ValueLow")) = "" and Not NullCheck(rs("Measurement")) = "" Then
 						If IsNumeric(rs("Measurement")) and IsNumeric(rs("ValueLow")) Then
 							If CLng(rs("Measurement")) < CLng(rs("ValueLow")) Then
-								TaskText3 = " (Below minimum value of " & rs("ValueLow") & ")"
+								TaskText3 = " (Unter Minimalwert von " & rs("ValueLow") & ")"
 								LineTemplate2 = 11
 							Else
 								SpecLowOK = True
-								SpecText = SpecText & "Minimum Value: " & rs("ValueLow") & " "
+								SpecText = SpecText & "Minimaler Wert: " & rs("ValueLow") & " "
 							End If
 						End If
 					End If
@@ -3973,11 +3973,11 @@ Sub WOTasks()
 						If IsNumeric(rs("Measurement")) and IsNumeric(rs("ValueHi")) Then
 							If CLng(rs("Measurement")) > CLng(rs("ValueHi")) Then
 								LineTemplate2 = 11
-								TaskText3 = " (Above maximum value of " & rs("ValueHi") & ")"
+								TaskText3 = " (Über Maximalwert von " & rs("ValueHi") & ")"
 							Else
 								SpecHiOK = True
 								If SpecText = "" Then
-									SpecText = SpecText & "Maximum Value: " & rs("ValueLow")
+									SpecText = SpecText & "Maximaler Wert: " & rs("ValueLow")
 								Else
 									SpecText = "Range: " & rs("ValueLow") & " - " & rs("ValueHi")
 								End If
@@ -4281,7 +4281,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Labor ID was not found."
+						HeaderMSG = "Arbeiter-ID konnte nicht gefunden werden."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4307,7 +4307,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not NullCheck(Request("RegularHours")) = "" Then
 					rs("RegularHours") = NullCheck(Request("RegularHours"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Regular Hours is invalid."
+						HeaderMSG = "Der Wert für Reguläre Stunden ist ungültig."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4318,7 +4318,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not NullCheck(Request("OvertimeHours")) = "" Then
 					rs("OvertimeHours") =	NullCheck(Request("OvertimeHours"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Overtime Hours is invalid."
+						HeaderMSG = "Der Wert für Überstunden ist ungültig."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4329,7 +4329,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not NullCheck(Request("OtherHours")) = "" Then
 					rs("OtherHours") =	NullCheck(Request("OtherHours"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Other Hours is invalid."
+						HeaderMSG = "Der Wert für Weitere Stunden ist ungültig."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4340,7 +4340,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not WorkDate = "" Then
 					rs("WorkDate") = WorkDate
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Work Date is invalid."
+						HeaderMSG = "Der Wert für Arbeitsdatum ist ungültig."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4351,7 +4351,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not NullCheck(Request("TimeIn")) = "" Then
 					rs("TimeIn") =	NullCheck(Request("TimeIn"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Time In is invalid."
+						HeaderMSG = "Der Wert für Zeit ist ungültig."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4362,7 +4362,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not NullCheck(Request("TimeOut")) = "" Then
 					rs("TimeOut") =	NullCheck(Request("TimeOut"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Time Out is invalid."
+						HeaderMSG = "Der Wert für Zeitlimit ist ungültig."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4375,7 +4375,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Account ID was not found."
+						HeaderMSG = "Keine Kostenstelle gefunden."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4387,7 +4387,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 						rs("AccountName") = rs2("AccountName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Account ID is invalid."
+						HeaderMSG = "Die angegebene Kostenstelle-ID ist ungültig."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4400,7 +4400,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Category ID was not found."
+						HeaderMSG = "Kategorien-ID konnte nicht gefunden werden."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4412,7 +4412,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 						rs("CategoryName") = rs2("CategoryName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Category ID is invalid."
+						HeaderMSG = "Der Wert für Kategorie-ID ist ungültig."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4424,7 +4424,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				    rs("Comments") = NullCheck(Request("Comments"))
 			    End If
 			    If Err.Number <> 0 Then
-				    HeaderMSG = "The value provided for Comments is invalid."
+				    HeaderMSG = "Der Wert für Kommentare ist ungültig."
 					If Not FromClose Then
 						WOLaborRec
 					Else
@@ -4734,7 +4734,7 @@ Sub WOPartRec()
 		</script>
 	<%
 		If rs.eof and Not PK = "-1" Then
-			Call OutputWAPMsg("The Item was not found")
+			Call OutputWAPMsg("Artikel konnte nicht gefunden werden")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
@@ -4815,7 +4815,7 @@ Sub WOPartRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Part ID was not found."
+						HeaderMSG = "Artikel-ID konnte nicht gefunden werden."
 						WOPartRec
 					Else
 						If pk = "-1" Then
@@ -4834,7 +4834,7 @@ Sub WOPartRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Location ID was not found."
+						HeaderMSG = "Standort-ID konnte nicht gefunden werden."
 						WOPartRec
 					Else
 						rs("LocationPK") = rs2("LocationPK")
@@ -4843,7 +4843,7 @@ Sub WOPartRecSave(ByRef db)
 						LocationPK = rs2("LocationPK")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Location ID is invalid."
+						HeaderMSG = "Der Wert für Standort-ID ist ungültig."
 						WOPartRec
 					End If
 					If Not PartPK = "" and Not LocationPK = "" Then
@@ -4876,14 +4876,14 @@ Sub WOPartRecSave(ByRef db)
 				If Not NullCheck(Request("QuantityActual")) = "" Then
 					rs("QuantityActual") = NullCheck(Request("QuantityActual"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Actual Qty is invalid."
+						HeaderMSG = "Der Wert für Tatsächliche Menge ist ungültig."
 						WOPartRec
 					End If
 				End If
 				If Not NullCheck(Request("OtherCost")) = "" Then
 					rs("OtherCost") =	NullCheck(Request("OtherCost"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Other Cost is invalid."
+						HeaderMSG = "Der Wert für Weitere Kosten ist ungültig."
 						WOPartRec
 					End If
 				End If
@@ -4892,7 +4892,7 @@ Sub WOPartRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Account ID was not found."
+						HeaderMSG = "Keine Kostenstelle gefunden."
 						WOPartRec
 					Else
 						rs("AccountPK") = rs2("AccountPK")
@@ -4900,7 +4900,7 @@ Sub WOPartRecSave(ByRef db)
 						rs("AccountName") = rs2("AccountName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Account ID is invalid."
+						HeaderMSG = "Die angegebene Kostenstelle-ID ist ungültig."
 						WOPartRec
 					End If
 				End If
@@ -4909,7 +4909,7 @@ Sub WOPartRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Category ID was not found."
+						HeaderMSG = "Kategorien-ID konnte nicht gefunden werden."
 						WOPartRec
 					Else
 						rs("CategoryPK") = rs2("CategoryPK")
@@ -4917,14 +4917,14 @@ Sub WOPartRecSave(ByRef db)
 						rs("CategoryName") = rs2("CategoryName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Category ID is invalid."
+						HeaderMSG = "Der Wert für Kategorie-ID ist ungültig."
 						WOPartRec
 					End If
 				End If
 				If Not NullCheck(Request("Serial")) = "" Then
 					rs("Serial") =	NullCheck(Request("Serial"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Serial # is invalid."
+						HeaderMSG = "Der Wert für Seriennummer ist ungültig."
 						WOPartRec
 					End If
 				End If
@@ -4941,7 +4941,7 @@ Sub WOPartRecSave(ByRef db)
 				If Not NullCheck(Request("SerialReplaced")) = "" Then
 					rs("SerialReplaced") =	NullCheck(Request("SerialReplaced"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Existing Serial # is invalid."
+						HeaderMSG = "Der Wert für vorhandene Seriennummer ist ungültig."
 						WOPartRec
 					End If
 				End If
@@ -4950,13 +4950,13 @@ Sub WOPartRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Move Existing to Location was not found."
+						HeaderMSG = "Vorhandenes zum Standort bewegen' konnte nicht gefunden werden."
 						WOPartRec
 					Else
 						rs("SerialReplaceToLocationID") = NullCheck(Request("SerialReplaceToLocationID"))
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Move Existing to Location is invalid."
+						HeaderMSG = "Der Wert für Vorhandenes zum Standort Verschieben ist ungültig."
 						WOPartRec
 					End If
 				End If
@@ -5228,7 +5228,7 @@ Sub WOMiscCostRec()
 	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and Not PK = "-1" Then
-			Call OutputWAPMsg("The Other Cost was not found")
+			Call OutputWAPMsg("Weitere Kosten konnte nicht gefunden werden")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
@@ -5310,14 +5310,14 @@ Sub WOMiscCostRecSave(ByRef db)
 				If Not NullCheck(Request("MiscCostName")) = "" Then
 					rs("MiscCostName") = NullCheck(Request("MiscCostName"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Name is invalid."
+						HeaderMSG = "Der Wert für Name ist ungültig."
 						WOMiscCostRec
 					End If
 				End If
 				If Not NullCheck(Request("MiscCostDesc")) = "" Then
 					rs("MiscCostDesc") = NullCheck(Request("MiscCostDesc"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Description is invalid."
+						HeaderMSG = "Der Wert für Beschreibung ist ungültig."
 						WOMiscCostRec
 					End If
 				End If
@@ -5326,7 +5326,7 @@ Sub WOMiscCostRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Company ID was not found."
+						HeaderMSG = "Firmen-ID konnte nicht gefunden werden."
 						WOMiscCostRec
 					Else
 						rs("CompanyPK") = rs2("CompanyPK")
@@ -5334,7 +5334,7 @@ Sub WOMiscCostRecSave(ByRef db)
 						rs("CompanyName") = rs2("CompanyName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Company ID is invalid."
+						HeaderMSG = "Der Wert für Firmen-ID ist ungültig."
 						WOMiscCostRec
 					End If
 				End If
@@ -5343,7 +5343,7 @@ Sub WOMiscCostRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Labor ID was not found."
+						HeaderMSG = "Arbeiter-ID konnte nicht gefunden werden."
 						WOMiscCostRec
 					Else
 						rs("LaborPK") = rs2("LaborPK")
@@ -5351,21 +5351,21 @@ Sub WOMiscCostRecSave(ByRef db)
 						rs("LaborName") = rs2("LaborName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Labor ID is invalid."
+						HeaderMSG = "Der Wert für Arbeiter-ID ist ungültig."
 						WOMiscCostRec
 					End If
 				End If
 				If Not NullCheck(Request("InvoiceNumber")) = "" Then
 					rs("InvoiceNumber") = NullCheck(Request("InvoiceNumber"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Invoice # is invalid."
+						HeaderMSG = "Der Wert für Rechnungsnummer ist ungültig."
 						WOMiscCostRec
 					End If
 				End If
 				If Not NullCheck(Request("MiscCostDate")) = "" Then
 					rs("MiscCostDate") = SQLdatetimeADO(Request("MiscCostDate"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Date is invalid."
+						HeaderMSG = "Das angegebene Datum ist ungültig."
 						WOMiscCostRec
 					End If
 				End If
@@ -5374,7 +5374,7 @@ Sub WOMiscCostRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Account ID was not found."
+						HeaderMSG = "Keine Kostenstelle gefunden."
 						WOMiscCostRec
 					Else
 						rs("AccountPK") = rs2("AccountPK")
@@ -5382,7 +5382,7 @@ Sub WOMiscCostRecSave(ByRef db)
 						rs("AccountName") = rs2("AccountName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Account ID is invalid."
+						HeaderMSG = "Die angegebene Kostenstelle-ID ist ungültig."
 						WOMiscCostRec
 					End If
 				End If
@@ -5391,7 +5391,7 @@ Sub WOMiscCostRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Category ID was not found."
+						HeaderMSG = "Kategorien-ID konnte nicht gefunden werden."
 						WOMiscCostRec
 					Else
 						rs("CategoryPK") = rs2("CategoryPK")
@@ -5399,14 +5399,14 @@ Sub WOMiscCostRecSave(ByRef db)
 						rs("CategoryName") = rs2("CategoryName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Category ID is invalid."
+						HeaderMSG = "Der Wert für Kategorie-ID ist ungültig."
 						WOMiscCostRec
 					End If
 				End If
 				If Not NullCheck(Request("ActualCost")) = "" Then
 					rs("ActualCost") = NullCheck(Request("ActualCost"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Actual Cost is invalid."
+						HeaderMSG = "Der Wert für Tatsächliche Kosten ist ungültig."
 						WOMiscCostRec
 					End If
 				End If
@@ -5414,7 +5414,7 @@ Sub WOMiscCostRecSave(ByRef db)
 					rs("Comments") =	NullCheck(Request("Comments"))
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Comments is invalid."
+					HeaderMSG = "Der Wert für Kommentare ist ungültig."
 					WOMiscCostRec
 				End If
 				On Error Goto 0
@@ -5424,7 +5424,7 @@ Sub WOMiscCostRecSave(ByRef db)
 				'pl = rs("pk")
 			Else
 				If InStr(db.derror,"NULL") > 0 Then
-					HeaderMSG = "A value must be provided for Name."
+					HeaderMSG = "Muss mit einem Wert für Namen versehen werden."
 					WOMiscCostRec
 				Else
 					Call OutputWAPError(db.derror)
@@ -5667,7 +5667,7 @@ Sub ASSpecsRec()
                 parentequipmentall = parentequipmentall & "<br/>"
             End If
 	    Else
-		    Call OutputWAPError("The Asset was not found.")
+		    Call OutputWAPError("Keine Ausrüstung gefunden.")
 	    End If
 
 	    sql = _
@@ -5833,7 +5833,7 @@ Sub ASSpecs()
             parentequipmentall = parentequipmentall & "<br/>"
         End If
     Else
-	    Call OutputWAPError("The Asset was not found.")
+	    Call OutputWAPError("Keine Ausrüstung gefunden.")
     End If
 
 	sql = _
@@ -5862,7 +5862,7 @@ Sub ASSpecs()
 	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and False Then
-			Call OutputWAPMsg("No Specifications were Found")
+			Call OutputWAPMsg("Keine Spezifikationen gefunden")
 		Else %>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div style='float:left;'>
@@ -6015,7 +6015,7 @@ Sub ASLaborRec()
                 parentequipmentall = parentequipmentall & "<br/>"
             End If
 	    Else
-		    Call OutputWAPError("The Asset was not found.")
+		    Call OutputWAPError("Keine Ausrüstung gefunden.")
 	    End If
 
 	    sql = _
@@ -6051,7 +6051,7 @@ Sub ASLaborRec()
 	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rseof and Not AssetPK = "-1" Then
-			Call OutputWAPMsg("The Asset Labor / Contact was not found")
+			Call OutputWAPMsg("Ausrüstungs-Arbeiter / Kontakt konnte nicht gefunden werden")
 		Else %>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div style='float:left;'>
@@ -6195,7 +6195,7 @@ Sub ASLabor()
             parentequipmentall = parentequipmentall & "<br/>"
         End If
     Else
-	    Call OutputWAPError("The Asset was not found.")
+	    Call OutputWAPError("Keine Ausrüstung gefunden.")
     End If
 
 	sql = _
@@ -6229,7 +6229,7 @@ Sub ASLabor()
 	Call IPadHeader(headerString, True)
 
 		If rs.eof and False Then
-			Call OutputWAPMsg("No Specifications were Found")
+			Call OutputWAPMsg("Keine Spezifikationen gefunden")
 		Else %>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div style='float:left;'>
@@ -6476,7 +6476,7 @@ Sub WOAssignRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Labor ID was not found."
+						HeaderMSG = "Arbeiter-ID konnte nicht gefunden werden."
 						WOAssignRec
 					Else
 						rs("LaborPK") = rs2("LaborPK")
@@ -6484,28 +6484,28 @@ Sub WOAssignRecSave(ByRef db)
 						rs("LaborName") = rs2("LaborName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Labor ID is invalid."
+						HeaderMSG = "Der Wert für Arbeiter-ID ist ungültig."
 						WOAssignRec
 					End If
 				End If
 				If Not NullCheck(Request("AssignedDate")) = "" Then
 					rs("AssignedDate") = SQLdatetimeADO(Request("AssignedDate"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Assigned Date is invalid."
+						HeaderMSG = "Das zugeordnete Datum ist ungültig."
 						WOAssignRec
 					End If
 				Else
-					HeaderMSG = "A value must be provided for Assigned Date."
+					HeaderMSG = "Muss mit einem Wert für die Vergabe von Datum versehen werden."
 					WOAssignRec
 				End If
 				If Not NullCheck(Request("AssignedHours")) = "" Then
 				    rs("AssignedHours") = Request("AssignedHours")
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Assigned Hours is invalid."
+						HeaderMSG = "Der Wert für zugeordnete Stunden ist ungültig."
 						WOAssignRec
 					End If
 				Else
-					HeaderMSG = "A value must be provided for Assigned Hours."
+					HeaderMSG = "Muss mit einem Wert für die Vergabe von Stunden versehen werden."
 					WOAssignRec
 				End If
 				If Not NullCheck(Request("AssignedLead")) = "" Then
@@ -6515,7 +6515,7 @@ Sub WOAssignRecSave(ByRef db)
 				        rs("AssignedLead") = False
 				    End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Assigned Lead is invalid."
+						HeaderMSG = "Der Wert für die zugeordnete Führung ist ungültig."
 						WOAssignRec
 					End If
 				End If
@@ -6526,7 +6526,7 @@ Sub WOAssignRecSave(ByRef db)
 				        rs("AssignedPDA") = False
 				    End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Assigned PDA is invalid."
+						HeaderMSG = "Der Wert für die zugeordnete PDA ist ungültig."
 						WOAssignRec
 					End If
 				End If
@@ -6538,7 +6538,7 @@ Sub WOAssignRecSave(ByRef db)
 				'pl = rs("pk")
 			Else
 				If InStr(db.derror,"NULL") > 0 Then
-					HeaderMSG = "A value must be provided for Labor ID."
+					HeaderMSG = "Muss mit einem Wert für Arbeiter ID versehen werden."
 					WOAssignRec
 				Else
 					Call OutputWAPError(db.derror)
@@ -6631,7 +6631,7 @@ Sub WOAssign()
 	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and False Then
-			Call OutputWAPMsg("No Assignments were Found")
+			Call OutputWAPMsg("Keine Zuordnungen gefunden")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
@@ -6778,7 +6778,7 @@ Sub WOStatusProcess(headertitle)
 	Call CheckDB(db)
 
 	If rs.eof Then
-		Call OutputWAPMsg("The Work Order was not found")
+		Call OutputWAPMsg("Der Arbeitsauftrag konnte nicht gefunden werden")
 	Else
 		woid = NullCheck(rs("WOID"))
 		reason = WAPValidate(Shorten(Replace(NullCheck(rs("Reason")),"%0D%0A",CHR(13) & CHR(10)),35))
@@ -6979,7 +6979,7 @@ Sub AssetMenu()
 	headerString = GetBackButton("history.back();")
 	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
-	Call OutputWAPMsg("There are currently no items in the asset menu.")
+	Call OutputWAPMsg("Derzeit sind keine Artikel im Ausrüstungsmenü.")
 		Set db = Nothing
 		SetContext
 	EndWMLDocument
@@ -7167,14 +7167,14 @@ Sub CountInventory()
             Set rs = db.RunSQLReturnRS(sql,"")
 	        Call CheckDB(db)
 	        If rs.Eof Then
-	            HeaderMsg = "Part ID Does Not Exist."
+	            HeaderMsg = "Artikel-ID existiert nicht."
 	        End If
 	        If HeaderMsg = "" Then
                 sql = "SELECT LocationPK FROM Location WITH (NOLOCK) WHERE LocationID = '" & Request("LocationID") & "'"
                 Set rs = db.RunSQLReturnRS(sql,"")
 	            Call CheckDB(db)
 	            If rs.Eof Then
-    	            HeaderMsg = "Location ID Does Not Exist."
+    	            HeaderMsg = "Standort-ID ist nicht vorhanden."
 	            End If
 	        End If
 	        If HeaderMsg = "" Then
@@ -7187,7 +7187,7 @@ Sub CountInventory()
                 Set rs = db.RunSQLReturnRS(sql,"")
 	            Call CheckDB(db)
 	            If rs.Eof Then
-    	            HeaderMsg = "The Part ID specified is not stocked at the Location ID specified."
+    	            HeaderMsg = "Spezifische Artikel-ID ist nicht bei spezifischer Standort-ID vorhanden."
 	            End If
 	        End If
             If Not HeaderMSG = "" Then
@@ -7196,7 +7196,7 @@ Sub CountInventory()
 	        End If
 	    Else
 	        If CardCurrent = "CountInventory2" Then
-	            HeaderMSG = "You must specify both Part ID and Location ID."
+	            HeaderMSG = "Bitte geben Sie die Artikel-ID und die Standort-ID genauer an."
                 CardCurrent = "CountInventory"
                 CardCurrentLevel = GetCardLevel()
             End If
@@ -7351,7 +7351,7 @@ Sub InventoryCountSave(ByRef db)
                 rs("OnHandPending") = Null
             End If
 			If Err.Number <> 0 Then
-				HeaderMSG = "The value provided for New Count is invalid."
+				HeaderMSG = "Der Wert für Neue Zählung ist ungültig."
 				Exit Sub
 			End If
 
@@ -7361,7 +7361,7 @@ Sub InventoryCountSave(ByRef db)
 		        rs("Bin") = Null
             End If
 			If Err.Number <> 0 Then
-				HeaderMSG = "The value provided for Bin is invalid."
+				HeaderMSG = "Der Wert für Mülleimer ist ungültig."
 				Exit Sub
 			End If
 
@@ -7397,7 +7397,7 @@ Sub AssetTasks()
 		Set rs = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs.Eof Then
-			HeaderMsg = "Asset ID Does Not Exist."
+			HeaderMsg = "Ausrüstungs-ID ist nicht vorhanden."
 		Else
 			Call SetSession("ParentCard2",CardCurrent)
 			Call SetSession("CardFrom",CardCurrent)
@@ -7408,7 +7408,7 @@ Sub AssetTasks()
 		End If
 	Else
 		If Not Request("Posted") = "" Then
-			HeaderMSG = "You must specify Asset ID."
+			HeaderMSG = "Bitte geben Sie die Ausrüstungs-ID genauer an."
 		End If
 	End If
 
@@ -7538,7 +7538,7 @@ Sub WOCloseSave(ByRef db)
 				Set rs2 = db.RunSQLReturnRS(sql,"")
 				Call CheckDB(db)
 				If rs2.eof Then
-					HeaderMSG = "The Account ID was not found."
+					HeaderMSG = "Keine Kostenstelle gefunden."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7559,7 +7559,7 @@ Sub WOCloseSave(ByRef db)
 				Set rs2 = db.RunSQLReturnRS(sql,"")
 				Call CheckDB(db)
 				If rs2.eof Then
-					HeaderMSG = "The Category ID was not found."
+					HeaderMSG = "Kategorien-ID konnte nicht gefunden werden."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7580,7 +7580,7 @@ Sub WOCloseSave(ByRef db)
 				Set rs2 = db.RunSQLReturnRS(sql,"")
 				Call CheckDB(db)
 				If rs2.eof Then
-					HeaderMSG = "The Problem ID was not found."
+					HeaderMSG = "Problem-ID konnte nicht gefunden werden."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7601,7 +7601,7 @@ Sub WOCloseSave(ByRef db)
 				Set rs2 = db.RunSQLReturnRS(sql,"")
 				Call CheckDB(db)
 				If rs2.eof Then
-					HeaderMSG = "The Failure ID was not found."
+					HeaderMSG = "Fehler-ID konnte nicht gefunden werden."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7622,7 +7622,7 @@ Sub WOCloseSave(ByRef db)
 				Set rs2 = db.RunSQLReturnRS(sql,"")
 				Call CheckDB(db)
 				If rs2.eof Then
-					HeaderMSG = "The Solution ID was not found."
+					HeaderMSG = "Lösungs-ID konnte nicht gefunden werden."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7642,7 +7642,7 @@ Sub WOCloseSave(ByRef db)
 				txtdate = DateNullCheck(Date())
 			Else
 				If Not IsDate(Request("date")) Then
-					HeaderMSG = "The value for Date can not be blank."
+					HeaderMSG = "Der Wert für Datum muss ausgefüllt werden."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7925,7 +7925,7 @@ If UCase(woaction) = "WODETAILS" Then
 						AssetName = rs2("AssetName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Asset ID is invalid."
+						HeaderMSG = "Der Wert für Ausrüstungs-ID ist ungültig."
 					End If
 				End If
 
@@ -7934,13 +7934,13 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Priority was not found."
+						HeaderMSG = "Priorität konnte nicht gefunden werden."
 					Else
 						txtPriority = rs2("CodeName")
 						txtPriorityDesc = rs2("CodeDesc")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Priority is invalid."
+						HeaderMSG = "Der Wert für Priorität ist ungültig."
 					End If
 				End If
 
@@ -7949,13 +7949,13 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Type was not found."
+						HeaderMSG = "Typ konnte nicht gefunden werden."
 					Else
 						txtType = rs2("CodeName")
 						txtTypeDesc = rs2("CodeDesc")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Type is invalid."
+						HeaderMSG = "Der Wert für Typ ist ungültig."
 					End If
 				End If
 
@@ -7964,14 +7964,14 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Project ID was not found."
+						HeaderMSG = "Projekt-ID konnte nicht gefunden werden."
 					Else
 						ProjectPK = rs2("ProjectPK")
 						ProjectID = rs2("ProjectID")
 						ProjectName = rs2("ProjectName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Project ID is invalid."
+						HeaderMSG = "Der Wert für Projekt-ID ist ungültig."
 					End If
 				End If
 
@@ -7980,14 +7980,14 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Department ID was not found."
+						HeaderMSG = "Abteilungs-ID konnte nicht gefunden werden."
 					Else
 						DepartmentPK = rs2("DepartmentPK")
 						DepartmentID = rs2("DepartmentID")
 						DepartmentName = rs2("DepartmentName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Department ID is invalid."
+						HeaderMSG = "Der Wert für Abteilungs-ID ist ungültig."
 					End If
 				End If
 
@@ -7996,14 +7996,14 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Customer ID was not found."
+						HeaderMSG = "Kunden-ID konnte nicht gefunden werden."
 					Else
 						TenantPK = rs2("TenantPK")
 						TenantID = rs2("TenantID")
 						TenantName = rs2("TenantName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Customer ID is invalid."
+						HeaderMSG = "Der Wert für Kunden-ID ist ungültig."
 					End If
 				End If
 
@@ -8012,14 +8012,14 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Shop ID was not found."
+						HeaderMSG = "Werkstatt-ID konnte nicht gefunden werden."
 					Else
 						ShopPK = rs2("ShopPK")
 						ShopID = rs2("ShopID")
 						ShopName = rs2("ShopName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Shop ID is invalid."
+						HeaderMSG = "Der Wert für Werkstatt-ID ist ungültig."
 					End If
 				End If
 
@@ -8060,14 +8060,14 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("AssetName") = NullCheck(AssetName)	' Nullable: YES Type: nvarchar
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Asset ID is invalid."
+					HeaderMSG = "Der Wert für Ausrüstungs-ID ist ungültig."
 				End If
 
 				If Not txtType = "" Then
 					rs("Type") = Trim(Mid(txtType,1,25))	' Nullable: YES Type: nvarchar
 					rs("TypeDesc") = NullCheck(txtTypeDesc)	' Nullable: YES Type: nvarchar
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Type is invalid."
+						HeaderMSG = "Der Wert für Typ ist ungültig."
 					End If
 				End If
 
@@ -8075,7 +8075,7 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("Priority") = Trim(Mid(txtPriority,1,25))	' Nullable: No Type: nvarchar
 					rs("PriorityDesc") = NullCheck(txtPriorityDesc)	' Nullable: YES Type: nvarchar
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Priority is invalid."
+						HeaderMSG = "Der Wert für Priorität ist ungültig."
 					End If
 				End If
 
@@ -8085,7 +8085,7 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("ShopName") = ShopName
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Shop ID is invalid."
+					HeaderMSG = "Der Wert für Werkstatt-ID ist ungültig."
 				End If
 
 				If Not DepartmentPK = "" Then
@@ -8094,7 +8094,7 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("DepartmentName") = DepartmentName
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Department ID is invalid."
+					HeaderMSG = "Der Wert für Abteilungs-ID ist ungültig."
 				End If
 
 				If Not TenantPK = "" Then
@@ -8103,7 +8103,7 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("TenantName") = TenantName
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Customer ID is invalid."
+					HeaderMSG = "Der Wert für Kunden-ID ist ungültig."
 				End If
 
 				If Not ProjectPK = "" Then
@@ -8112,7 +8112,7 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("ProjectName") = ProjectName
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Project ID is invalid."
+					HeaderMSG = "Der Wert für Projekt-ID ist ungültig."
 				End If
 
 				rs("RowVersionAction") = "EDIT"
@@ -8550,7 +8550,7 @@ Sub AllWorkOrders()
 			</div>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Work Orders found.")
+			Call OutputWAPMsg("Es konnten keine Arbeitsaufträge gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -8788,7 +8788,7 @@ Sub AllWorkOrdersU()
 		</div>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Work Orders found.")
+			Call OutputWAPMsg("Es konnten keine Arbeitsaufträge gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -8935,7 +8935,7 @@ Sub CMLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Companies found.")
+			Call OutputWAPMsg("Es konnte keine Firma gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -9060,7 +9060,7 @@ Sub FALookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no " & desc & " found.")
+			Call OutputWAPMsg( desc &"  konnte nicht gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -9205,7 +9205,7 @@ Sub Assets()
 	</div>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Assets found.")
+			Call OutputWAPMsg("Es konnte keine Ausrüstung gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -9414,7 +9414,7 @@ Sub ASLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Assets found.")
+			Call OutputWAPMsg("Es konnte keine Ausrüstung gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -9615,7 +9615,7 @@ Sub CLLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Classifications found.")
+			Call OutputWAPMsg("Es konnte keine Klassifizierung gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -9788,7 +9788,7 @@ Sub ASForSerialPartLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Assets found.")
+			Call OutputWAPMsg("Es konnte keine Ausrüstung gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -9895,7 +9895,7 @@ Sub LTLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no values found.")
+			Call OutputWAPMsg("Es konnten keine Werte gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -10003,7 +10003,7 @@ Sub ACLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Accounts found.")
+			Call OutputWAPMsg("Es konnte keine Kostenstelle gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -10113,7 +10113,7 @@ Sub RCLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Repair Centers found.")
+			Call OutputWAPMsg("Es konnten keine Reparaturzentren gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -10254,7 +10254,7 @@ Sub SHLookup()
 		dim iCount, altStyle
 		iCount = 0
 		If rs.eof and Not AddAll Then
-			Call OutputWAPMsg("There were no Shops found.")
+			Call OutputWAPMsg("Es konnte keine Werkstatt gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -10421,7 +10421,7 @@ Sub CALookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Categories found.")
+			Call OutputWAPMsg("Es konnten keine Kategorien gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -10533,7 +10533,7 @@ Sub ZNLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Zones found.")
+			Call OutputWAPMsg("Es konnten keine Zonen gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -10646,7 +10646,7 @@ Sub PRLookup()
 		Dim iCount, altStyle
 		iCount = 0
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Procedures found.")
+			Call OutputWAPMsg("Es konnten keine Verfahren gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -10755,7 +10755,7 @@ Sub DPLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Departments found.")
+			Call OutputWAPMsg("Es konnten keine Abteilungen gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -10867,7 +10867,7 @@ Sub TNLookup()
 		Dim iCount, altStyle
 		iCount = 0
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Customers found.")
+			Call OutputWAPMsg("Es konnten keine Kunden gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -10976,7 +10976,7 @@ Sub PJLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Projects found.")
+			Call OutputWAPMsg("Es konnten keine Projekte gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -11106,7 +11106,7 @@ Sub LALookup()
 		iCount = 0
 
 		If rs.eof Then
-			Call OutputWAPMsg("There was no Labor found.")
+			Call OutputWAPMsg("Es konnte kein Arbeiter gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -11230,7 +11230,7 @@ Sub INLookup()
 
 		<%
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Items found.")
+			Call OutputWAPMsg("Es konnten keine Artikel gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -11365,7 +11365,7 @@ Sub SRLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Locations found.")
+			Call OutputWAPMsg("Es konnten keine Standorte gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -11505,7 +11505,7 @@ Sub ASHistory()
 	Call IPadHeader(headerString, True)
 
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Work Orders found for the specified Asset.")
+			Call OutputWAPMsg("Es konnten keine Arbeitsaufträge für die spezifische Ausrüstung gefunden werden.")
 		Else %>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<% =rs("ParentLocationAll") %><% =rs("ParentEquipmentAll") %><% =rs("AssetName") %> (<% =rs("AssetID") %>)
@@ -11889,7 +11889,7 @@ Sub WOSave(db)
 	txtTaskPKs = ""
 
 	If Request("Reason").Item = "" Then
-		HeaderMSG = "The Reason can not be left blank."
+		HeaderMSG = "Der Grund muss ausgefüllt werden."
 		Call WONew()
 	End If
 
@@ -11906,7 +11906,7 @@ Sub WOSave(db)
 			AssetName = rs2("AssetName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Asset ID is invalid."
+			HeaderMSG = "Der Wert für Ausrüstungs-ID ist ungültig."
 			Call WONew()
 		End If
 	End If
@@ -11916,7 +11916,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Problem ID was not found."
+			HeaderMSG = "Problem-ID konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			ProblemPK = rs2("FailurePK")
@@ -11924,7 +11924,7 @@ Sub WOSave(db)
 			ProblemName = rs2("FailureName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Problem ID is invalid."
+			HeaderMSG = "Der Wert für Problem-ID ist ungültig."
 			Call WONew()
 		End If
 	End If
@@ -11934,7 +11934,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Procedure ID was not found."
+			HeaderMSG = "Vorgangs-ID konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			ProcedurePK = rs2("ProcedurePK")
@@ -11942,7 +11942,7 @@ Sub WOSave(db)
 			ProcedureName = rs2("ProcedureName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Procedure ID is invalid."
+			HeaderMSG = "Der Wert für Verfahrens-ID ist ungültig."
 			Call WONew()
 		End If
 	End If
@@ -11952,7 +11952,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Category ID was not found."
+			HeaderMSG = "Kategorien-ID konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			CategoryPK = rs2("CategoryPK")
@@ -11960,7 +11960,7 @@ Sub WOSave(db)
 			CategoryName = rs2("CategoryName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Category ID is invalid."
+			HeaderMSG = "Der Wert für Kategorie-ID ist ungültig."
 			Call WONew()
 		End If
 	End If
@@ -11970,7 +11970,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Account ID was not found."
+			HeaderMSG = "Keine Kostenstelle gefunden."
 			Call WONew()
 		Else
 			AccountPK = rs2("AccountPK")
@@ -11978,7 +11978,7 @@ Sub WOSave(db)
 			AccountName = rs2("AccountName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Account ID is invalid."
+			HeaderMSG = "Die angegebene Kostenstelle-ID ist ungültig."
 			Call WONew()
 		End If
 	End If
@@ -11988,14 +11988,14 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Priority was not found."
+			HeaderMSG = "Priorität konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			txtPriority = rs2("CodeName")
 			txtPriorityDesc = rs2("CodeDesc")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Priority is invalid."
+			HeaderMSG = "Der Wert für Priorität ist ungültig."
 			Call WONew()
 		End If
 	End If
@@ -12005,14 +12005,14 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Type was not found."
+			HeaderMSG = "Typ konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			txtType = rs2("CodeName")
 			txtTypeDesc = rs2("CodeDesc")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Type is invalid."
+			HeaderMSG = "Der Wert für Typ ist ungültig."
 			Call WONew()
 		End If
 	End If
@@ -12022,7 +12022,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Project ID was not found."
+			HeaderMSG = "Projekt-ID konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			ProjectPK = rs2("ProjectPK")
@@ -12030,7 +12030,7 @@ Sub WOSave(db)
 			ProjectName = rs2("ProjectName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Project ID is invalid."
+			HeaderMSG = "Der Wert für Projekt-ID ist ungültig."
 			Call WONew()
 		End If
 	End If
@@ -12040,7 +12040,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Department ID was not found."
+			HeaderMSG = "Abteilungs-ID konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			DepartmentPK = rs2("DepartmentPK")
@@ -12048,7 +12048,7 @@ Sub WOSave(db)
 			DepartmentName = rs2("DepartmentName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Department ID is invalid."
+			HeaderMSG = "Der Wert für Abteilungs-ID ist ungültig."
 			Call WONew()
 		End If
 	End If
@@ -12058,7 +12058,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Customer ID was not found."
+			HeaderMSG = "Kunden-ID konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			TenantPK = rs2("TenantPK")
@@ -12066,7 +12066,7 @@ Sub WOSave(db)
 			TenantName = rs2("TenantName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Customer ID is invalid."
+			HeaderMSG = "Der Wert für Kunden-ID ist ungültig."
 			Call WONew()
 		End If
 	End If
@@ -12076,7 +12076,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Shop ID was not found."
+			HeaderMSG = "Werkstatt-ID konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			ShopPK = rs2("ShopPK")
@@ -12084,7 +12084,7 @@ Sub WOSave(db)
 			ShopName = rs2("ShopName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Shop ID is invalid."
+			HeaderMSG = "Der Wert für Werkstatt-ID ist ungültig."
 			Call WONew()
 		End If
 	End If
@@ -12094,7 +12094,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Assigned ID was not found."
+			HeaderMSG = "Zugeordnete ID konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			LaborPK = rs2("LaborPK")
@@ -12102,7 +12102,7 @@ Sub WOSave(db)
 			LaborName = rs2("LaborName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Assigned ID is invalid."
+			HeaderMSG = "Der Wert für zugeordnete ID ist ungültig."
 			Call WONew()
 		End If
 	End If
@@ -12354,14 +12354,14 @@ Sub WOSave(db)
 		rs("Reason") = SEZ(Trim(Mid(Replace(Request("Reason").Item,Chr(13)+Chr(10),"%0D%0A"),1,2000)))	' Nullable: YES Type: nvarchar
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Reason is invalid."
+	    HeaderMSG = "Der angegebene Grund ist ungültig."
 	    Call WONew()
     End If
 
 	rs("Status") = Trim(Mid("REQUESTED",1,15))	' Nullable: No Type: nvarchar
 	rs("StatusDesc") = Trim(Mid("Requested",1,50))	' Nullable: YES Type: nvarchar
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Status is invalid."
+	    HeaderMSG = "Der Wert für Zustand ist ungültig."
 	    Call WONew()
     End If
 
@@ -12373,13 +12373,13 @@ Sub WOSave(db)
 		rs("AuthStatusDesc") = Trim(Mid("Required - Level " & GetSession("WOAuthReq"),1,50))	' Nullable: YES Type: nvarchar
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Auth Status is invalid."
+	    HeaderMSG = "Der Wert für Auth Zustand ist ungültig."
 	    Call WONew()
     End If
 
 	rs("StatusDate") = SQLdatetimeADO(DateTimeNullCheck(Now()))	' Nullable: YES Type: datetime
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Status Date is invalid."
+	    HeaderMSG = "Der Wert für Zustands-Datum ist ungültig."
 	    Call WONew()
     End If
 
@@ -12393,7 +12393,7 @@ Sub WOSave(db)
 	rs("RequesterEmail") = RequesterEmail	' Nullable: YES Type: nvarchar
 	rs("RequesterPhone") = RequesterPhone	' Nullable: YES Type: nvarchar
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Requester ID is invalid."
+	    HeaderMSG = "Der Wert für Anforderer-ID ist ungültig."
 	    Call WONew()
     End If
 
@@ -12406,7 +12406,7 @@ Sub WOSave(db)
 		'rs("Instructions") = Trim(Mid(Replace(txtLocationManual,Chr(13)+Chr(10),"%0D%0A"),1,1000))
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Asset ID is invalid."
+	    HeaderMSG = "Der Wert für Ausrüstungs-ID ist ungültig."
 	    Call WONew()
     End If
 
@@ -12416,21 +12416,21 @@ Sub WOSave(db)
 	    rs("TargetDate") = SQLdatetimeADO(Request("TargetDate"))
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Target Date is invalid."
+	    HeaderMSG = "Der Wert für Zieldatum ist ungültig."
 	    Call WONew()
     End If
 
 	rs("Type") = Trim(Mid(txtType,1,25))	' Nullable: YES Type: nvarchar
 	rs("TypeDesc") = NullCheck(txtTypeDesc)	' Nullable: YES Type: nvarchar
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Type is invalid."
+	    HeaderMSG = "Der Wert für Typ ist ungültig."
 	    Call WONew()
     End If
 
 	rs("Priority") = Trim(Mid(txtPriority,1,25))	' Nullable: No Type: nvarchar
 	rs("PriorityDesc") = NullCheck(txtPriorityDesc)	' Nullable: YES Type: nvarchar
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Priority is invalid."
+	    HeaderMSG = "Der Wert für Priorität ist ungültig."
 	    Call WONew()
     End If
 
@@ -12444,7 +12444,7 @@ Sub WOSave(db)
 		rs("RepairCenterName") = RCNM	' Nullable: YES Type: nvarchar
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Repair Center ID is invalid."
+	    HeaderMSG = "Der Wert für Reparaturzentrums-ID ist ungültig."
 	    Call WONew()
     End If
 
@@ -12460,7 +12460,7 @@ Sub WOSave(db)
 		rs("ShopName") = ShopName
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Shop ID is invalid."
+	    HeaderMSG = "Der Wert für Werkstatt-ID ist ungültig."
 	    Call WONew()
     End If
 
@@ -12476,7 +12476,7 @@ Sub WOSave(db)
 		rs("SupervisorName") = SupervisorName
 	End If
 	If Err.Number <> 0 Then
-		HeaderMSG = "The value provided for Supervisor ID is invalid."
+		HeaderMSG = "Der Wert für Leiter-ID ist ungültig."
 		Call WONew()
 	End If
 
@@ -12486,7 +12486,7 @@ Sub WOSave(db)
 		rs("DepartmentName") = DepartmentName
 	End If
 	If Err.Number <> 0 Then
-		HeaderMSG = "The value provided for Department ID is invalid."
+		HeaderMSG = "Der Wert für Abteilungs-ID ist ungültig."
 		Call WONew()
 	End If
 
@@ -12496,7 +12496,7 @@ Sub WOSave(db)
 		rs("TenantName") = TenantName
 	End If
 	If Err.Number <> 0 Then
-		HeaderMSG = "The value provided for Customer ID is invalid."
+		HeaderMSG = "Der Wert für Kunden-ID ist ungültig."
 		Call WONew()
 	End If
 
@@ -12506,7 +12506,7 @@ Sub WOSave(db)
 		rs("AccountName") = AccountName
 	End If
 	If Err.Number <> 0 Then
-		HeaderMSG = "The value provided for Account ID is invalid."
+		HeaderMSG = "Die angegebene Kostenstelle-ID ist ungültig."
 		Call WONew()
 	End If
 
@@ -12516,7 +12516,7 @@ Sub WOSave(db)
 		rs("CategoryName") = CategoryName
 	End If
 	If Err.Number <> 0 Then
-		HeaderMSG = "The value provided for Category ID is invalid."
+		HeaderMSG = "Der Wert für Kategorie-ID ist ungültig."
 		Call WONew()
 	End If
 
@@ -12533,13 +12533,13 @@ Sub WOSave(db)
 		rs("Survey_ID") = prefpk
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Survey is invalid."
+	    HeaderMSG = "Der Wert für Gutachten ist ungültig."
 	    Call WONew()
     End If
 
 	rs("Requested") = SQLdatetimeADO(DateTimeNullCheck(Now()))
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Requested is invalid."
+	    HeaderMSG = "Der Wert für Angefordert ist ungültig."
 	    Call WONew()
     End If
 
@@ -12551,7 +12551,7 @@ Sub WOSave(db)
 
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Problem ID is invalid."
+	    HeaderMSG = "Der Wert für Problem-ID ist ungültig."
 	    Call WONew()
     End If
 
@@ -12563,7 +12563,7 @@ Sub WOSave(db)
 
     End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Procedure ID is invalid."
+	    HeaderMSG = "Der Wert für Verfahrens-ID ist ungültig."
 	    Call WONew()
     End If
 
@@ -12578,7 +12578,7 @@ Sub WOSave(db)
 		rs("ProjectName") = ProcedureName
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Project ID is invalid."
+	    HeaderMSG = "Der Wert für Projekt-ID ist ungültig."
 	    Call WONew()
     End If
 
@@ -12596,27 +12596,27 @@ Sub WOSave(db)
 
     rs("ShutdownBox") = ShutdownBox
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Shutdown is invalid."
+	    HeaderMSG = "Der Wert für Abschalten ist ungültig."
 	    Call WONew()
     End If
     rs("WarrantyBox") = WarrantyBox
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Warranty is invalid."
+	    HeaderMSG = "Der Wert für Garantie ist ungültig."
 	    Call WONew()
     End If
     rs("FollowupWork") = FollowupWork
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Follow-up Work is invalid."
+	    HeaderMSG = "Der Wert für Aufgabe weiter bearbeiten ist ungültig."
 	    Call WONew()
     End If
     rs("LockoutTagoutBox") = LockoutTagoutBox
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Lockout/Tagout is invalid."
+	    HeaderMSG = "Der Wert für Blockierung ist ungültig."
 	    Call WONew()
     End If
     rs("Chargeable") = ChargeableBox
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Chargeable is invalid."
+	    HeaderMSG = "Der Wert für Kostenpflichtig ist ungültig."
 	    Call WONew()
     End If
 
