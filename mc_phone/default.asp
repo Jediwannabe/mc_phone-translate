@@ -1986,14 +1986,14 @@ Sub WOSearch()
 		   Case ""
 		%>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=1">WO #</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=2">Reason</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=3">Asset ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=4">Asset Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=5">Procedure ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=6">Procedure Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=7">Type</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=8">Priority</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=9">Sub-Status</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=2">Grund</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=3">Ausrüstungs-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=4">Ausrüstungs-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=5">Verfahrens-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=6">Verfahrens-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=7">Typ </a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=8">Priorität</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=9">Sub-Zustand</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=myworkorders&amp;s=<% =SessionID %>&amp;back=1">My WOs (<% =wocount %>)</a><br/>
 		<% If TWC_WOAllOpen Then %>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=allworkorders&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All WOs (<% =wocount2 %>)</a><br/>
@@ -2154,7 +2154,7 @@ Sub FASearch()
 		%>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=<% =card %>&amp;s=<% =SessionID %>&amp;<% =LCase(card) %>by=1"><% =desc2 %> ID</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=<% =card %>&amp;s=<% =SessionID %>&amp;<% =LCase(card) %>by=2"><% =desc2 %> Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=<% =Replace(UCase(card),"SEARCH","LOOKUP") %>&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All <% =desc %></a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=<% =Replace(UCase(card),"SEARCH","LOOKUP") %>&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle <% =desc %></a><br/>
 		<% Case "1" %>
 		<b><% =desc2 %> ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
@@ -2227,13 +2227,13 @@ Sub ASSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch&amp;s=<% =SessionID %>&amp;assearchby=1">Asset ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch&amp;s=<% =SessionID %>&amp;assearchby=2">Asset Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=aslookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Assets</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch&amp;s=<% =SessionID %>&amp;assearchby=1">Ausrüstungs-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch&amp;s=<% =SessionID %>&amp;assearchby=2">Ausrüstungs-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=aslookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Gesamte Ausrüstung</a><br/>
 		<% Case "1" %>
-		<b>Asset ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Ausrüstungs-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Asset Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Ausrüstungs-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2303,13 +2303,13 @@ Sub ASSearch2()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch2&amp;s=<% =SessionID %>&amp;assearchby=1">Asset ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch2&amp;s=<% =SessionID %>&amp;assearchby=2">Asset Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assets&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Assets</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch2&amp;s=<% =SessionID %>&amp;assearchby=1">Ausrüstungs-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch2&amp;s=<% =SessionID %>&amp;assearchby=2">Ausrüstungs-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assets&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Gesamte Ausrüstung</a><br/>
 		<% Case "1" %>
-		<b>Asset ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Ausrüstungs-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Asset Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Ausrüstungs-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2357,9 +2357,9 @@ Sub CLSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=clsearch&amp;s=<% =SessionID %>&amp;clsearchby=1">Classification ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=clsearch&amp;s=<% =SessionID %>&amp;clsearchby=2">Classification Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cllookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Classifications</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=clsearch&amp;s=<% =SessionID %>&amp;clsearchby=1">Klassifizierungs-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=clsearch&amp;s=<% =SessionID %>&amp;clsearchby=2">Klassifizierungs-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cllookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Klassifizierungen</a><br/>
 		<% Case "1" %>
 		<b>Classification ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
@@ -2432,9 +2432,9 @@ Sub ACSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=acsearch&amp;s=<% =SessionID %>&amp;acsearchby=1">Account ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=acsearch&amp;s=<% =SessionID %>&amp;acsearchby=2">Account Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=aclookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Accounts</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=acsearch&amp;s=<% =SessionID %>&amp;acsearchby=1">Kostenstellen-IID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=acsearch&amp;s=<% =SessionID %>&amp;acsearchby=2">Kostenstellen-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=aclookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Kostenstellen</a><br/>
 		<% Case "1" %>
 		<b>Account ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
@@ -2507,9 +2507,9 @@ Sub RCSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rcsearch&amp;s=<% =SessionID %>&amp;rcsearchby=1">Repair Center ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rcsearch&amp;s=<% =SessionID %>&amp;rcsearchby=2">Repair Center Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rclookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Repair Centers</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rcsearch&amp;s=<% =SessionID %>&amp;rcsearchby=1">Reparaturzentrum-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rcsearch&amp;s=<% =SessionID %>&amp;rcsearchby=2">Reparaturzentrum-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rclookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Reparaturzentren</a><br/>
 		<% Case "1" %>
 		<b>Repair Center ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
@@ -2564,9 +2564,9 @@ Sub SHSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shsearch&amp;s=<% =SessionID %>&amp;shsearchby=1">Shop ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shsearch&amp;s=<% =SessionID %>&amp;shsearchby=2">Shop Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Shops</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shsearch&amp;s=<% =SessionID %>&amp;shsearchby=1">Werkstatt-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shsearch&amp;s=<% =SessionID %>&amp;shsearchby=2">Werkstatt-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Shops</a><br/>
 		<% Case "1" %>
 		<b>Shop ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
@@ -2639,9 +2639,9 @@ Sub CASearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=casearch&amp;s=<% =SessionID %>&amp;casearchby=1">Category ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=casearch&amp;s=<% =SessionID %>&amp;casearchby=2">Category Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=calookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Categories</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=casearch&amp;s=<% =SessionID %>&amp;casearchby=1">Kategorien-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=casearch&amp;s=<% =SessionID %>&amp;casearchby=2">Kategorien-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=calookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Kategorien</a><br/>
 		<% Case "1" %>
 		<b>Category ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
@@ -2715,9 +2715,9 @@ Sub ZNSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znsearch&amp;s=<% =SessionID %>&amp;znsearchby=1">Zone ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znsearch&amp;s=<% =SessionID %>&amp;znsearchby=2">Zone Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Zones</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znsearch&amp;s=<% =SessionID %>&amp;znsearchby=1">Zonen-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znsearch&amp;s=<% =SessionID %>&amp;znsearchby=2">Zonen-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Werkstätte</a><br/>
 		<% Case "1" %>
 		<b>Zone ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
@@ -2790,13 +2790,13 @@ Sub PRSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prsearch&amp;s=<% =SessionID %>&amp;prsearchby=1">Procedure ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prsearch&amp;s=<% =SessionID %>&amp;prsearchby=2">Procedure Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Procedures</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prsearch&amp;s=<% =SessionID %>&amp;prsearchby=1">Verfahrens-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prsearch&amp;s=<% =SessionID %>&amp;prsearchby=2">Verfahrens-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Verfahren</a><br/>
 		<% Case "1" %>
-		<b>Procedure ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Verfahrens-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Procedure Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Verfahrens-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2865,9 +2865,9 @@ Sub DPSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dpsearch&amp;s=<% =SessionID %>&amp;dpsearchby=1">Department ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dpsearch&amp;s=<% =SessionID %>&amp;dpsearchby=2">Department Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dplookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Departments</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dpsearch&amp;s=<% =SessionID %>&amp;dpsearchby=1">Abteilungs-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dpsearch&amp;s=<% =SessionID %>&amp;dpsearchby=2">Abteilungs-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dplookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Abteilungen</a><br/>
 		<% Case "1" %>
 		<b>Department ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
@@ -2940,9 +2940,9 @@ Sub TNSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnsearch&amp;s=<% =SessionID %>&amp;tnsearchby=1">Customer ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnsearch&amp;s=<% =SessionID %>&amp;tnsearchby=2">Customer Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Customers</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnsearch&amp;s=<% =SessionID %>&amp;tnsearchby=1">Kunden-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnsearch&amp;s=<% =SessionID %>&amp;tnsearchby=2">Kunden-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Kunden</a><br/>
 		<% Case "1" %>
 		<b>Customer ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
@@ -3015,9 +3015,9 @@ Sub PJSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjsearch&amp;s=<% =SessionID %>&amp;pjsearchby=1">Project ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjsearch&amp;s=<% =SessionID %>&amp;pjsearchby=2">Project Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Projects</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjsearch&amp;s=<% =SessionID %>&amp;pjsearchby=1">Projekt-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjsearch&amp;s=<% =SessionID %>&amp;pjsearchby=2">Projekt-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Projekte</a><br/>
 		<% Case "1" %>
 		<b>Project ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
@@ -3090,9 +3090,9 @@ Sub LASearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lasearch&amp;s=<% =SessionID %>&amp;lasearchby=1">Labor ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lasearch&amp;s=<% =SessionID %>&amp;lasearchby=2">Labor Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lalookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Labor</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lasearch&amp;s=<% =SessionID %>&amp;lasearchby=1">Arbeiter-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lasearch&amp;s=<% =SessionID %>&amp;lasearchby=2">Arbeiter-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lalookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Arbeiter</a><br/>
 		<% Case "1" %>
 		<b>Labor ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
@@ -3165,11 +3165,11 @@ Sub INSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=1">Part ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=2">Part Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=3">Part Desc</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=4">Vendor Part #</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=inlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Items</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=1">Artikel-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=2">Artikel-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=3">Artikelschreibung</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=4">Lieferanten-Artikel Nr.</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=inlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Artikel</a><br/>
 		<% Case "1" %>
 		<b>Item ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
@@ -3246,10 +3246,10 @@ Sub SRSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srsearch&amp;s=<% =SessionID %>&amp;srsearchby=1">Location ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srsearch&amp;s=<% =SessionID %>&amp;srsearchby=2">Location Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Locations</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srlookup&amp;s=<% =SessionID %>&amp;searchby=3">All Locations (All Repair Centers)</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srsearch&amp;s=<% =SessionID %>&amp;srsearchby=1">Standort-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srsearch&amp;s=<% =SessionID %>&amp;srsearchby=2">Standort-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Standorte</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srlookup&amp;s=<% =SessionID %>&amp;searchby=3">Alle Standorte (Alle Reparaturzentren)</a><br/>
 		<% Case "1" %>
 		<b>Location ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
@@ -4191,7 +4191,7 @@ Sub WOLaborRec()
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
 			<% If PK = "-1" Then %>
-				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>New Labor</div>
+				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Neuer Arbeiter</div>
 			<%Else%>
 				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'><% =WAPValidate(NullCheck(rs("LaborName"))) %>: [<% =NullCheck(RS("EstimatedHours")) & " Est] [" & NullCheck(RS("TotalHours")) & " Actual" & "] " & DateNullCheck(RS("WorkDate")) %></div>
 			<%End If%>
@@ -5233,7 +5233,7 @@ Sub WOMiscCostRec()
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
 			<% If PK = "-1" Then %>
-				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>New Other Cost</div>
+				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Neue Weitere Kosten</div>
 			<%Else%>
 				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>[<% =WAPValidate(NullCheck(rs("MiscCostName"))) %>] [<% =DateNullCheck(RS("MiscCostDate")) %>] [<% =FormatNumber(WAPValidate(NullCheck(RS("EstimatedCost"))),2,-2,0,0) %>&nbsp;Est] [<% =FormatNumber(WAPValidate(NullCheck(RS("ActualCost"))),2,-2,0,0) %>&nbsp;Actual]</div>
 			<%End If%>
@@ -6057,7 +6057,7 @@ Sub ASLaborRec()
 			<div style='float:left;'>
 				<% =ParentLocationAll %><% =ParentEquipmentAll %><% =AssetName %> (<% =AssetID %>)
 			</div>
-			<div style='float:right;'>Labor Record</div>
+			<div style='float:right;'>Arbeiter-Daten</div>
 			<div style='clear:both;'></div>
 		</div>
 		<div style='padding:8px;'>
@@ -6397,7 +6397,7 @@ Sub WOAssignRec()
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
 			<% If PK = "-1" Then %>
-				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>New Assignment</div>
+				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Neue Auftragszuweisung</div>
 			<%Else%>
 				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>[<% =WAPValidate(NullCheck(rs("LaborName"))) %>] [<% =DateNullCheck(RS("AssignedDate")) %>] [<% =NullCheck(RS("AssignedHours")) %>&nbsp;Hour(s)]</div>
 			<%End If%>
@@ -7010,10 +7010,10 @@ Sub InventoryMenu()
 		End If
         %>
         <p align="center">
-        <a href="default.asp?card=viewinventory&amp;s=<% =SessionID %>">View Inventory</a><br/>
-        <a href="default.asp?card=newitem&amp;s=<% =SessionID %>">New Inventory Item</a><br/>
-   		<a href="default.asp?card=adjustinventory&amp;s=<% =SessionID %>">Adjust Inventory</a><br/>
-   		<a href="default.asp?card=countinventory&amp;s=<% =SessionID %>">Count Inventory</a><br/>
+        <a href="default.asp?card=viewinventory&amp;s=<% =SessionID %>">Inventar Ansehen</a><br/>
+        <a href="default.asp?card=newitem&amp;s=<% =SessionID %>">Neues InventarArtikel</a><br/>
+   		<a href="default.asp?card=adjustinventory&amp;s=<% =SessionID %>">Inventar anpassen</a><br/>
+   		<a href="default.asp?card=countinventory&amp;s=<% =SessionID %>">Inventar zählen</a><br/>
    		</p>
         <%
 		If lang = "WML" Then
@@ -8632,10 +8632,10 @@ Sub AllWorkOrders()
 				<% If False Then %>
 				<div style='display:none;'>
 				<select tabindex="2" name="S<% =rs("WOPK") %>" value="I">
-				<option value="IS">Issued</option>
-				<option value="OH">On-Hold</option>
-				<option value="CO">Completed</option>
-				<option value="CL">Closed</option>
+				<option value="IS">Ausgestellt</option>
+				<option value="OH">Warteschleife</option>
+				<option value="CO">Abgeschlossen</option>
+				<option value="CL">Geschlossen</option>
 				</select>
 				Hours: <input tabindex="1" size="2" name="H<% =rs("WOPK") %>" value=""/>
 				<br/>
@@ -8838,10 +8838,10 @@ Sub AllWorkOrdersU()
 				<% If False Then %>
 				<div style='display:none;'>
 				<select tabindex="2" name="S<% =rs("WOPK") %>" value="I">
-				<option value="IS">Issued</option>
-				<option value="OH">On-Hold</option>
-				<option value="CO">Completed</option>
-				<option value="CL">Closed</option>
+				<option value="IS">Ausgestellt</option>
+				<option value="OH">Warteschleife</option>
+				<option value="CO">Abgeschlossen</option>
+				<option value="CL">Geschlossen</option>
 				</select>
 				Hours: <input tabindex="1" size="2" name="H<% =rs("WOPK") %>" value=""/>
 				<br/>
