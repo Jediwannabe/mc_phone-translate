@@ -50,8 +50,9 @@ case "login"
 					</tr>
 					<tr>
 						<td>
-							<div class="Font2" style='font-size:14pt; padding-top:40px; text-align:left;'>What is your member id?</div>
+							<div class="Font2" style='font-size:14pt; padding-top:40px; text-align:left;'>Was ist Ihre Benutzer ID?</div>
 						</td>
+						
 					</tr>
 					<tr>
 						<td>
@@ -60,7 +61,7 @@ case "login"
 					</tr>
 					<tr>
 						<td>
-							<div class="Font2" style='font-size:14pt; width;300px;'>What is your password?</div>
+							<div class="Font2" style='font-size:14pt; width;300px;'>Was ist Ihre Passwort?</div>
 						</td>
 					</tr>
 					<tr>
