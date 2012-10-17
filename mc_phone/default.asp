@@ -407,7 +407,7 @@ case "logoff"
 Case Else
 
 	Call StartMobileDocument("")
-		OutputWAPMsg("Die Karte wurde nicht gefunden: " & card)
+		OutputWAPMsg("The card was not found: " & card)
 		WAPbuttonsBegin
 		OutputBackButton
 		WAPbuttonsEnd
@@ -436,7 +436,7 @@ Sub MainMenu()
 
 	Set db = New ADOHelper
 
-	CAlle AAsave(db)
+	Call WOSave(db)
 
 	ASA = GetAccessRight(db,"ASA",0)
 	ASN = GetAccessRight(db,"ASN",0)
@@ -596,10 +596,10 @@ Sub MainMenu()
 		<%
 		If GetSession("ed") = "Y" Then
 			If Not GetSession("searchby") = "" Then %>
-				<a class='Font2' style='float:left; font-size:12pt;' href="default.asp?card=authenticate&amp;s=<% =SessionID %>&amp;searchby=<% =GetSession("SearchBy") %>">[Ändern]</a>
+				<a class='Font2' style='float:left; font-size:12pt;' href="default.asp?card=authenticate&amp;s=<% =SessionID %>&amp;searchby=<% =GetSession("SearchBy") %>">[Change]</a>
 			<%
 			Else %>
-				<a class='Font2' style='float:left; font-size:12pt;' href="default.asp?card=authenticate&amp;s=<% =SessionID %>&amp;searchby=NONE">[Ändern]</a>
+				<a class='Font2' style='float:left; font-size:12pt;' href="default.asp?card=authenticate&amp;s=<% =SessionID %>&amp;searchby=NONE">[Change]</a>
 			<%
 			End If %>
 		<% End If %>
@@ -616,7 +616,7 @@ Sub MainMenu()
 						<img src='images/icons/48/User Labor Male.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Meine Arbeitsaufträge (<% =wocount %>)
+						My Work Orders (<% =wocount %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=allworkorders&amp;s=<% =SessionID %>';">
@@ -624,7 +624,7 @@ Sub MainMenu()
 						<img src='images/icons/48/User Group Labor.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Alle Arbeitsaufträge (<% =wocount2 %>)
+						All Work Orders (<% =wocount2 %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=allworkordersu&amp;s=<% =SessionID %>';">
@@ -632,7 +632,7 @@ Sub MainMenu()
 						<img src='images/icons/48/User Labor Female.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Nicht zugeordnete Arbeitsaufträge (<% =wocountu %>)
+						Unassigned Work Orders (<% =wocountu %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=assettasks&amp;s=<% =SessionID %>';">
@@ -640,7 +640,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Hospital 2 Check.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Ausrüstungs-Aufgabe
+						Asset Tasks
 					</div>
 				</td>
 			</tr>
@@ -651,7 +651,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Hospital 2.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Ausrüstungs-Liste
+						Asset List
 					</div>
 				</td>
 
@@ -661,7 +661,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Configuration Tools.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Neuer Arbeitsauftrag
+						New Work Order
 					</div>
 				</td>
 				<%End If%>
@@ -671,7 +671,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Hospital 2 Add.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Neue Ausrüstung
+						New Asset
 					</div>
 				</td>
 				<%End If%>
@@ -680,7 +680,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Coins.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Inventar zählen
+						Count Inventory
 					</div>
 				</td>
 			</tr>
@@ -691,7 +691,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Medical Invoice Flat.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Inventar Menu
+						Inventory Menu
 					</div>
 				</td>
 				<%End If%>
@@ -713,26 +713,26 @@ Sub MainMenu()
 		If WOFilter Then
 		    If rccount > 1 or shcount > 1 Then
 			%>
-				<div style='padding:2px; background-color:#c7d4e1; border-bottom:2px solid #005288; font-size:12pt;' class='Font1'>Dashboard Kriterien</div>
+				<div style='padding:2px; background-color:#c7d4e1; border-bottom:2px solid #005288; font-size:12pt;' class='Font1'>Dashboard Criteria</div>
 			<div style='padding:5px;'>
 			<%
 		    End If
 		    If rccount > 1 Then %>
 		    	<div class='Font1' style='font-size:14pt; cursor:pointer;' onclick="OpenWindow('Repair Center', 600, 400, 'default.asp', '&card=rclookup&amp;s=<% =SessionID %>');">
-					<div class='RowElisp' style='max-width:75%; float:left;'><% =GetSession("RCNM") %></div><div style='float:right;' class='Font2' style='font-size:12pt;'>[Ändern]</div><div style='clear:both;'></div>
+					<div class='RowElisp' style='max-width:75%; float:left;'><% =GetSession("RCNM") %></div><div style='float:right;' class='Font2' style='font-size:12pt;'>[Change]</div><div style='clear:both;'></div>
 		    	</div>
 		    	<div style='height:10px;'>&nbsp;</div>
 		    <%End If %>
 		    <% If shcount > 1 Then %>
 		    	<div class='Font1' style='font-size:14pt; cursor:pointer;' onclick="OpenWindow('Repair Center', 600, 400, 'default.asp', '&card=shlookup&amp;s=<% =SessionID %>');">
-					<div class='RowElisp' style='max-width:75%; float:left;'>Shop: <% =GetSession("SHID") %></div><div style='float:right;' class='Font2' style='font-size:12pt;'>[Ändern]</div><div style='clear:both;'></div>
+					<div class='RowElisp' style='max-width:75%; float:left;'>Shop: <% =GetSession("SHID") %></div><div style='float:right;' class='Font2' style='font-size:12pt;'>[Change]</div><div style='clear:both;'></div>
 		    	</div>
 
 			<%End If%>
 		    	</div>
 		    <%
 		End If
-		If False Then %><div><a class='Font1' style='font-size:12pt;' href="default.asp?card=entertime&amp;s=<% =SessionID %>">Geben Sie eine Zeit an</a></div><%
+		If False Then %><div><a class='Font1' style='font-size:12pt;' href="default.asp?card=entertime&amp;s=<% =SessionID %>">Enter Time</a></div><%
 		End If
 
 		rs.close()
@@ -815,15 +815,15 @@ Sub WOOptions(n)
 					wostatusdate = WAPValidate(DateNullCheck(RS("Issued")))
 					wostatustime = WAPValidate(TimeNullCheck(RS("Issued")))
 				ElseIf NullCheck(RS("Complete")) = "" Then
-					wostatusdesc = wostatusdesc & " / Beantwortet"
+					wostatusdesc = wostatusdesc & " / Responded"
 					wostatusdate = WAPValidate(DateNullCheck(RS("Responded")))
 					wostatustime = WAPValidate(TimeNullCheck(RS("Responded")))
 				ElseIf NullCheck(RS("Finalized")) = "" Then
-					wostatusdesc = wostatusdesc & " / Abgeschlossen"
+					wostatusdesc = wostatusdesc & " / Completed"
 					wostatusdate = WAPValidate(DateNullCheck(RS("Complete")))
 					wostatustime = WAPValidate(TimeNullCheck(RS("Complete")))
 				Else
-					wostatusdesc = wostatusdesc & " / Beendet"
+					wostatusdesc = wostatusdesc & " / Finalized"
 					wostatusdate = WAPValidate(DateNullCheck(RS("Finalized")))
 					wostatustime = WAPValidate(TimeNullCheck(RS("Finalized")))
 				End If
@@ -1035,7 +1035,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/Medical Invoice 3D Edit.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Details bearbeiten
+						Edit Details
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=wotasks&amp;s=<% =SessionID %>&amp;wopk=<% =WOPK %>';">
@@ -1069,7 +1069,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/Coins.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Weitere Kosten (<% =wocount4 %>)
+						Other Costs (<% =wocount4 %>)
 					</div>
 				</td>
 				<% If AccessToAssign Then %>
@@ -1078,7 +1078,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/User Group Labor.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Zuweisungen (<% =wocount6 %>)
+						Assignments (<% =wocount6 %>)
 					</div>
 				</td>
 				<%End If%>
@@ -1086,7 +1086,7 @@ Sub WOOptions(n)
 		</table>
 		<div style='height:20px;'>&nbsp;</div>
 		<div class='Font1' style='padding:5px;background-color:#f0f7fe; font-size:12pt; cursor:pointer;'>
-			Arbeitsauftrag Vorgänge
+			Work Order Actions
 		</div>
 		<table cellpadding='2' cellspacing='0' style='width:100%;'>
 			<tr valign='top' align='center'>
@@ -1096,7 +1096,7 @@ Sub WOOptions(n)
 							<img src='images/icons/48/Thumbs Up.png' alt='' title='' />
 						</div>
 						<div class='Font1'>
-							Ausgabe
+							Issue
 						</div>
 					</td>
 					<% End If %>
@@ -1106,7 +1106,7 @@ Sub WOOptions(n)
 							<img src='images/icons/48/Notepad.png' alt='' title='' />
 						</div>
 						<div class='Font1'>
-							Antworten
+							Respond
 						</div>
 					</td>
 					<% End If %>
@@ -1116,7 +1116,7 @@ Sub WOOptions(n)
 							<img src='images/icons/48/Stop.png' alt='' title='' />
 						</div>
 					<div class='Font1'>
-						Warteschleife
+						On-Hold
 					</div>
 				</td>
 					<% End If %>
@@ -1140,7 +1140,7 @@ Sub WOOptions(n)
 										<img src='images/icons/48/Status Flag Red.png' alt='' title='' />
 									</div>
 								<div class='Font1'>
-									Schließen
+									Close
 								</div>
 							</td>
 							<% End If %>
@@ -1150,7 +1150,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/Hospital 2 Rating.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Ausrüstungs-Verlauf (<% =wocount5 %>)
+						Asset History (<% =wocount5 %>)
 					</div>
 				</td>
 				</tr>
@@ -1215,7 +1215,7 @@ Sub ASOptions()
             parentequipmentall = parentequipmentall & "<br/>"
         End If
 	Else
-		Call OutputWAPError("Keine Ausrüstung gefunden.")
+		Call OutputWAPError("The Asset was not found.")
 	End If
 
 	sql = "SELECT ASCount = COUNT(PK) " &_
@@ -1345,7 +1345,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Medical Invoice 3D Edit.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Details bearbeiten
+						Edit Details
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=asmeters&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>';">
@@ -1353,7 +1353,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Configuration.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Zähler
+						Meters
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=asspecs&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>';">
@@ -1369,7 +1369,7 @@ Sub ASOptions()
 						<img src='images/icons/48/User Group Home.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Arbeiter / Kontakte (<% =ascount2 %>)
+						Labor / Contacts (<% =ascount2 %>)
 					</div>
 				</td>
 			</tr>
@@ -1389,7 +1389,7 @@ Sub ASOptions()
 		</table>
 		<% If False Then %>
 		<div class='Font1' style='padding:5px;background-color:#f0f7fe; font-size:12pt; cursor:pointer;'>
-			Ausrüstungs-Vorgang
+			Asset Actions
 		</div>
 		<table cellpadding='2' cellspacing='0' style='width:100%;'>
 			<tr valign='top' align='center'>
@@ -1422,7 +1422,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Notepad.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Gefundene Aufgaben (<% =ascount3 %>)
+						Tracked Tasks (<% =ascount3 %>)
 					</div>
 				</td>
 			</tr>
@@ -1481,7 +1481,7 @@ Sub ASDetails()
                 parentequipmentall = parentequipmentall & "<br/>"
             End If
 	    Else
-		    Call OutputWAPError("Keine Ausrüstung gefunden.")
+		    Call OutputWAPError("The Asset was not found.")
 	    End If
 
 	    sql = _
@@ -1562,7 +1562,7 @@ Sub ASDetails()
 			</div>
 		<%Else%>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-				Neue Ausrüstung
+				New Asset
 			</div>
 		<%End If%>
 			<%
@@ -1633,13 +1633,13 @@ Sub ASDetailsSave(ByRef db)
 					    Set rs2 = db.RunSQLReturnRS(sql,"")
 					    Call CheckDB(db)
 					    If rs2.eof Then
-						    HeaderMSG = "Übergeordnete ID konnte nicht gefunden werden."
+						    HeaderMSG = "The Parent ID was not found."
 						    ASDetails
 						Else
 						    ParentPK = rs2("AssetPK")
 					    End If
 					Else
-					    HeaderMSG = "Übergeordnete ID erforderlich."
+					    HeaderMSG = "The Parent ID is required."
 					    ASDetails
 					End If
 					Call SaveField(db,"ClassificationID","Classification ID","Classification","","LM","ASDetails",True)
@@ -1649,13 +1649,13 @@ Sub ASDetailsSave(ByRef db)
 					    Set rs2 = db.RunSQLReturnRS(sql,"")
 					    Call CheckDB(db)
 					    If Not rs2.eof Then
-						    HeaderMSG = "Ausrüstungs ID ist bereits einer anderen Ausrüstung zugeordnet (" & WAPValidate(NullCheck(rs2("AssetName"))) & ")."
+						    HeaderMSG = "The Asset ID has already been assigned to another Asset (" & WAPValidate(NullCheck(rs2("AssetName"))) & ")."
 						    ASDetails
 						Else
 						    rs("AssetID") = Trim(Request("AssetID"))
 					    End If
 					Else
-					    HeaderMSG = "Ausrüstungs ID ist erforderlich."
+					    HeaderMSG = "The Asset ID is required."
 					    ASDetails
 					End If
                     Call SaveField(db,"AssetName","Asset Name","","","C","ASDetails",True)
@@ -1769,7 +1769,7 @@ Sub ASMeters()
                 parentequipmentall = parentequipmentall & "<br/>"
             End If
 	    Else
-		    Call OutputWAPError("Keine Ausrüstung gefunden.")
+		    Call OutputWAPError("The Asset was not found.")
 	    End If
 
 	    sql = _
@@ -1808,7 +1808,7 @@ Sub ASMeters()
 				<% =ParentLocationAll %><% =ParentEquipmentAll %><% =AssetName %> (<% =AssetID %>)
 			</div>
 			<div style='float:right;'>
-				Zählerstand
+				Meter Readings
 			</div>
 			<div style='clear:both;'></div>
 		</div>
@@ -1985,37 +1985,37 @@ Sub WOSearch()
 		   Case ""
 		%>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=1">WO #</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=2">Grund</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=3">Ausrüstungs-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=4">Ausrüstungs-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=5">Verfahrens-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=6">Verfahrens-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=7">Typ </a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=8">Priorität</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=9">Sub-Zustand</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=myworkorders&amp;s=<% =SessionID %>&amp;back=1">Meine Aas (<% =wocount %>)</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=2">Reason</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=3">Asset ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=4">Asset Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=5">Procedure ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=6">Procedure Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=7">Type</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=8">Priority</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=9">Sub-Status</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=myworkorders&amp;s=<% =SessionID %>&amp;back=1">My WOs (<% =wocount %>)</a><br/>
 		<% If TWC_WOAllOpen Then %>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=allworkorders&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle AAs (<% =wocount2 %>)</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=allworkordersu&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle nicht-zugewiesenen Arbeitsaufträge (<% =wocountu %>)</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=allworkorders&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All WOs (<% =wocount2 %>)</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=allworkordersu&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Unassigned WOs (<% =wocountu %>)</a><br/>
 		<% End If %>
 		<% Case "1" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>AA&nbsp;#: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>WO&nbsp;#: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Grund: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Reason: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "3" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Ausrüstungs-ID: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Asset ID: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "4" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Ausrüstungs-Name: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Asset Name: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "5" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Verfahrens-ID: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Procedure ID: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "6" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Verfahrens-Name: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Procedure Name: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "7" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Typ : </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Type: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "8" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Priorität: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Priority: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "9" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Sub-Zustand: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Sub-Status: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2062,13 +2062,13 @@ Sub CMSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmsearch&amp;s=<% =SessionID %>&amp;cmsearchby=1">Firmen-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmsearch&amp;s=<% =SessionID %>&amp;cmsearchby=2">Firmen-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Firmen</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmsearch&amp;s=<% =SessionID %>&amp;cmsearchby=1">Company ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmsearch&amp;s=<% =SessionID %>&amp;cmsearchby=2">Company Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Companies</a><br/>
 		<% Case "1" %>
-		<b>Firmen-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Company ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Firmen-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Company Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2153,7 +2153,7 @@ Sub FASearch()
 		%>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=<% =card %>&amp;s=<% =SessionID %>&amp;<% =LCase(card) %>by=1"><% =desc2 %> ID</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=<% =card %>&amp;s=<% =SessionID %>&amp;<% =LCase(card) %>by=2"><% =desc2 %> Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=<% =Replace(UCase(card),"SEARCH","LOOKUP") %>&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle <% =desc %></a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=<% =Replace(UCase(card),"SEARCH","LOOKUP") %>&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All <% =desc %></a><br/>
 		<% Case "1" %>
 		<b><% =desc2 %> ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
@@ -2226,13 +2226,13 @@ Sub ASSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch&amp;s=<% =SessionID %>&amp;assearchby=1">Ausrüstungs-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch&amp;s=<% =SessionID %>&amp;assearchby=2">Ausrüstungs-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=aslookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Gesamte Ausrüstung</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch&amp;s=<% =SessionID %>&amp;assearchby=1">Asset ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch&amp;s=<% =SessionID %>&amp;assearchby=2">Asset Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=aslookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Assets</a><br/>
 		<% Case "1" %>
-		<b>Ausrüstungs-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Asset ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Ausrüstungs-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Asset Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2302,13 +2302,13 @@ Sub ASSearch2()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch2&amp;s=<% =SessionID %>&amp;assearchby=1">Ausrüstungs-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch2&amp;s=<% =SessionID %>&amp;assearchby=2">Ausrüstungs-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assets&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Gesamte Ausrüstung</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch2&amp;s=<% =SessionID %>&amp;assearchby=1">Asset ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch2&amp;s=<% =SessionID %>&amp;assearchby=2">Asset Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assets&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Assets</a><br/>
 		<% Case "1" %>
-		<b>Ausrüstungs-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Asset ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Ausrüstungs-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Asset Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2356,13 +2356,13 @@ Sub CLSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=clsearch&amp;s=<% =SessionID %>&amp;clsearchby=1">Klassifizierungs-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=clsearch&amp;s=<% =SessionID %>&amp;clsearchby=2">Klassifizierungs-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cllookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Klassifizierungen</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=clsearch&amp;s=<% =SessionID %>&amp;clsearchby=1">Classification ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=clsearch&amp;s=<% =SessionID %>&amp;clsearchby=2">Classification Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cllookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Classifications</a><br/>
 		<% Case "1" %>
-		<b>Klassifizierungs-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Classification ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Klassifizierungs-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Classification Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2431,13 +2431,13 @@ Sub ACSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=acsearch&amp;s=<% =SessionID %>&amp;acsearchby=1">Kostenstellen-IID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=acsearch&amp;s=<% =SessionID %>&amp;acsearchby=2">Kostenstellen-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=aclookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Kostenstellen</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=acsearch&amp;s=<% =SessionID %>&amp;acsearchby=1">Account ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=acsearch&amp;s=<% =SessionID %>&amp;acsearchby=2">Account Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=aclookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Accounts</a><br/>
 		<% Case "1" %>
-		<b>Kostenstelle-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Account ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Kostenstelle-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Account Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2506,13 +2506,13 @@ Sub RCSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rcsearch&amp;s=<% =SessionID %>&amp;rcsearchby=1">Reparaturzentrum-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rcsearch&amp;s=<% =SessionID %>&amp;rcsearchby=2">Reparaturzentrum-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rclookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Reparaturzentren</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rcsearch&amp;s=<% =SessionID %>&amp;rcsearchby=1">Repair Center ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rcsearch&amp;s=<% =SessionID %>&amp;rcsearchby=2">Repair Center Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rclookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Repair Centers</a><br/>
 		<% Case "1" %>
-		<b>ID des Reparaturzentrums: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Repair Center ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Name des Reparaturzentrums: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Repair Center Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2563,13 +2563,13 @@ Sub SHSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shsearch&amp;s=<% =SessionID %>&amp;shsearchby=1">Werkstatt-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shsearch&amp;s=<% =SessionID %>&amp;shsearchby=2">Werkstatt-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Shops</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shsearch&amp;s=<% =SessionID %>&amp;shsearchby=1">Shop ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shsearch&amp;s=<% =SessionID %>&amp;shsearchby=2">Shop Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Shops</a><br/>
 		<% Case "1" %>
-		<b>Werkstatt-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Shop ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Werkstatt Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Shop Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2638,13 +2638,13 @@ Sub CASearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=casearch&amp;s=<% =SessionID %>&amp;casearchby=1">Kategorien-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=casearch&amp;s=<% =SessionID %>&amp;casearchby=2">Kategorien-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=calookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Kategorien</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=casearch&amp;s=<% =SessionID %>&amp;casearchby=1">Category ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=casearch&amp;s=<% =SessionID %>&amp;casearchby=2">Category Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=calookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Categories</a><br/>
 		<% Case "1" %>
-		<b>Kategorien-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Category ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Kategorien-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Category Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2714,13 +2714,13 @@ Sub ZNSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znsearch&amp;s=<% =SessionID %>&amp;znsearchby=1">Zonen-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znsearch&amp;s=<% =SessionID %>&amp;znsearchby=2">Zonen-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Werkstätte</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znsearch&amp;s=<% =SessionID %>&amp;znsearchby=1">Zone ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znsearch&amp;s=<% =SessionID %>&amp;znsearchby=2">Zone Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Zones</a><br/>
 		<% Case "1" %>
-		<b>Zonen-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Zone ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Zonenname: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Zone Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2789,13 +2789,13 @@ Sub PRSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prsearch&amp;s=<% =SessionID %>&amp;prsearchby=1">Verfahrens-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prsearch&amp;s=<% =SessionID %>&amp;prsearchby=2">Verfahrens-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Verfahren</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prsearch&amp;s=<% =SessionID %>&amp;prsearchby=1">Procedure ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prsearch&amp;s=<% =SessionID %>&amp;prsearchby=2">Procedure Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Procedures</a><br/>
 		<% Case "1" %>
-		<b>Verfahrens-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Procedure ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Verfahrens-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Procedure Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2864,13 +2864,13 @@ Sub DPSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dpsearch&amp;s=<% =SessionID %>&amp;dpsearchby=1">Abteilungs-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dpsearch&amp;s=<% =SessionID %>&amp;dpsearchby=2">Abteilungs-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dplookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Abteilungen</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dpsearch&amp;s=<% =SessionID %>&amp;dpsearchby=1">Department ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dpsearch&amp;s=<% =SessionID %>&amp;dpsearchby=2">Department Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dplookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Departments</a><br/>
 		<% Case "1" %>
-		<b>Abteilungs-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Department ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Abteilungs-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Department Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2939,13 +2939,13 @@ Sub TNSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnsearch&amp;s=<% =SessionID %>&amp;tnsearchby=1">Kunden-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnsearch&amp;s=<% =SessionID %>&amp;tnsearchby=2">Kunden-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Kunden</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnsearch&amp;s=<% =SessionID %>&amp;tnsearchby=1">Customer ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnsearch&amp;s=<% =SessionID %>&amp;tnsearchby=2">Customer Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Customers</a><br/>
 		<% Case "1" %>
-		<b>Kunden-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Customer ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Kunden-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Customer Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -3014,13 +3014,13 @@ Sub PJSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjsearch&amp;s=<% =SessionID %>&amp;pjsearchby=1">Projekt-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjsearch&amp;s=<% =SessionID %>&amp;pjsearchby=2">Projekt-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Projekte</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjsearch&amp;s=<% =SessionID %>&amp;pjsearchby=1">Project ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjsearch&amp;s=<% =SessionID %>&amp;pjsearchby=2">Project Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Projects</a><br/>
 		<% Case "1" %>
-		<b>Projekt-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Project ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Projektname: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Project Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -3089,13 +3089,13 @@ Sub LASearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lasearch&amp;s=<% =SessionID %>&amp;lasearchby=1">Arbeiter-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lasearch&amp;s=<% =SessionID %>&amp;lasearchby=2">Arbeiter-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lalookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Arbeiter</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lasearch&amp;s=<% =SessionID %>&amp;lasearchby=1">Labor ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lasearch&amp;s=<% =SessionID %>&amp;lasearchby=2">Labor Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lalookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Labor</a><br/>
 		<% Case "1" %>
-		<b>Arbeiter-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Labor ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Arbeiter-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Labor Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -3164,19 +3164,19 @@ Sub INSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=1">Artikel-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=2">Artikel-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=3">Artikelschreibung</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=4">Lieferanten-Artikel Nr.</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=inlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Artikel</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=1">Part ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=2">Part Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=3">Part Desc</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=4">Vendor Part #</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=inlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Items</a><br/>
 		<% Case "1" %>
-		<b>Artikel-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Item ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Artikel-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Item Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "3" %>
-		<b>Artikel Beschreibung: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Item Desc: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "4" %>
-		<b>Lieferanten-Artikel Nr: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Vendor Part #: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -3245,16 +3245,16 @@ Sub SRSearch()
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srsearch&amp;s=<% =SessionID %>&amp;srsearchby=1">Standort-ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srsearch&amp;s=<% =SessionID %>&amp;srsearchby=2">Standort-Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Standorte</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srlookup&amp;s=<% =SessionID %>&amp;searchby=3">Alle Standorte (Alle Reparaturzentren)</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srsearch&amp;s=<% =SessionID %>&amp;srsearchby=1">Location ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srsearch&amp;s=<% =SessionID %>&amp;srsearchby=2">Location Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Locations</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srlookup&amp;s=<% =SessionID %>&amp;searchby=3">All Locations (All Repair Centers)</a><br/>
 		<% Case "1" %>
-		<b>Standort-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Location ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Standort-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Location Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "3" %>
-		<b>Klicken Sie Zulassen an um alle Lagerräume an allen RCs zu sehen</b>
+		<b>Click Submit to View All Stock Rooms at All RCs</b>
 		<% End Select %>
 		</p>
 		<%
@@ -3454,7 +3454,7 @@ Sub WOTasksOld()
 
 	Call StartMobileDocument(CardTitle)
 		If rs.eof Then
-			Call OutputWAPMsg("Keine Aufgaben gefunden")
+			Call OutputWAPMsg("No Tasks Found")
 		Else %>
 			<% If IsPocketIE or IsBlackBerry Then %>
 			<p align="center" mode="wrap">
@@ -3534,9 +3534,9 @@ Sub WOTaskSave(ByRef db)
 		If Not rs.Eof Then
 			If Not Request("flipit") = "" Then
 				If BitNullCheck(rs("Complete")) Then
-					RS("Abgeschlossen") = False
+					rs("Complete") = False
 				Else
-					RS("Abgeschlossen") = True
+					rs("Complete") = True
 				End If
 			Else
 			    On Error Resume Next
@@ -3544,28 +3544,28 @@ Sub WOTaskSave(ByRef db)
 					rs("HoursActual") =	NullCheck(Request("HoursActual"))
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "Der Wert für Tatsächliche Stunden ist ungültig."
+					HeaderMSG = "The value provided for Hours Actual is invalid."
 					WOTask
 				End If
 				If Not NullCheck(Request("Measurement")) = "" Then
 					rs("Measurement") =	NullCheck(Request("Measurement"))
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "Der Wert für Maße ist ungültig."
+					HeaderMSG = "The value provided for Measurement is invalid."
 					WOTask
 				End If
 				If Not NullCheck(Request("Rate")) = "" Then
 					rs("Rate") = NullCheck(Request("Rate"))
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "Der Wert für Tarif ist ungültig."
+					HeaderMSG = "The value provided for Rate is invalid."
 					WOTask
 				End If
 				If Not NullCheck(Request("Comments")) = "" Then
 					rs("Comments") =	NullCheck(Request("Comments"))
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "Der Wert für Kommentare ist ungültig."
+					HeaderMSG = "The value provided for Comments is invalid."
 					WOTask
 				End If
 				If UCase(NullCheck(Request("Fail"))) = "Y" or UCase(NullCheck(Request("Fail"))) = "2" Then
@@ -3574,9 +3574,9 @@ Sub WOTaskSave(ByRef db)
 					rs("Fail") = False
 				End If
 				If UCase(NullCheck(Request("Complete"))) = "Y" or UCase(NullCheck(Request("Complete"))) = "2" Then
-					RS("Abgeschlossen") = True
+					rs("Complete") = True
 				Else
-					RS("Abgeschlossen") = False
+					rs("Complete") = False
 				End If
 				On Error Goto 0
 			End If
@@ -3872,7 +3872,7 @@ Sub WOTasks()
 	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and False Then
-			Call OutputWAPMsg("Keine Aufgaben gefunden")
+			Call OutputWAPMsg("No Tasks Found")
 		Else
 		%>
 			<% If Not FromAsset Then %>
@@ -3960,11 +3960,11 @@ Sub WOTasks()
 					If rs("Spec") and Not NullCheck(rs("ValueLow")) = "" and Not NullCheck(rs("Measurement")) = "" Then
 						If IsNumeric(rs("Measurement")) and IsNumeric(rs("ValueLow")) Then
 							If CLng(rs("Measurement")) < CLng(rs("ValueLow")) Then
-								TaskText3 = " (Unter Minimalwert von " & rs("ValueLow") & ")"
+								TaskText3 = " (Below minimum value of " & rs("ValueLow") & ")"
 								LineTemplate2 = 11
 							Else
 								SpecLowOK = True
-								SpecText = SpecText & "Minimaler Wert: " & rs("ValueLow") & " "
+								SpecText = SpecText & "Minimum Value: " & rs("ValueLow") & " "
 							End If
 						End If
 					End If
@@ -3972,11 +3972,11 @@ Sub WOTasks()
 						If IsNumeric(rs("Measurement")) and IsNumeric(rs("ValueHi")) Then
 							If CLng(rs("Measurement")) > CLng(rs("ValueHi")) Then
 								LineTemplate2 = 11
-								TaskText3 = " (Über Maximalwert von " & rs("ValueHi") & ")"
+								TaskText3 = " (Above maximum value of " & rs("ValueHi") & ")"
 							Else
 								SpecHiOK = True
 								If SpecText = "" Then
-									SpecText = SpecText & "Maximaler Wert: " & rs("ValueLow")
+									SpecText = SpecText & "Maximum Value: " & rs("ValueLow")
 								Else
 									SpecText = "Range: " & rs("ValueLow") & " - " & rs("ValueHi")
 								End If
@@ -4023,7 +4023,7 @@ Sub WOTasks()
 							TaskTextFinal = TaskText2 & TaskText
 						End If
 					End If
-					'If RS("Abgeschlossen") Then
+					'If RS("Complete") Then
 					If CheckBoxType = "GRAPHIC" Then
 					If BitNullCheck(rs("Complete")) Then %>
 						<a href="default.asp?card=wotasks&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;pk=<% =rs("PK") %>&amp;pagepos=<% =pagepos %>&amp;flipit=<% =RandomString(3) %>"></a>
@@ -4033,7 +4033,7 @@ Sub WOTasks()
 							<a href="default.asp?card=wotasks&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;pk=<% =rs("PK") %>&amp;pagepos=<% =pagepos %>&amp;flipit=<% =RandomString(3) %>"><% Else %>
 							<a href="default.asp?card=wotasks&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;pk=<% =rs("PK") %>&amp;pagepos=<% =pagepos %>&amp;flipit=<% =RandomString(3) %>"><% End If
 						Else%>
-						<%If RS("Abgeschlossen") Then%>
+						<%If RS("Complete") Then%>
 							<div class='Font1' style='cursor:pointer; background-color:<%=altStyle%>;'>
 								<div onclick="location.href = 'default.asp?card=wotaskuncomplete&s=<% =SessionID %>&wopk=<%=wopk%>&action=wotaskuncomplete&taskid=<%=rs("PK")%>';" style='float:left;'>
 									<img id="img<%=rs("PK")%>_1" src='images/icons/48/Status Flag Green.png' alt='' title='' />
@@ -4190,7 +4190,7 @@ Sub WOLaborRec()
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
 			<% If PK = "-1" Then %>
-				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Neuer Arbeiter</div>
+				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>New Labor</div>
 			<%Else%>
 				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'><% =WAPValidate(NullCheck(rs("LaborName"))) %>: [<% =NullCheck(RS("EstimatedHours")) & " Est] [" & NullCheck(RS("TotalHours")) & " Actual" & "] " & DateNullCheck(RS("WorkDate")) %></div>
 			<%End If%>
@@ -4280,7 +4280,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Arbeiter-ID konnte nicht gefunden werden."
+						HeaderMSG = "The Labor ID was not found."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4306,7 +4306,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not NullCheck(Request("RegularHours")) = "" Then
 					rs("RegularHours") = NullCheck(Request("RegularHours"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Reguläre Stunden ist ungültig."
+						HeaderMSG = "The value provided for Regular Hours is invalid."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4317,7 +4317,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not NullCheck(Request("OvertimeHours")) = "" Then
 					rs("OvertimeHours") =	NullCheck(Request("OvertimeHours"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Überstunden ist ungültig."
+						HeaderMSG = "The value provided for Overtime Hours is invalid."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4328,7 +4328,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not NullCheck(Request("OtherHours")) = "" Then
 					rs("OtherHours") =	NullCheck(Request("OtherHours"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Weitere Stunden ist ungültig."
+						HeaderMSG = "The value provided for Other Hours is invalid."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4339,7 +4339,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not WorkDate = "" Then
 					rs("WorkDate") = WorkDate
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Arbeitsdatum ist ungültig."
+						HeaderMSG = "The value provided for Work Date is invalid."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4350,7 +4350,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not NullCheck(Request("TimeIn")) = "" Then
 					rs("TimeIn") =	NullCheck(Request("TimeIn"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Zeit ist ungültig."
+						HeaderMSG = "The value provided for Time In is invalid."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4361,7 +4361,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not NullCheck(Request("TimeOut")) = "" Then
 					rs("TimeOut") =	NullCheck(Request("TimeOut"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Zeitlimit ist ungültig."
+						HeaderMSG = "The value provided for Time Out is invalid."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4374,7 +4374,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Keine Kostenstelle gefunden."
+						HeaderMSG = "The Account ID was not found."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4386,7 +4386,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 						rs("AccountName") = rs2("AccountName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Die angegebene Kostenstelle-ID ist ungültig."
+						HeaderMSG = "The value provided for Account ID is invalid."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4399,7 +4399,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Kategorien-ID konnte nicht gefunden werden."
+						HeaderMSG = "The Category ID was not found."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4411,7 +4411,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 						rs("CategoryName") = rs2("CategoryName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Kategorie-ID ist ungültig."
+						HeaderMSG = "The value provided for Category ID is invalid."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4423,7 +4423,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				    rs("Comments") = NullCheck(Request("Comments"))
 			    End If
 			    If Err.Number <> 0 Then
-				    HeaderMSG = "Der Wert für Kommentare ist ungültig."
+				    HeaderMSG = "The value provided for Comments is invalid."
 					If Not FromClose Then
 						WOLaborRec
 					Else
@@ -4733,7 +4733,7 @@ Sub WOPartRec()
 		</script>
 	<%
 		If rs.eof and Not PK = "-1" Then
-			Call OutputWAPMsg("Artikel konnte nicht gefunden werden")
+			Call OutputWAPMsg("The Item was not found")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
@@ -4814,7 +4814,7 @@ Sub WOPartRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Artikel-ID konnte nicht gefunden werden."
+						HeaderMSG = "The Part ID was not found."
 						WOPartRec
 					Else
 						If pk = "-1" Then
@@ -4833,7 +4833,7 @@ Sub WOPartRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Standort-ID konnte nicht gefunden werden."
+						HeaderMSG = "The Location ID was not found."
 						WOPartRec
 					Else
 						rs("LocationPK") = rs2("LocationPK")
@@ -4842,7 +4842,7 @@ Sub WOPartRecSave(ByRef db)
 						LocationPK = rs2("LocationPK")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Standort-ID ist ungültig."
+						HeaderMSG = "The value provided for Location ID is invalid."
 						WOPartRec
 					End If
 					If Not PartPK = "" and Not LocationPK = "" Then
@@ -4875,14 +4875,14 @@ Sub WOPartRecSave(ByRef db)
 				If Not NullCheck(Request("QuantityActual")) = "" Then
 					rs("QuantityActual") = NullCheck(Request("QuantityActual"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Tatsächliche Menge ist ungültig."
+						HeaderMSG = "The value provided for Actual Qty is invalid."
 						WOPartRec
 					End If
 				End If
 				If Not NullCheck(Request("OtherCost")) = "" Then
 					rs("OtherCost") =	NullCheck(Request("OtherCost"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Weitere Kosten ist ungültig."
+						HeaderMSG = "The value provided for Other Cost is invalid."
 						WOPartRec
 					End If
 				End If
@@ -4891,7 +4891,7 @@ Sub WOPartRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Keine Kostenstelle gefunden."
+						HeaderMSG = "The Account ID was not found."
 						WOPartRec
 					Else
 						rs("AccountPK") = rs2("AccountPK")
@@ -4899,7 +4899,7 @@ Sub WOPartRecSave(ByRef db)
 						rs("AccountName") = rs2("AccountName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Die angegebene Kostenstelle-ID ist ungültig."
+						HeaderMSG = "The value provided for Account ID is invalid."
 						WOPartRec
 					End If
 				End If
@@ -4908,7 +4908,7 @@ Sub WOPartRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Kategorien-ID konnte nicht gefunden werden."
+						HeaderMSG = "The Category ID was not found."
 						WOPartRec
 					Else
 						rs("CategoryPK") = rs2("CategoryPK")
@@ -4916,14 +4916,14 @@ Sub WOPartRecSave(ByRef db)
 						rs("CategoryName") = rs2("CategoryName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Kategorie-ID ist ungültig."
+						HeaderMSG = "The value provided for Category ID is invalid."
 						WOPartRec
 					End If
 				End If
 				If Not NullCheck(Request("Serial")) = "" Then
 					rs("Serial") =	NullCheck(Request("Serial"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Seriennummer ist ungültig."
+						HeaderMSG = "The value provided for Serial # is invalid."
 						WOPartRec
 					End If
 				End If
@@ -4940,7 +4940,7 @@ Sub WOPartRecSave(ByRef db)
 				If Not NullCheck(Request("SerialReplaced")) = "" Then
 					rs("SerialReplaced") =	NullCheck(Request("SerialReplaced"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für vorhandene Seriennummer ist ungültig."
+						HeaderMSG = "The value provided for Existing Serial # is invalid."
 						WOPartRec
 					End If
 				End If
@@ -4949,13 +4949,13 @@ Sub WOPartRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Vorhandenes zum Standort bewegen' konnte nicht gefunden werden."
+						HeaderMSG = "The Move Existing to Location was not found."
 						WOPartRec
 					Else
 						rs("SerialReplaceToLocationID") = NullCheck(Request("SerialReplaceToLocationID"))
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Vorhandenes zum Standort Verschieben ist ungültig."
+						HeaderMSG = "The value provided for Move Existing to Location is invalid."
 						WOPartRec
 					End If
 				End If
@@ -5208,7 +5208,7 @@ Sub WOMiscCostRec()
 
 	Call BuildFields("MiscCostName","Name","C",GlobalFieldLength,"*M","true","",rs,PK)
 	Call BuildFields("MiscCostDesc","Description","C",GlobalFieldLength,"*M","true","",rs,PK)
-	Call BuildFields("CompanyID","Firmen-ID","C",GlobalFieldLength,"*M","true","",rs,PK)
+	Call BuildFields("CompanyID","Company ID","C",GlobalFieldLength,"*M","true","",rs,PK)
 	Call BuildFields("LaborID","Labor ID","C",GlobalFieldLength,"*M","true","",rs,PK)
 	Call BuildFields("InvoiceNumber","Invoice #","C",GlobalFieldLength,"*M","true","",rs,PK)
 	Call BuildFields("MiscCostDate","Date","C",GlobalFieldLength,"*M","true",CStr(DateNullCheck(Date())),rs,PK)
@@ -5227,12 +5227,12 @@ Sub WOMiscCostRec()
 	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and Not PK = "-1" Then
-			Call OutputWAPMsg("Weitere Kosten konnte nicht gefunden werden")
+			Call OutputWAPMsg("The Other Cost was not found")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
 			<% If PK = "-1" Then %>
-				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Neue Weitere Kosten</div>
+				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>New Other Cost</div>
 			<%Else%>
 				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>[<% =WAPValidate(NullCheck(rs("MiscCostName"))) %>] [<% =DateNullCheck(RS("MiscCostDate")) %>] [<% =FormatNumber(WAPValidate(NullCheck(RS("EstimatedCost"))),2,-2,0,0) %>&nbsp;Est] [<% =FormatNumber(WAPValidate(NullCheck(RS("ActualCost"))),2,-2,0,0) %>&nbsp;Actual]</div>
 			<%End If%>
@@ -5309,14 +5309,14 @@ Sub WOMiscCostRecSave(ByRef db)
 				If Not NullCheck(Request("MiscCostName")) = "" Then
 					rs("MiscCostName") = NullCheck(Request("MiscCostName"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Name ist ungültig."
+						HeaderMSG = "The value provided for Name is invalid."
 						WOMiscCostRec
 					End If
 				End If
 				If Not NullCheck(Request("MiscCostDesc")) = "" Then
 					rs("MiscCostDesc") = NullCheck(Request("MiscCostDesc"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Beschreibung ist ungültig."
+						HeaderMSG = "The value provided for Description is invalid."
 						WOMiscCostRec
 					End If
 				End If
@@ -5325,7 +5325,7 @@ Sub WOMiscCostRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Firmen-ID konnte nicht gefunden werden."
+						HeaderMSG = "The Company ID was not found."
 						WOMiscCostRec
 					Else
 						rs("CompanyPK") = rs2("CompanyPK")
@@ -5333,7 +5333,7 @@ Sub WOMiscCostRecSave(ByRef db)
 						rs("CompanyName") = rs2("CompanyName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Firmen-ID ist ungültig."
+						HeaderMSG = "The value provided for Company ID is invalid."
 						WOMiscCostRec
 					End If
 				End If
@@ -5342,7 +5342,7 @@ Sub WOMiscCostRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Arbeiter-ID konnte nicht gefunden werden."
+						HeaderMSG = "The Labor ID was not found."
 						WOMiscCostRec
 					Else
 						rs("LaborPK") = rs2("LaborPK")
@@ -5350,21 +5350,21 @@ Sub WOMiscCostRecSave(ByRef db)
 						rs("LaborName") = rs2("LaborName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Arbeiter-ID ist ungültig."
+						HeaderMSG = "The value provided for Labor ID is invalid."
 						WOMiscCostRec
 					End If
 				End If
 				If Not NullCheck(Request("InvoiceNumber")) = "" Then
 					rs("InvoiceNumber") = NullCheck(Request("InvoiceNumber"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Rechnungsnummer ist ungültig."
+						HeaderMSG = "The value provided for Invoice # is invalid."
 						WOMiscCostRec
 					End If
 				End If
 				If Not NullCheck(Request("MiscCostDate")) = "" Then
 					rs("MiscCostDate") = SQLdatetimeADO(Request("MiscCostDate"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "Das angegebene Datum ist ungültig."
+						HeaderMSG = "The value provided for Date is invalid."
 						WOMiscCostRec
 					End If
 				End If
@@ -5373,7 +5373,7 @@ Sub WOMiscCostRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Keine Kostenstelle gefunden."
+						HeaderMSG = "The Account ID was not found."
 						WOMiscCostRec
 					Else
 						rs("AccountPK") = rs2("AccountPK")
@@ -5381,7 +5381,7 @@ Sub WOMiscCostRecSave(ByRef db)
 						rs("AccountName") = rs2("AccountName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Die angegebene Kostenstelle-ID ist ungültig."
+						HeaderMSG = "The value provided for Account ID is invalid."
 						WOMiscCostRec
 					End If
 				End If
@@ -5390,7 +5390,7 @@ Sub WOMiscCostRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Kategorien-ID konnte nicht gefunden werden."
+						HeaderMSG = "The Category ID was not found."
 						WOMiscCostRec
 					Else
 						rs("CategoryPK") = rs2("CategoryPK")
@@ -5398,14 +5398,14 @@ Sub WOMiscCostRecSave(ByRef db)
 						rs("CategoryName") = rs2("CategoryName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Kategorie-ID ist ungültig."
+						HeaderMSG = "The value provided for Category ID is invalid."
 						WOMiscCostRec
 					End If
 				End If
 				If Not NullCheck(Request("ActualCost")) = "" Then
 					rs("ActualCost") = NullCheck(Request("ActualCost"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Tatsächliche Kosten ist ungültig."
+						HeaderMSG = "The value provided for Actual Cost is invalid."
 						WOMiscCostRec
 					End If
 				End If
@@ -5413,7 +5413,7 @@ Sub WOMiscCostRecSave(ByRef db)
 					rs("Comments") =	NullCheck(Request("Comments"))
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "Der Wert für Kommentare ist ungültig."
+					HeaderMSG = "The value provided for Comments is invalid."
 					WOMiscCostRec
 				End If
 				On Error Goto 0
@@ -5423,7 +5423,7 @@ Sub WOMiscCostRecSave(ByRef db)
 				'pl = rs("pk")
 			Else
 				If InStr(db.derror,"NULL") > 0 Then
-					HeaderMSG = "Muss mit einem Wert für Namen versehen werden."
+					HeaderMSG = "A value must be provided for Name."
 					WOMiscCostRec
 				Else
 					Call OutputWAPError(db.derror)
@@ -5442,7 +5442,7 @@ Sub WOMiscCost()
 	Dim db, sql, rs, woid, reason, assetid, assetname, photo
 	Dim CheckBoxType
 
-	CardTitle = "WO Weitere Kosten"
+	CardTitle = "WO Other Costs"
 	CardCurrent = "WOMiscCost"
 	CardCurrentLevel = GetCardLevel()
 
@@ -5525,11 +5525,11 @@ Sub WOMiscCost()
 	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and False Then
-			Call OutputWAPMsg("No Weitere Kosten were Found")
+			Call OutputWAPMsg("No Other Costs were Found")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
-			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Weitere Kosten</div>
+			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Other Costs</div>
 			<div style='clear:both;'></div>
 			</div>
 			<% If Not AssetPK = "" Then %>
@@ -5666,7 +5666,7 @@ Sub ASSpecsRec()
                 parentequipmentall = parentequipmentall & "<br/>"
             End If
 	    Else
-		    Call OutputWAPError("Keine Ausrüstung gefunden.")
+		    Call OutputWAPError("The Asset was not found.")
 	    End If
 
 	    sql = _
@@ -5832,7 +5832,7 @@ Sub ASSpecs()
             parentequipmentall = parentequipmentall & "<br/>"
         End If
     Else
-	    Call OutputWAPError("Keine Ausrüstung gefunden.")
+	    Call OutputWAPError("The Asset was not found.")
     End If
 
 	sql = _
@@ -5861,7 +5861,7 @@ Sub ASSpecs()
 	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and False Then
-			Call OutputWAPMsg("Keine Spezifikationen gefunden")
+			Call OutputWAPMsg("No Specifications were Found")
 		Else %>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div style='float:left;'>
@@ -5967,7 +5967,7 @@ Sub ASLaborRec()
 
     newcontextpage = True
 
-	CardTitle = "Asset Arbeiter / Kontakte"
+	CardTitle = "Asset Labor / Contacts"
 	CardCurrent = "ASLaborRec"
 	CardCurrentLevel = GetCardLevel()
 
@@ -6014,7 +6014,7 @@ Sub ASLaborRec()
                 parentequipmentall = parentequipmentall & "<br/>"
             End If
 	    Else
-		    Call OutputWAPError("Keine Ausrüstung gefunden.")
+		    Call OutputWAPError("The Asset was not found.")
 	    End If
 
 	    sql = _
@@ -6050,13 +6050,13 @@ Sub ASLaborRec()
 	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rseof and Not AssetPK = "-1" Then
-			Call OutputWAPMsg("Ausrüstungs-Arbeiter / Kontakt konnte nicht gefunden werden")
+			Call OutputWAPMsg("The Asset Labor / Contact was not found")
 		Else %>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div style='float:left;'>
 				<% =ParentLocationAll %><% =ParentEquipmentAll %><% =AssetName %> (<% =AssetID %>)
 			</div>
-			<div style='float:right;'>Arbeiter-Daten</div>
+			<div style='float:right;'>Labor Record</div>
 			<div style='clear:both;'></div>
 		</div>
 		<div style='padding:8px;'>
@@ -6143,7 +6143,7 @@ Sub ASLabor()
 	Dim db, sql, rs, ASE, assetid, assetname, photo, parentlocationall, parentequipmentall, newrec, IsLocation, rseof
 	Dim CheckBoxType
 
-	CardTitle = "Asset Arbeiter / Kontakte"
+	CardTitle = "Asset Labor / Contacts"
 	CardCurrent = "ASLabor"
 	CardCurrentLevel = GetCardLevel()
 
@@ -6194,7 +6194,7 @@ Sub ASLabor()
             parentequipmentall = parentequipmentall & "<br/>"
         End If
     Else
-	    Call OutputWAPError("Keine Ausrüstung gefunden.")
+	    Call OutputWAPError("The Asset was not found.")
     End If
 
 	sql = _
@@ -6228,14 +6228,14 @@ Sub ASLabor()
 	Call IPadHeader(headerString, True)
 
 		If rs.eof and False Then
-			Call OutputWAPMsg("Keine Spezifikationen gefunden")
+			Call OutputWAPMsg("No Specifications were Found")
 		Else %>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div style='float:left;'>
 				<% =ParentLocationAll %><% =ParentEquipmentAll %><% =AssetName %> (<% =AssetID %>)
 			</div>
 			<div style='float:right;'>
-				Arbeiter / Kontakte
+				Labor/Contacts
 			</div>
 			<div style='clear:both;'></div>
 		</div>
@@ -6396,7 +6396,7 @@ Sub WOAssignRec()
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
 			<% If PK = "-1" Then %>
-				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Neue Auftragszuweisung</div>
+				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>New Assignment</div>
 			<%Else%>
 				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>[<% =WAPValidate(NullCheck(rs("LaborName"))) %>] [<% =DateNullCheck(RS("AssignedDate")) %>] [<% =NullCheck(RS("AssignedHours")) %>&nbsp;Hour(s)]</div>
 			<%End If%>
@@ -6475,7 +6475,7 @@ Sub WOAssignRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Arbeiter-ID konnte nicht gefunden werden."
+						HeaderMSG = "The Labor ID was not found."
 						WOAssignRec
 					Else
 						rs("LaborPK") = rs2("LaborPK")
@@ -6483,28 +6483,28 @@ Sub WOAssignRecSave(ByRef db)
 						rs("LaborName") = rs2("LaborName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Arbeiter-ID ist ungültig."
+						HeaderMSG = "The value provided for Labor ID is invalid."
 						WOAssignRec
 					End If
 				End If
 				If Not NullCheck(Request("AssignedDate")) = "" Then
 					rs("AssignedDate") = SQLdatetimeADO(Request("AssignedDate"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "Das zugeordnete Datum ist ungültig."
+						HeaderMSG = "The value provided for Assigned Date is invalid."
 						WOAssignRec
 					End If
 				Else
-					HeaderMSG = "Muss mit einem Wert für die Vergabe von Datum versehen werden."
+					HeaderMSG = "A value must be provided for Assigned Date."
 					WOAssignRec
 				End If
 				If Not NullCheck(Request("AssignedHours")) = "" Then
 				    rs("AssignedHours") = Request("AssignedHours")
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für zugeordnete Stunden ist ungültig."
+						HeaderMSG = "The value provided for Assigned Hours is invalid."
 						WOAssignRec
 					End If
 				Else
-					HeaderMSG = "Muss mit einem Wert für die Vergabe von Stunden versehen werden."
+					HeaderMSG = "A value must be provided for Assigned Hours."
 					WOAssignRec
 				End If
 				If Not NullCheck(Request("AssignedLead")) = "" Then
@@ -6514,7 +6514,7 @@ Sub WOAssignRecSave(ByRef db)
 				        rs("AssignedLead") = False
 				    End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für die zugeordnete Führung ist ungültig."
+						HeaderMSG = "The value provided for Assigned Lead is invalid."
 						WOAssignRec
 					End If
 				End If
@@ -6525,7 +6525,7 @@ Sub WOAssignRecSave(ByRef db)
 				        rs("AssignedPDA") = False
 				    End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für die zugeordnete PDA ist ungültig."
+						HeaderMSG = "The value provided for Assigned PDA is invalid."
 						WOAssignRec
 					End If
 				End If
@@ -6537,7 +6537,7 @@ Sub WOAssignRecSave(ByRef db)
 				'pl = rs("pk")
 			Else
 				If InStr(db.derror,"NULL") > 0 Then
-					HeaderMSG = "Muss mit einem Wert für Arbeiter ID versehen werden."
+					HeaderMSG = "A value must be provided for Labor ID."
 					WOAssignRec
 				Else
 					Call OutputWAPError(db.derror)
@@ -6630,7 +6630,7 @@ Sub WOAssign()
 	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and False Then
-			Call OutputWAPMsg("Keine Zuordnungen gefunden")
+			Call OutputWAPMsg("No Assignments were Found")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
@@ -6717,7 +6717,7 @@ Sub WOIssue()
 	CardTitle = "WO Issue"
 	HeaderTitle = "Issue WO"
 	CardCurrent = "WOIssue"
-	CAlle AAstatusProcess(HeaderTitle)
+	Call WOStatusProcess(HeaderTitle)
 End Sub
 
 Sub WOOnHold()
@@ -6725,7 +6725,7 @@ Sub WOOnHold()
 	CardTitle = WAPValidate("WO On-Hold")
 	HeaderTitle = WAPValidate("Place WO On-Hold")
 	CardCurrent = "WOOnHold"
-	CAlle AAstatusProcess(HeaderTitle)
+	Call WOStatusProcess(HeaderTitle)
 End Sub
 
 Sub WORespond()
@@ -6733,7 +6733,7 @@ Sub WORespond()
 	CardTitle = "WO Respond"
 	HeaderTitle = "Respond to WO"
 	CardCurrent = "WORespond"
-	CAlle AAstatusProcess(HeaderTitle)
+	Call WOStatusProcess(HeaderTitle)
 End Sub
 
 Sub WOComplete()
@@ -6741,7 +6741,7 @@ Sub WOComplete()
 	CardTitle = "WO Complete"
 	HeaderTitle = "Complete WO"
 	CardCurrent = "WOComplete"
-	CAlle AAstatusProcess(HeaderTitle)
+	Call WOStatusProcess(HeaderTitle)
 End Sub
 
 Sub WOClose()
@@ -6749,7 +6749,7 @@ Sub WOClose()
 	CardTitle = "WO Close"
 	HeaderTitle = "Close WO"
 	CardCurrent = "WOClose"
-	CAlle AAstatusProcess(HeaderTitle)
+	Call WOStatusProcess(HeaderTitle)
 End Sub
 
 Sub WOStatusProcess(headertitle)
@@ -6777,7 +6777,7 @@ Sub WOStatusProcess(headertitle)
 	Call CheckDB(db)
 
 	If rs.eof Then
-		Call OutputWAPMsg("Der Arbeitsauftrag konnte nicht gefunden werden")
+		Call OutputWAPMsg("The Work Order was not found")
 	Else
 		woid = NullCheck(rs("WOID"))
 		reason = WAPValidate(Shorten(Replace(NullCheck(rs("Reason")),"%0D%0A",CHR(13) & CHR(10)),35))
@@ -6978,7 +6978,7 @@ Sub AssetMenu()
 	headerString = GetBackButton("history.back();")
 	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
-	Call OutputWAPMsg("Derzeit sind keine Artikel im Ausrüstungsmenü.")
+	Call OutputWAPMsg("There are currently no items in the asset menu.")
 		Set db = Nothing
 		SetContext
 	EndWMLDocument
@@ -7004,15 +7004,15 @@ Sub InventoryMenu()
 	Call StartMobileDocument(CardTitle)
 		If IsPocketIE or IsBlackBerry Then %>
 		<p align="center" mode="wrap">
-		<b>Inventar Menu</b>
+		<b>Inventory Menu</b>
 		</p><%
 		End If
         %>
         <p align="center">
-        <a href="default.asp?card=viewinventory&amp;s=<% =SessionID %>">Inventar Ansehen</a><br/>
-        <a href="default.asp?card=newitem&amp;s=<% =SessionID %>">Neues InventarArtikel</a><br/>
-   		<a href="default.asp?card=adjustinventory&amp;s=<% =SessionID %>">Inventar anpassen</a><br/>
-   		<a href="default.asp?card=countinventory&amp;s=<% =SessionID %>">Inventar zählen</a><br/>
+        <a href="default.asp?card=viewinventory&amp;s=<% =SessionID %>">View Inventory</a><br/>
+        <a href="default.asp?card=newitem&amp;s=<% =SessionID %>">New Inventory Item</a><br/>
+   		<a href="default.asp?card=adjustinventory&amp;s=<% =SessionID %>">Adjust Inventory</a><br/>
+   		<a href="default.asp?card=countinventory&amp;s=<% =SessionID %>">Count Inventory</a><br/>
    		</p>
         <%
 		If lang = "WML" Then
@@ -7041,7 +7041,7 @@ Sub WONew()
 
     newcontextpage = True
 
-	CardTitle = "Neuer Arbeitsauftrag"
+	CardTitle = "New Work Order"
 	CardCurrent = "WONew"
 	CardCurrentLevel = GetCardLevel()
 
@@ -7106,7 +7106,7 @@ Sub WONew()
 	Call IPadHeader(headerString, True)
 	%>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			Neuer Arbeitsauftrag
+			New Work Order
 		</div>
 
 		<div style='padding:5px;'>
@@ -7147,7 +7147,7 @@ Sub CountInventory()
     Else
 	    CardCurrent = "CountInventory"
     End If
-	CardTitle = "Inventar zählen"
+	CardTitle = "Count Inventory"
 	CardCurrentLevel = GetCardLevel()
 
 	Set db = New ADOHelper
@@ -7166,14 +7166,14 @@ Sub CountInventory()
             Set rs = db.RunSQLReturnRS(sql,"")
 	        Call CheckDB(db)
 	        If rs.Eof Then
-	            HeaderMsg = "Artikel-ID existiert nicht."
+	            HeaderMsg = "Part ID Does Not Exist."
 	        End If
 	        If HeaderMsg = "" Then
                 sql = "SELECT LocationPK FROM Location WITH (NOLOCK) WHERE LocationID = '" & Request("LocationID") & "'"
                 Set rs = db.RunSQLReturnRS(sql,"")
 	            Call CheckDB(db)
 	            If rs.Eof Then
-    	            HeaderMsg = "Standort-ID ist nicht vorhanden."
+    	            HeaderMsg = "Location ID Does Not Exist."
 	            End If
 	        End If
 	        If HeaderMsg = "" Then
@@ -7186,7 +7186,7 @@ Sub CountInventory()
                 Set rs = db.RunSQLReturnRS(sql,"")
 	            Call CheckDB(db)
 	            If rs.Eof Then
-    	            HeaderMsg = "Spezifische Artikel-ID ist nicht bei spezifischer Standort-ID vorhanden."
+    	            HeaderMsg = "The Part ID specified is not stocked at the Location ID specified."
 	            End If
 	        End If
             If Not HeaderMSG = "" Then
@@ -7195,7 +7195,7 @@ Sub CountInventory()
 	        End If
 	    Else
 	        If CardCurrent = "CountInventory2" Then
-	            HeaderMSG = "Bitte geben Sie die Artikel-ID und die Standort-ID genauer an."
+	            HeaderMSG = "You must specify both Part ID and Location ID."
                 CardCurrent = "CountInventory"
                 CardCurrentLevel = GetCardLevel()
             End If
@@ -7292,10 +7292,10 @@ Sub CountInventory()
 				</div>
 				<div style='float:right; text-align:right;'>
 					<div>
-						Inventar zählen
+						Count Inventory
 					</div>
 					<div class='Font1' style='font-size:11pt; padding-top:10px;'>
-						Verfügbar: <%=rs("OnHand")%>
+						On-Hand: <%=rs("OnHand")%>
 					</div>
 				</div>
 				<div style='clear:both;'></div>
@@ -7350,7 +7350,7 @@ Sub InventoryCountSave(ByRef db)
                 rs("OnHandPending") = Null
             End If
 			If Err.Number <> 0 Then
-				HeaderMSG = "Der Wert für Neue Zählung ist ungültig."
+				HeaderMSG = "The value provided for New Count is invalid."
 				Exit Sub
 			End If
 
@@ -7360,7 +7360,7 @@ Sub InventoryCountSave(ByRef db)
 		        rs("Bin") = Null
             End If
 			If Err.Number <> 0 Then
-				HeaderMSG = "Der Wert für Mülleimer ist ungültig."
+				HeaderMSG = "The value provided for Bin is invalid."
 				Exit Sub
 			End If
 
@@ -7385,7 +7385,7 @@ Sub AssetTasks()
     newcontextpage = True
 
     CardCurrent = "AssetTasks"
-	CardTitle = "Ausrüstungs-Aufgabe"
+	CardTitle = "Asset Tasks"
 	CardCurrentLevel = GetCardLevel()
 
 	Set db = New ADOHelper
@@ -7396,7 +7396,7 @@ Sub AssetTasks()
 		Set rs = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs.Eof Then
-			HeaderMsg = "Ausrüstungs-ID ist nicht vorhanden."
+			HeaderMsg = "Asset ID Does Not Exist."
 		Else
 			Call SetSession("ParentCard2",CardCurrent)
 			Call SetSession("CardFrom",CardCurrent)
@@ -7407,7 +7407,7 @@ Sub AssetTasks()
 		End If
 	Else
 		If Not Request("Posted") = "" Then
-			HeaderMSG = "Bitte geben Sie die Ausrüstungs-ID genauer an."
+			HeaderMSG = "You must specify Asset ID."
 		End If
 	End If
 
@@ -7537,7 +7537,7 @@ Sub WOCloseSave(ByRef db)
 				Set rs2 = db.RunSQLReturnRS(sql,"")
 				Call CheckDB(db)
 				If rs2.eof Then
-					HeaderMSG = "Keine Kostenstelle gefunden."
+					HeaderMSG = "The Account ID was not found."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7558,7 +7558,7 @@ Sub WOCloseSave(ByRef db)
 				Set rs2 = db.RunSQLReturnRS(sql,"")
 				Call CheckDB(db)
 				If rs2.eof Then
-					HeaderMSG = "Kategorien-ID konnte nicht gefunden werden."
+					HeaderMSG = "The Category ID was not found."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7579,7 +7579,7 @@ Sub WOCloseSave(ByRef db)
 				Set rs2 = db.RunSQLReturnRS(sql,"")
 				Call CheckDB(db)
 				If rs2.eof Then
-					HeaderMSG = "Problem-ID konnte nicht gefunden werden."
+					HeaderMSG = "The Problem ID was not found."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7600,7 +7600,7 @@ Sub WOCloseSave(ByRef db)
 				Set rs2 = db.RunSQLReturnRS(sql,"")
 				Call CheckDB(db)
 				If rs2.eof Then
-					HeaderMSG = "Fehler-ID konnte nicht gefunden werden."
+					HeaderMSG = "The Failure ID was not found."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7621,7 +7621,7 @@ Sub WOCloseSave(ByRef db)
 				Set rs2 = db.RunSQLReturnRS(sql,"")
 				Call CheckDB(db)
 				If rs2.eof Then
-					HeaderMSG = "Lösungs-ID konnte nicht gefunden werden."
+					HeaderMSG = "The Solution ID was not found."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7641,7 +7641,7 @@ Sub WOCloseSave(ByRef db)
 				txtdate = DateNullCheck(Date())
 			Else
 				If Not IsDate(Request("date")) Then
-					HeaderMSG = "Der Wert für Datum muss ausgefüllt werden."
+					HeaderMSG = "The value for Date can not be blank."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7924,7 +7924,7 @@ If UCase(woaction) = "WODETAILS" Then
 						AssetName = rs2("AssetName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Ausrüstungs-ID ist ungültig."
+						HeaderMSG = "The value provided for Asset ID is invalid."
 					End If
 				End If
 
@@ -7933,13 +7933,13 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Priorität konnte nicht gefunden werden."
+						HeaderMSG = "The Priority was not found."
 					Else
 						txtPriority = rs2("CodeName")
 						txtPriorityDesc = rs2("CodeDesc")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Priorität ist ungültig."
+						HeaderMSG = "The value provided for Priority is invalid."
 					End If
 				End If
 
@@ -7948,13 +7948,13 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Typ konnte nicht gefunden werden."
+						HeaderMSG = "The Type was not found."
 					Else
 						txtType = rs2("CodeName")
 						txtTypeDesc = rs2("CodeDesc")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Typ ist ungültig."
+						HeaderMSG = "The value provided for Type is invalid."
 					End If
 				End If
 
@@ -7963,14 +7963,14 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Projekt-ID konnte nicht gefunden werden."
+						HeaderMSG = "The Project ID was not found."
 					Else
 						ProjectPK = rs2("ProjectPK")
 						ProjectID = rs2("ProjectID")
 						ProjectName = rs2("ProjectName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Projekt-ID ist ungültig."
+						HeaderMSG = "The value provided for Project ID is invalid."
 					End If
 				End If
 
@@ -7979,14 +7979,14 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Abteilungs-ID konnte nicht gefunden werden."
+						HeaderMSG = "The Department ID was not found."
 					Else
 						DepartmentPK = rs2("DepartmentPK")
 						DepartmentID = rs2("DepartmentID")
 						DepartmentName = rs2("DepartmentName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Abteilungs-ID ist ungültig."
+						HeaderMSG = "The value provided for Department ID is invalid."
 					End If
 				End If
 
@@ -7995,14 +7995,14 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Kunden-ID konnte nicht gefunden werden."
+						HeaderMSG = "The Customer ID was not found."
 					Else
 						TenantPK = rs2("TenantPK")
 						TenantID = rs2("TenantID")
 						TenantName = rs2("TenantName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Kunden-ID ist ungültig."
+						HeaderMSG = "The value provided for Customer ID is invalid."
 					End If
 				End If
 
@@ -8011,14 +8011,14 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "Werkstatt-ID konnte nicht gefunden werden."
+						HeaderMSG = "The Shop ID was not found."
 					Else
 						ShopPK = rs2("ShopPK")
 						ShopID = rs2("ShopID")
 						ShopName = rs2("ShopName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Werkstatt-ID ist ungültig."
+						HeaderMSG = "The value provided for Shop ID is invalid."
 					End If
 				End If
 
@@ -8059,14 +8059,14 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("AssetName") = NullCheck(AssetName)	' Nullable: YES Type: nvarchar
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "Der Wert für Ausrüstungs-ID ist ungültig."
+					HeaderMSG = "The value provided for Asset ID is invalid."
 				End If
 
 				If Not txtType = "" Then
 					rs("Type") = Trim(Mid(txtType,1,25))	' Nullable: YES Type: nvarchar
 					rs("TypeDesc") = NullCheck(txtTypeDesc)	' Nullable: YES Type: nvarchar
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Typ ist ungültig."
+						HeaderMSG = "The value provided for Type is invalid."
 					End If
 				End If
 
@@ -8074,7 +8074,7 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("Priority") = Trim(Mid(txtPriority,1,25))	' Nullable: No Type: nvarchar
 					rs("PriorityDesc") = NullCheck(txtPriorityDesc)	' Nullable: YES Type: nvarchar
 					If Err.Number <> 0 Then
-						HeaderMSG = "Der Wert für Priorität ist ungültig."
+						HeaderMSG = "The value provided for Priority is invalid."
 					End If
 				End If
 
@@ -8084,7 +8084,7 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("ShopName") = ShopName
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "Der Wert für Werkstatt-ID ist ungültig."
+					HeaderMSG = "The value provided for Shop ID is invalid."
 				End If
 
 				If Not DepartmentPK = "" Then
@@ -8093,7 +8093,7 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("DepartmentName") = DepartmentName
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "Der Wert für Abteilungs-ID ist ungültig."
+					HeaderMSG = "The value provided for Department ID is invalid."
 				End If
 
 				If Not TenantPK = "" Then
@@ -8102,7 +8102,7 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("TenantName") = TenantName
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "Der Wert für Kunden-ID ist ungültig."
+					HeaderMSG = "The value provided for Customer ID is invalid."
 				End If
 
 				If Not ProjectPK = "" Then
@@ -8111,7 +8111,7 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("ProjectName") = ProjectName
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "Der Wert für Projekt-ID ist ungültig."
+					HeaderMSG = "The value provided for Project ID is invalid."
 				End If
 
 				rs("RowVersionAction") = "EDIT"
@@ -8242,7 +8242,7 @@ Sub MyWorkOrders()
 
 	Dim db, sql, rs, parentlocationall, parentequipmentall, parentall
 
-	CardTitle = "Meine Aas"
+	CardTitle = "My WOs"
 	CardCurrent = "MyWorkOrders"
 	CardCurrentLevel = GetCardLevel()
 
@@ -8447,7 +8447,7 @@ Sub AllWorkOrders()
 
 	Dim db, sql, rs, parentlocationall, parentequipmentall, parentall
 
-	CardTitle = "Alle AAs"
+	CardTitle = "All WOs"
 	CardCurrent = "AllWorkOrders"
 	CardCurrentLevel = GetCardLevel()
 
@@ -8549,7 +8549,7 @@ Sub AllWorkOrders()
 			</div>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnten keine Arbeitsaufträge gefunden werden.")
+			Call OutputWAPMsg("There were no Work Orders found.")
 		Else %>
 			<div>
 			<%
@@ -8631,10 +8631,10 @@ Sub AllWorkOrders()
 				<% If False Then %>
 				<div style='display:none;'>
 				<select tabindex="2" name="S<% =rs("WOPK") %>" value="I">
-				<option value="IS">Ausgestellt</option>
-				<option value="OH">Warteschleife</option>
-				<option value="CO">Abgeschlossen</option>
-				<option value="CL">Geschlossen</option>
+				<option value="IS">Issued</option>
+				<option value="OH">On-Hold</option>
+				<option value="CO">Completed</option>
+				<option value="CL">Closed</option>
 				</select>
 				Hours: <input tabindex="1" size="2" name="H<% =rs("WOPK") %>" value=""/>
 				<br/>
@@ -8684,7 +8684,7 @@ Sub AllWorkOrdersU()
 
 	Dim db, sql, rs, parentlocationall, parentequipmentall, parentall
 
-	CardTitle = "Alle nicht-zugewiesenen Arbeitsaufträge"
+	CardTitle = "All Unassigned WOs"
 	CardCurrent = "AllWorkOrdersU"
 	CardCurrentLevel = GetCardLevel()
 
@@ -8787,7 +8787,7 @@ Sub AllWorkOrdersU()
 		</div>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnten keine Arbeitsaufträge gefunden werden.")
+			Call OutputWAPMsg("There were no Work Orders found.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -8837,10 +8837,10 @@ Sub AllWorkOrdersU()
 				<% If False Then %>
 				<div style='display:none;'>
 				<select tabindex="2" name="S<% =rs("WOPK") %>" value="I">
-				<option value="IS">Ausgestellt</option>
-				<option value="OH">Warteschleife</option>
-				<option value="CO">Abgeschlossen</option>
-				<option value="CL">Geschlossen</option>
+				<option value="IS">Issued</option>
+				<option value="OH">On-Hold</option>
+				<option value="CO">Completed</option>
+				<option value="CL">Closed</option>
 				</select>
 				Hours: <input tabindex="1" size="2" name="H<% =rs("WOPK") %>" value=""/>
 				<br/>
@@ -8934,7 +8934,7 @@ Sub CMLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnte keine Firma gefunden werden.")
+			Call OutputWAPMsg("There were no Companies found.")
 		Else %>
 			<div>
 			<%
@@ -9059,7 +9059,7 @@ Sub FALookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg( desc &"  konnte nicht gefunden werden.")
+			Call OutputWAPMsg("There were no " & desc & " found.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -9204,7 +9204,7 @@ Sub Assets()
 	</div>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnte keine Ausrüstung gefunden werden.")
+			Call OutputWAPMsg("There were no Assets found.")
 		Else %>
 			<div>
 			<%
@@ -9276,7 +9276,7 @@ Sub Assets()
 							<% Else %>
 								<% =ParentAll %>
 							<% End If %>
-							<% =WAPValidate(rs("AssetName")) & " " %><% If Not BitNullCheck(rs("IsLocation")) Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Ausrüstungs-ID " & WAPValidate(rs("AssetID")) & "</span>" End If %>
+							<% =WAPValidate(rs("AssetName")) & " " %><% If Not BitNullCheck(rs("IsLocation")) Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Asset ID: " & WAPValidate(rs("AssetID")) & "</span>" End If %>
 						</div>
 					</div>
 					<% If NullCheck(rs("AssetLevel")) > 1 and RegNode Then %>
@@ -9413,7 +9413,7 @@ Sub ASLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnte keine Ausrüstung gefunden werden.")
+			Call OutputWAPMsg("There were no Assets found.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -9481,7 +9481,7 @@ Sub ASLookup()
 							<% Else %>
 								<% =ParentAll %>
 							<% End If %>
-							<% =WAPValidate(rs("AssetName")) & " " %><% If Not BitNullCheck(rs("IsLocation")) Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Ausrüstungs-ID " & WAPValidate(rs("AssetID")) & "</span>" End If %>
+							<% =WAPValidate(rs("AssetName")) & " " %><% If Not BitNullCheck(rs("IsLocation")) Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Asset ID: " & WAPValidate(rs("AssetID")) & "</span>" End If %>
 						</div>
 					</div>
 					<% If NullCheck(rs("AssetLevel")) > 1 and RegNode Then %>
@@ -9614,7 +9614,7 @@ Sub CLLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnte keine Klassifizierung gefunden werden.")
+			Call OutputWAPMsg("There were no Classifications found.")
 		Else %>
 			<div>
 			<%
@@ -9683,7 +9683,7 @@ Sub CLLookup()
 								<% Else %>
 									<% =ParentAll %>
 								<% End If %>
-								<% =WAPValidate(rs("ClassificationName")) & " " %><% If Not IsLocation Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Klassifizierungs-ID: " & WAPValidate(rs("ClassificationID")) & "</span>" End If %>
+								<% =WAPValidate(rs("ClassificationName")) & " " %><% If Not IsLocation Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Classification ID: " & WAPValidate(rs("ClassificationID")) & "</span>" End If %>
 							</div>
 						</div>
 						<% If NullCheck(rs("ClassificationLevel")) > 1 and RegNode Then %>
@@ -9787,7 +9787,7 @@ Sub ASForSerialPartLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnte keine Ausrüstung gefunden werden.")
+			Call OutputWAPMsg("There were no Assets found.")
 		Else %>
 			<div>
 			<%
@@ -9894,7 +9894,7 @@ Sub LTLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnten keine Werte gefunden werden.")
+			Call OutputWAPMsg("There were no values found.")
 		Else %>
 			<div>
 			<%
@@ -10002,7 +10002,7 @@ Sub ACLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnte keine Kostenstelle gefunden werden.")
+			Call OutputWAPMsg("There were no Accounts found.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -10112,7 +10112,7 @@ Sub RCLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnten keine Reparaturzentren gefunden werden.")
+			Call OutputWAPMsg("There were no Repair Centers found.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -10253,7 +10253,7 @@ Sub SHLookup()
 		dim iCount, altStyle
 		iCount = 0
 		If rs.eof and Not AddAll Then
-			Call OutputWAPMsg("Es konnte keine Werkstatt gefunden werden.")
+			Call OutputWAPMsg("There were no Shops found.")
 		Else %>
 			<div>
 			<%
@@ -10420,7 +10420,7 @@ Sub CALookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnten keine Kategorien gefunden werden.")
+			Call OutputWAPMsg("There were no Categories found.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -10532,7 +10532,7 @@ Sub ZNLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnten keine Zonen gefunden werden.")
+			Call OutputWAPMsg("There were no Zones found.")
 		Else %>
 			<div>
 			<%
@@ -10645,7 +10645,7 @@ Sub PRLookup()
 		Dim iCount, altStyle
 		iCount = 0
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnten keine Verfahren gefunden werden.")
+			Call OutputWAPMsg("There were no Procedures found.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -10754,7 +10754,7 @@ Sub DPLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnten keine Abteilungen gefunden werden.")
+			Call OutputWAPMsg("There were no Departments found.")
 		Else %>
 			<div>
 			<%
@@ -10866,7 +10866,7 @@ Sub TNLookup()
 		Dim iCount, altStyle
 		iCount = 0
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnten keine Kunden gefunden werden.")
+			Call OutputWAPMsg("There were no Customers found.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -10975,7 +10975,7 @@ Sub PJLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnten keine Projekte gefunden werden.")
+			Call OutputWAPMsg("There were no Projects found.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -11105,7 +11105,7 @@ Sub LALookup()
 		iCount = 0
 
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnte kein Arbeiter gefunden werden.")
+			Call OutputWAPMsg("There was no Labor found.")
 		Else %>
 			<div>
 			<%
@@ -11229,7 +11229,7 @@ Sub INLookup()
 
 		<%
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnten keine Artikel gefunden werden.")
+			Call OutputWAPMsg("There were no Items found.")
 		Else %>
 			<div>
 			<%
@@ -11364,7 +11364,7 @@ Sub SRLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnten keine Standorte gefunden werden.")
+			Call OutputWAPMsg("There were no Locations found.")
 		Else %>
 			<div>
 			<%
@@ -11432,7 +11432,7 @@ Sub ASHistory()
 
 	Dim db, sql, rs
 
-	CardTitle = "Ausrüstungs-Verlauf"
+	CardTitle = "Asset History"
 	CardCurrent = "ASHistory"
 	CardCurrentLevel = GetCardLevel()
 
@@ -11504,7 +11504,7 @@ Sub ASHistory()
 	Call IPadHeader(headerString, True)
 
 		If rs.eof Then
-			Call OutputWAPMsg("Es konnten keine Arbeitsaufträge für die spezifische Ausrüstung gefunden werden.")
+			Call OutputWAPMsg("There were no Work Orders found for the specified Asset.")
 		Else %>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<% =rs("ParentLocationAll") %><% =rs("ParentEquipmentAll") %><% =rs("AssetName") %> (<% =rs("AssetID") %>)
@@ -11888,7 +11888,7 @@ Sub WOSave(db)
 	txtTaskPKs = ""
 
 	If Request("Reason").Item = "" Then
-		HeaderMSG = "Der Grund muss ausgefüllt werden."
+		HeaderMSG = "The Reason can not be left blank."
 		Call WONew()
 	End If
 
@@ -11905,7 +11905,7 @@ Sub WOSave(db)
 			AssetName = rs2("AssetName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "Der Wert für Ausrüstungs-ID ist ungültig."
+			HeaderMSG = "The value provided for Asset ID is invalid."
 			Call WONew()
 		End If
 	End If
@@ -11915,7 +11915,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "Problem-ID konnte nicht gefunden werden."
+			HeaderMSG = "The Problem ID was not found."
 			Call WONew()
 		Else
 			ProblemPK = rs2("FailurePK")
@@ -11923,7 +11923,7 @@ Sub WOSave(db)
 			ProblemName = rs2("FailureName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "Der Wert für Problem-ID ist ungültig."
+			HeaderMSG = "The value provided for Problem ID is invalid."
 			Call WONew()
 		End If
 	End If
@@ -11933,7 +11933,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "Vorgangs-ID konnte nicht gefunden werden."
+			HeaderMSG = "The Procedure ID was not found."
 			Call WONew()
 		Else
 			ProcedurePK = rs2("ProcedurePK")
@@ -11941,7 +11941,7 @@ Sub WOSave(db)
 			ProcedureName = rs2("ProcedureName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "Der Wert für Verfahrens-ID ist ungültig."
+			HeaderMSG = "The value provided for Procedure ID is invalid."
 			Call WONew()
 		End If
 	End If
@@ -11951,7 +11951,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "Kategorien-ID konnte nicht gefunden werden."
+			HeaderMSG = "The Category ID was not found."
 			Call WONew()
 		Else
 			CategoryPK = rs2("CategoryPK")
@@ -11959,7 +11959,7 @@ Sub WOSave(db)
 			CategoryName = rs2("CategoryName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "Der Wert für Kategorie-ID ist ungültig."
+			HeaderMSG = "The value provided for Category ID is invalid."
 			Call WONew()
 		End If
 	End If
@@ -11969,7 +11969,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "Keine Kostenstelle gefunden."
+			HeaderMSG = "The Account ID was not found."
 			Call WONew()
 		Else
 			AccountPK = rs2("AccountPK")
@@ -11977,7 +11977,7 @@ Sub WOSave(db)
 			AccountName = rs2("AccountName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "Die angegebene Kostenstelle-ID ist ungültig."
+			HeaderMSG = "The value provided for Account ID is invalid."
 			Call WONew()
 		End If
 	End If
@@ -11987,14 +11987,14 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "Priorität konnte nicht gefunden werden."
+			HeaderMSG = "The Priority was not found."
 			Call WONew()
 		Else
 			txtPriority = rs2("CodeName")
 			txtPriorityDesc = rs2("CodeDesc")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "Der Wert für Priorität ist ungültig."
+			HeaderMSG = "The value provided for Priority is invalid."
 			Call WONew()
 		End If
 	End If
@@ -12004,14 +12004,14 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "Typ konnte nicht gefunden werden."
+			HeaderMSG = "The Type was not found."
 			Call WONew()
 		Else
 			txtType = rs2("CodeName")
 			txtTypeDesc = rs2("CodeDesc")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "Der Wert für Typ ist ungültig."
+			HeaderMSG = "The value provided for Type is invalid."
 			Call WONew()
 		End If
 	End If
@@ -12021,7 +12021,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "Projekt-ID konnte nicht gefunden werden."
+			HeaderMSG = "The Project ID was not found."
 			Call WONew()
 		Else
 			ProjectPK = rs2("ProjectPK")
@@ -12029,7 +12029,7 @@ Sub WOSave(db)
 			ProjectName = rs2("ProjectName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "Der Wert für Projekt-ID ist ungültig."
+			HeaderMSG = "The value provided for Project ID is invalid."
 			Call WONew()
 		End If
 	End If
@@ -12039,7 +12039,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "Abteilungs-ID konnte nicht gefunden werden."
+			HeaderMSG = "The Department ID was not found."
 			Call WONew()
 		Else
 			DepartmentPK = rs2("DepartmentPK")
@@ -12047,7 +12047,7 @@ Sub WOSave(db)
 			DepartmentName = rs2("DepartmentName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "Der Wert für Abteilungs-ID ist ungültig."
+			HeaderMSG = "The value provided for Department ID is invalid."
 			Call WONew()
 		End If
 	End If
@@ -12057,7 +12057,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "Kunden-ID konnte nicht gefunden werden."
+			HeaderMSG = "The Customer ID was not found."
 			Call WONew()
 		Else
 			TenantPK = rs2("TenantPK")
@@ -12065,7 +12065,7 @@ Sub WOSave(db)
 			TenantName = rs2("TenantName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "Der Wert für Kunden-ID ist ungültig."
+			HeaderMSG = "The value provided for Customer ID is invalid."
 			Call WONew()
 		End If
 	End If
@@ -12075,7 +12075,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "Werkstatt-ID konnte nicht gefunden werden."
+			HeaderMSG = "The Shop ID was not found."
 			Call WONew()
 		Else
 			ShopPK = rs2("ShopPK")
@@ -12083,7 +12083,7 @@ Sub WOSave(db)
 			ShopName = rs2("ShopName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "Der Wert für Werkstatt-ID ist ungültig."
+			HeaderMSG = "The value provided for Shop ID is invalid."
 			Call WONew()
 		End If
 	End If
@@ -12093,7 +12093,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "Zugeordnete ID konnte nicht gefunden werden."
+			HeaderMSG = "The Assigned ID was not found."
 			Call WONew()
 		Else
 			LaborPK = rs2("LaborPK")
@@ -12101,7 +12101,7 @@ Sub WOSave(db)
 			LaborName = rs2("LaborName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "Der Wert für zugeordnete ID ist ungültig."
+			HeaderMSG = "The value provided for Assigned ID is invalid."
 			Call WONew()
 		End If
 	End If
@@ -12353,14 +12353,14 @@ Sub WOSave(db)
 		rs("Reason") = SEZ(Trim(Mid(Replace(Request("Reason").Item,Chr(13)+Chr(10),"%0D%0A"),1,2000)))	' Nullable: YES Type: nvarchar
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der angegebene Grund ist ungültig."
+	    HeaderMSG = "The value provided for Reason is invalid."
 	    Call WONew()
     End If
 
 	rs("Status") = Trim(Mid("REQUESTED",1,15))	' Nullable: No Type: nvarchar
 	rs("StatusDesc") = Trim(Mid("Requested",1,50))	' Nullable: YES Type: nvarchar
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Zustand ist ungültig."
+	    HeaderMSG = "The value provided for Status is invalid."
 	    Call WONew()
     End If
 
@@ -12372,13 +12372,13 @@ Sub WOSave(db)
 		rs("AuthStatusDesc") = Trim(Mid("Required - Level " & GetSession("WOAuthReq"),1,50))	' Nullable: YES Type: nvarchar
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Auth Zustand ist ungültig."
+	    HeaderMSG = "The value provided for Auth Status is invalid."
 	    Call WONew()
     End If
 
 	rs("StatusDate") = SQLdatetimeADO(DateTimeNullCheck(Now()))	' Nullable: YES Type: datetime
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Zustands-Datum ist ungültig."
+	    HeaderMSG = "The value provided for Status Date is invalid."
 	    Call WONew()
     End If
 
@@ -12392,7 +12392,7 @@ Sub WOSave(db)
 	rs("RequesterEmail") = RequesterEmail	' Nullable: YES Type: nvarchar
 	rs("RequesterPhone") = RequesterPhone	' Nullable: YES Type: nvarchar
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Anforderer-ID ist ungültig."
+	    HeaderMSG = "The value provided for Requester ID is invalid."
 	    Call WONew()
     End If
 
@@ -12405,7 +12405,7 @@ Sub WOSave(db)
 		'rs("Instructions") = Trim(Mid(Replace(txtLocationManual,Chr(13)+Chr(10),"%0D%0A"),1,1000))
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Ausrüstungs-ID ist ungültig."
+	    HeaderMSG = "The value provided for Asset ID is invalid."
 	    Call WONew()
     End If
 
@@ -12415,21 +12415,21 @@ Sub WOSave(db)
 	    rs("TargetDate") = SQLdatetimeADO(Request("TargetDate"))
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Zieldatum ist ungültig."
+	    HeaderMSG = "The value provided for Target Date is invalid."
 	    Call WONew()
     End If
 
 	rs("Type") = Trim(Mid(txtType,1,25))	' Nullable: YES Type: nvarchar
 	rs("TypeDesc") = NullCheck(txtTypeDesc)	' Nullable: YES Type: nvarchar
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Typ ist ungültig."
+	    HeaderMSG = "The value provided for Type is invalid."
 	    Call WONew()
     End If
 
 	rs("Priority") = Trim(Mid(txtPriority,1,25))	' Nullable: No Type: nvarchar
 	rs("PriorityDesc") = NullCheck(txtPriorityDesc)	' Nullable: YES Type: nvarchar
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Priorität ist ungültig."
+	    HeaderMSG = "The value provided for Priority is invalid."
 	    Call WONew()
     End If
 
@@ -12443,7 +12443,7 @@ Sub WOSave(db)
 		rs("RepairCenterName") = RCNM	' Nullable: YES Type: nvarchar
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Reparaturzentrums-ID ist ungültig."
+	    HeaderMSG = "The value provided for Repair Center ID is invalid."
 	    Call WONew()
     End If
 
@@ -12459,7 +12459,7 @@ Sub WOSave(db)
 		rs("ShopName") = ShopName
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Werkstatt-ID ist ungültig."
+	    HeaderMSG = "The value provided for Shop ID is invalid."
 	    Call WONew()
     End If
 
@@ -12475,7 +12475,7 @@ Sub WOSave(db)
 		rs("SupervisorName") = SupervisorName
 	End If
 	If Err.Number <> 0 Then
-		HeaderMSG = "Der Wert für Leiter-ID ist ungültig."
+		HeaderMSG = "The value provided for Supervisor ID is invalid."
 		Call WONew()
 	End If
 
@@ -12485,7 +12485,7 @@ Sub WOSave(db)
 		rs("DepartmentName") = DepartmentName
 	End If
 	If Err.Number <> 0 Then
-		HeaderMSG = "Der Wert für Abteilungs-ID ist ungültig."
+		HeaderMSG = "The value provided for Department ID is invalid."
 		Call WONew()
 	End If
 
@@ -12495,7 +12495,7 @@ Sub WOSave(db)
 		rs("TenantName") = TenantName
 	End If
 	If Err.Number <> 0 Then
-		HeaderMSG = "Der Wert für Kunden-ID ist ungültig."
+		HeaderMSG = "The value provided for Customer ID is invalid."
 		Call WONew()
 	End If
 
@@ -12505,7 +12505,7 @@ Sub WOSave(db)
 		rs("AccountName") = AccountName
 	End If
 	If Err.Number <> 0 Then
-		HeaderMSG = "Die angegebene Kostenstelle-ID ist ungültig."
+		HeaderMSG = "The value provided for Account ID is invalid."
 		Call WONew()
 	End If
 
@@ -12515,7 +12515,7 @@ Sub WOSave(db)
 		rs("CategoryName") = CategoryName
 	End If
 	If Err.Number <> 0 Then
-		HeaderMSG = "Der Wert für Kategorie-ID ist ungültig."
+		HeaderMSG = "The value provided for Category ID is invalid."
 		Call WONew()
 	End If
 
@@ -12532,13 +12532,13 @@ Sub WOSave(db)
 		rs("Survey_ID") = prefpk
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Gutachten ist ungültig."
+	    HeaderMSG = "The value provided for Survey is invalid."
 	    Call WONew()
     End If
 
-	RS("Angeforderte") = SQLdatetimeADO(DateTimeNullCheck(Now()))
+	rs("Requested") = SQLdatetimeADO(DateTimeNullCheck(Now()))
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Angefordert ist ungültig."
+	    HeaderMSG = "The value provided for Requested is invalid."
 	    Call WONew()
     End If
 
@@ -12550,7 +12550,7 @@ Sub WOSave(db)
 
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Problem-ID ist ungültig."
+	    HeaderMSG = "The value provided for Problem ID is invalid."
 	    Call WONew()
     End If
 
@@ -12562,7 +12562,7 @@ Sub WOSave(db)
 
     End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Verfahrens-ID ist ungültig."
+	    HeaderMSG = "The value provided for Procedure ID is invalid."
 	    Call WONew()
     End If
 
@@ -12577,7 +12577,7 @@ Sub WOSave(db)
 		rs("ProjectName") = ProcedureName
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Projekt-ID ist ungültig."
+	    HeaderMSG = "The value provided for Project ID is invalid."
 	    Call WONew()
     End If
 
@@ -12595,27 +12595,27 @@ Sub WOSave(db)
 
     rs("ShutdownBox") = ShutdownBox
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Abschalten ist ungültig."
+	    HeaderMSG = "The value provided for Shutdown is invalid."
 	    Call WONew()
     End If
     rs("WarrantyBox") = WarrantyBox
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Garantie ist ungültig."
+	    HeaderMSG = "The value provided for Warranty is invalid."
 	    Call WONew()
     End If
     rs("FollowupWork") = FollowupWork
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Aufgabe weiter bearbeiten ist ungültig."
+	    HeaderMSG = "The value provided for Follow-up Work is invalid."
 	    Call WONew()
     End If
     rs("LockoutTagoutBox") = LockoutTagoutBox
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Blockierung ist ungültig."
+	    HeaderMSG = "The value provided for Lockout/Tagout is invalid."
 	    Call WONew()
     End If
     rs("Chargeable") = ChargeableBox
     If Err.Number <> 0 Then
-	    HeaderMSG = "Der Wert für Kostenpflichtig ist ungültig."
+	    HeaderMSG = "The value provided for Chargeable is invalid."
 	    Call WONew()
     End If
 
@@ -12730,7 +12730,7 @@ Sub WOSave(db)
 					End If
 				End If
 
-				RS("Abgeschlossen") = False					' Nullable: YES Type: bit
+				rs("Complete") = False					' Nullable: YES Type: bit
 				rs("Fail") = False						' Nullable: YES Type: bit
 				rs("Header") = IsHeader or IsGroup		' Nullable: No Type: bit
 
@@ -12768,7 +12768,7 @@ Sub WODetails()
 	CardTitle = "WO Details"
 	HeaderTitle = "WO Details"
 	CardCurrent = "WODetails"
-	CAlle AAstatusProcess(HeaderTitle)
+	Call WOStatusProcess(HeaderTitle)
 	headerString = GetBackButton("history.back();")
 	headerString = headerString & GetSearchButton()
 	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
