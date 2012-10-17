@@ -391,7 +391,7 @@ case "logoff"
 			</tr>
 			<tr>
 				<td>
-					<div class="Font2" style='font-size:14pt; padding-top:40px; text-align:center;'>Thank you for using<br />Maintenance Connection Mobile.</div>
+					<div class="Font2" style='font-size:14pt; padding-top:40px; text-align:center;'>Danke für die Benutzung<br />Maintenance Connection Mobile.</div>
 				</td>
 			</tr>
 			<tr>
@@ -408,7 +408,7 @@ case "logoff"
 Case Else
 
 	Call StartMobileDocument("")
-		OutputWAPMsg("The card was not found: " & card)
+		OutputWAPMsg("Die Karte wurde nicht gefunden: " & card)
 		WAPbuttonsBegin
 		OutputBackButton
 		WAPbuttonsEnd
@@ -692,7 +692,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Medical Invoice Flat.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Inventory Menu
+						Inventar Menu
 					</div>
 				</td>
 				<%End If%>
@@ -733,7 +733,7 @@ Sub MainMenu()
 		    	</div>
 		    <%
 		End If
-		If False Then %><div><a class='Font1' style='font-size:12pt;' href="default.asp?card=entertime&amp;s=<% =SessionID %>">Enter Time</a></div><%
+		If False Then %><div><a class='Font1' style='font-size:12pt;' href="default.asp?card=entertime&amp;s=<% =SessionID %>">Geben Sie eine Zeit an</a></div><%
 		End If
 
 		rs.close()
