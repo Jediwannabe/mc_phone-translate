@@ -597,10 +597,10 @@ Sub MainMenu()
 		<%
 		If GetSession("ed") = "Y" Then
 			If Not GetSession("searchby") = "" Then %>
-				<a class='Font2' style='float:left; font-size:12pt;' href="default.asp?card=authenticate&amp;s=<% =SessionID %>&amp;searchby=<% =GetSession("SearchBy") %>">[Change]</a>
+				<a class='Font2' style='float:left; font-size:12pt;' href="default.asp?card=authenticate&amp;s=<% =SessionID %>&amp;searchby=<% =GetSession("SearchBy") %>">[Ändern]</a>
 			<%
 			Else %>
-				<a class='Font2' style='float:left; font-size:12pt;' href="default.asp?card=authenticate&amp;s=<% =SessionID %>&amp;searchby=NONE">[Change]</a>
+				<a class='Font2' style='float:left; font-size:12pt;' href="default.asp?card=authenticate&amp;s=<% =SessionID %>&amp;searchby=NONE">[Ändern]</a>
 			<%
 			End If %>
 		<% End If %>
@@ -617,7 +617,7 @@ Sub MainMenu()
 						<img src='images/icons/48/User Labor Male.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						My Work Orders (<% =wocount %>)
+						Meine Arbeitsaufträge (<% =wocount %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=allworkorders&amp;s=<% =SessionID %>';">
@@ -625,7 +625,7 @@ Sub MainMenu()
 						<img src='images/icons/48/User Group Labor.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						All Work Orders (<% =wocount2 %>)
+						Alle Arbeitsaufträge (<% =wocount2 %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=allworkordersu&amp;s=<% =SessionID %>';">
@@ -633,7 +633,7 @@ Sub MainMenu()
 						<img src='images/icons/48/User Labor Female.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Unassigned Work Orders (<% =wocountu %>)
+						Nicht zugeordnete Arbeitsaufträge (<% =wocountu %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=assettasks&amp;s=<% =SessionID %>';">
@@ -641,7 +641,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Hospital 2 Check.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Asset Tasks
+						Ausrüstungs-Aufgabe
 					</div>
 				</td>
 			</tr>
@@ -652,7 +652,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Hospital 2.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Asset List
+						Ausrüstungs-Liste
 					</div>
 				</td>
 
@@ -662,7 +662,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Configuration Tools.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						New Work Order
+						Neuer Arbeitsauftrag
 					</div>
 				</td>
 				<%End If%>
@@ -672,7 +672,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Hospital 2 Add.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						New Asset
+						Neue Ausrüstung
 					</div>
 				</td>
 				<%End If%>
@@ -681,7 +681,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Coins.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Count Inventory
+						Inventar zählen
 					</div>
 				</td>
 			</tr>
@@ -720,13 +720,13 @@ Sub MainMenu()
 		    End If
 		    If rccount > 1 Then %>
 		    	<div class='Font1' style='font-size:14pt; cursor:pointer;' onclick="OpenWindow('Repair Center', 600, 400, 'default.asp', '&card=rclookup&amp;s=<% =SessionID %>');">
-					<div class='RowElisp' style='max-width:75%; float:left;'><% =GetSession("RCNM") %></div><div style='float:right;' class='Font2' style='font-size:12pt;'>[Change]</div><div style='clear:both;'></div>
+					<div class='RowElisp' style='max-width:75%; float:left;'><% =GetSession("RCNM") %></div><div style='float:right;' class='Font2' style='font-size:12pt;'>[Ändern]</div><div style='clear:both;'></div>
 		    	</div>
 		    	<div style='height:10px;'>&nbsp;</div>
 		    <%End If %>
 		    <% If shcount > 1 Then %>
 		    	<div class='Font1' style='font-size:14pt; cursor:pointer;' onclick="OpenWindow('Repair Center', 600, 400, 'default.asp', '&card=shlookup&amp;s=<% =SessionID %>');">
-					<div class='RowElisp' style='max-width:75%; float:left;'>Shop: <% =GetSession("SHID") %></div><div style='float:right;' class='Font2' style='font-size:12pt;'>[Change]</div><div style='clear:both;'></div>
+					<div class='RowElisp' style='max-width:75%; float:left;'>Shop: <% =GetSession("SHID") %></div><div style='float:right;' class='Font2' style='font-size:12pt;'>[Ändern]</div><div style='clear:both;'></div>
 		    	</div>
 
 			<%End If%>
