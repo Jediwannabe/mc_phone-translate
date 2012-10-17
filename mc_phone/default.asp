@@ -714,7 +714,7 @@ Sub MainMenu()
 		If WOFilter Then
 		    If rccount > 1 or shcount > 1 Then
 			%>
-				<div style='padding:2px; background-color:#c7d4e1; border-bottom:2px solid #005288; font-size:12pt;' class='Font1'>Dashboard Criteria</div>
+				<div style='padding:2px; background-color:#c7d4e1; border-bottom:2px solid #005288; font-size:12pt;' class='Font1'>Dashboard Kriterien</div>
 			<div style='padding:5px;'>
 			<%
 		    End If
@@ -979,7 +979,7 @@ Sub WOOptions(n)
 		<%End If%>
 
 		<div style='float:left; padding-left:14px; padding-top:7px; font-size:16pt;' class='Font1' onclick="location.href = 'default.asp?card=<% =GetSession("ParentCard" & (CardCurrentLevel-1)) %>&amp;s=<% =SessionID %>&amp;back=1';">
-			WO #<% =WOID %>
+			AA Nr.<% =WOID %>
 		</div>
 		<div style='clear:both;'></div>
 		</div>
@@ -1004,12 +1004,12 @@ Sub WOOptions(n)
 		<div class='Font1' style='font-size:12pt;padding-top:10px; padding:3px;'>
 			<% If Not IsOpen Then %>
 				<div class='Font2'>
-					<b>Closed: </b><% =wostatusdate %>&nbsp;<% =wostatustime %>
+					<b>Geschlossen: </b><% =wostatusdate %>&nbsp;<% =wostatustime %>
 				</div>
 			<% Else %>
 				<div style='clear:both;'>
 					<div style='float:left;'>
-						<div style='float:left;width:120px;'>Target Date:</div><div style='float:left; padding-left:5px;'><% =TargetDate %></div><div style='clear:both;'></div>
+						<div style='float:left;width:120px;'>Zieldatum:</div><div style='float:left; padding-left:5px;'><% =TargetDate %></div><div style='clear:both;'></div>
 					</div>
 					<div style='clear:both;'></div>
 				</div>
@@ -1036,7 +1036,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/Medical Invoice 3D Edit.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Edit Details
+						Details bearbeiten
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=wotasks&amp;s=<% =SessionID %>&amp;wopk=<% =WOPK %>';">
@@ -1044,7 +1044,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/Clipboard.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Tasks (<% =wocount %>)
+						Aufgaben (<% =wocount %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=wolabor&amp;s=<% =SessionID %>&amp;wopk=<% =WOPK %>';">
@@ -1052,7 +1052,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/User Group Home.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Labor (<% =wocount2 %>)
+						Arbeiter (<% =wocount2 %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=wopart&amp;s=<% =SessionID %>&amp;wopk=<% =WOPK %>';">
@@ -1060,7 +1060,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/Toolbox.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Materials (<% =wocount3 %>)
+						Materialien (<% =wocount3 %>)
 					</div>
 				</td>
 				</tr>
@@ -1070,7 +1070,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/Coins.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Other Costs (<% =wocount4 %>)
+						Weitere Kosten (<% =wocount4 %>)
 					</div>
 				</td>
 				<% If AccessToAssign Then %>
@@ -1079,7 +1079,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/User Group Labor.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Assignments (<% =wocount6 %>)
+						Zuweisungen (<% =wocount6 %>)
 					</div>
 				</td>
 				<%End If%>
@@ -1087,7 +1087,7 @@ Sub WOOptions(n)
 		</table>
 		<div style='height:20px;'>&nbsp;</div>
 		<div class='Font1' style='padding:5px;background-color:#f0f7fe; font-size:12pt; cursor:pointer;'>
-			Work Order Actions
+			Arbeitsauftrag Vorgänge
 		</div>
 		<table cellpadding='2' cellspacing='0' style='width:100%;'>
 			<tr valign='top' align='center'>
@@ -1097,7 +1097,7 @@ Sub WOOptions(n)
 							<img src='images/icons/48/Thumbs Up.png' alt='' title='' />
 						</div>
 						<div class='Font1'>
-							Issue
+							Ausgabe
 						</div>
 					</td>
 					<% End If %>
@@ -1107,7 +1107,7 @@ Sub WOOptions(n)
 							<img src='images/icons/48/Notepad.png' alt='' title='' />
 						</div>
 						<div class='Font1'>
-							Respond
+							Antworten
 						</div>
 					</td>
 					<% End If %>
@@ -1117,7 +1117,7 @@ Sub WOOptions(n)
 							<img src='images/icons/48/Stop.png' alt='' title='' />
 						</div>
 					<div class='Font1'>
-						On-Hold
+						Warteschleife
 					</div>
 				</td>
 					<% End If %>
@@ -1141,7 +1141,7 @@ Sub WOOptions(n)
 										<img src='images/icons/48/Status Flag Red.png' alt='' title='' />
 									</div>
 								<div class='Font1'>
-									Close
+									Schließen
 								</div>
 							</td>
 							<% End If %>
@@ -1151,7 +1151,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/Hospital 2 Rating.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Asset History (<% =wocount5 %>)
+						Ausrüstungs-Verlauf (<% =wocount5 %>)
 					</div>
 				</td>
 				</tr>
@@ -1346,7 +1346,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Medical Invoice 3D Edit.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Edit Details
+						Details bearbeiten
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=asmeters&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>';">
@@ -1354,7 +1354,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Configuration.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Meters
+						Zähler
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=asspecs&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>';">
@@ -1362,7 +1362,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Chart Dot.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Specifications (<% =ascount %>)
+						Spezifizierungen (<% =ascount %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=aslabor&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>';">
@@ -1370,7 +1370,7 @@ Sub ASOptions()
 						<img src='images/icons/48/User Group Home.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Labor / Contacts (<% =ascount2 %>)
+						Arbeiter / Kontakte (<% =ascount2 %>)
 					</div>
 				</td>
 			</tr>
@@ -1380,7 +1380,7 @@ Sub ASOptions()
 						<img src='images/icons/48/History.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						History (<% =ascount5 %>)
+						Verlauf (<% =ascount5 %>)
 					</div>
 				</td>
 				<td style='width:25%;'></td>
@@ -1390,7 +1390,7 @@ Sub ASOptions()
 		</table>
 		<% If False Then %>
 		<div class='Font1' style='padding:5px;background-color:#f0f7fe; font-size:12pt; cursor:pointer;'>
-			Asset Actions
+			Ausrüstungs-Vorgang
 		</div>
 		<table cellpadding='2' cellspacing='0' style='width:100%;'>
 			<tr valign='top' align='center'>
@@ -1399,7 +1399,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Hammer.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Materials (<% =ascount6 %>)
+						Materialien (<% =ascount6 %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=ascontracts&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>';">
@@ -1407,7 +1407,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Contact Card.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Contracts (<% =ascount7 %>)
+						Verträge (<% =ascount7 %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=aspms&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>';">
@@ -1415,7 +1415,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Medical Chart Xray Configur.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						PMs (<% =ascount4 %>)
+						PW (<% =ascount4 %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=astasks&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>';">
@@ -1423,7 +1423,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Notepad.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Tracked Tasks (<% =ascount3 %>)
+						Gefundene Aufgaben (<% =ascount3 %>)
 					</div>
 				</td>
 			</tr>
@@ -1563,7 +1563,7 @@ Sub ASDetails()
 			</div>
 		<%Else%>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-				New Asset
+				Neue Ausrüstung
 			</div>
 		<%End If%>
 			<%
@@ -1595,7 +1595,7 @@ Sub ASDetailsSubmit(rs)
 	Call OutputButtonOrLinkEnd("")
 	Else
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="ASOptions"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="Assetpk" value="<% =AssetPK %>"/>
@@ -1809,7 +1809,7 @@ Sub ASMeters()
 				<% =ParentLocationAll %><% =ParentEquipmentAll %><% =AssetName %> (<% =AssetID %>)
 			</div>
 			<div style='float:right;'>
-				Meter Readings
+				Zählerstand
 			</div>
 			<div style='clear:both;'></div>
 		</div>
@@ -1833,7 +1833,7 @@ End Sub
 Sub ASMetersSubmit(rs)
 	%>
 	<div style='padding:15px;'>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="ASOptions"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="Assetpk" value="<% =AssetPK %>"/>
@@ -1976,16 +1976,16 @@ Sub WOSearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<div class='Font2' style='text-align:center;font-size:16pt;'>Search By:</div>
+		<div class='Font2' style='text-align:center;font-size:16pt;'>Suchen mit:</div>
 		<% Else %>
-		<div style='text-align:center;'><a class='Font2' style='font-size:16pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>">Search By:</a></div>
+		<div style='text-align:center;'><a class='Font2' style='font-size:16pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>">Suchen mit:</a></div>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=1">WO #</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=1">AA Nr.</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=2">Grund</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=3">Ausrüstungs-ID</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=4">Ausrüstungs-Name</a><br/>
@@ -1994,10 +1994,10 @@ Sub WOSearch()
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=7">Typ </a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=8">Priorität</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=9">Sub-Zustand</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=myworkorders&amp;s=<% =SessionID %>&amp;back=1">My WOs (<% =wocount %>)</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=myworkorders&amp;s=<% =SessionID %>&amp;back=1">Meine Aas (<% =wocount %>)</a><br/>
 		<% If TWC_WOAllOpen Then %>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=allworkorders&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All WOs (<% =wocount2 %>)</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=allworkordersu&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Unassigned WOs (<% =wocountu %>)</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=allworkorders&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle AAs (<% =wocount2 %>)</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=allworkordersu&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle nicht-zugewiesenen Arbeitsaufträge (<% =wocountu %>)</a><br/>
 		<% End If %>
 		<% Case "1" %>
 		<b class='Font1' style='font-size:14pt; font-weight:normal;'>AA&nbsp;#: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
@@ -2054,22 +2054,22 @@ Sub CMSearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=cmsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=cmsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmsearch&amp;s=<% =SessionID %>&amp;cmsearchby=1">Company ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmsearch&amp;s=<% =SessionID %>&amp;cmsearchby=2">Company Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Companies</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmsearch&amp;s=<% =SessionID %>&amp;cmsearchby=1">Firmen-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmsearch&amp;s=<% =SessionID %>&amp;cmsearchby=2">Firmen-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Firmen</a><br/>
 		<% Case "1" %>
-		<b>Company ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Firmen-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Company Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Firmen-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2143,9 +2143,9 @@ Sub FASearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=<% =card %>&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=<% =card %>&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -2218,9 +2218,9 @@ Sub ASSearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=assearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=assearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -2294,9 +2294,9 @@ Sub ASSearch2()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=assearch2&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=assearch2&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -2348,9 +2348,9 @@ Sub CLSearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=clsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=clsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -2361,9 +2361,9 @@ Sub CLSearch()
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=clsearch&amp;s=<% =SessionID %>&amp;clsearchby=2">Klassifizierungs-Name</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cllookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Klassifizierungen</a><br/>
 		<% Case "1" %>
-		<b>Classification ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Klassifizierungs-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Classification Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Klassifizierungs-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2423,9 +2423,9 @@ Sub ACSearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=acsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=acsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -2436,9 +2436,9 @@ Sub ACSearch()
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=acsearch&amp;s=<% =SessionID %>&amp;acsearchby=2">Kostenstellen-Name</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=aclookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Kostenstellen</a><br/>
 		<% Case "1" %>
-		<b>Account ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Kostenstelle-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Account Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Kostenstelle-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2498,9 +2498,9 @@ Sub RCSearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=rcsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=rcsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -2511,9 +2511,9 @@ Sub RCSearch()
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rcsearch&amp;s=<% =SessionID %>&amp;rcsearchby=2">Reparaturzentrum-Name</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rclookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Reparaturzentren</a><br/>
 		<% Case "1" %>
-		<b>Repair Center ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>ID des Reparaturzentrums: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Repair Center Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Name des Reparaturzentrums: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2555,9 +2555,9 @@ Sub SHSearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=shsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=shsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -2568,9 +2568,9 @@ Sub SHSearch()
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shsearch&amp;s=<% =SessionID %>&amp;shsearchby=2">Werkstatt-Name</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Shops</a><br/>
 		<% Case "1" %>
-		<b>Shop ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Werkstatt-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Shop Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Werkstatt Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2630,9 +2630,9 @@ Sub CASearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=casearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=casearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -2643,9 +2643,9 @@ Sub CASearch()
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=casearch&amp;s=<% =SessionID %>&amp;casearchby=2">Kategorien-Name</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=calookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Kategorien</a><br/>
 		<% Case "1" %>
-		<b>Category ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Kategorien-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Category Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Kategorien-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2706,9 +2706,9 @@ Sub ZNSearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=znsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=znsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -2719,9 +2719,9 @@ Sub ZNSearch()
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znsearch&amp;s=<% =SessionID %>&amp;znsearchby=2">Zonen-Name</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Werkstätte</a><br/>
 		<% Case "1" %>
-		<b>Zone ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Zonen-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Zone Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Zonenname: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2781,9 +2781,9 @@ Sub PRSearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=prsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=prsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -2856,9 +2856,9 @@ Sub DPSearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=dpsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=dpsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -2869,9 +2869,9 @@ Sub DPSearch()
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dpsearch&amp;s=<% =SessionID %>&amp;dpsearchby=2">Abteilungs-Name</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dplookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Abteilungen</a><br/>
 		<% Case "1" %>
-		<b>Department ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Abteilungs-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Department Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Abteilungs-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2931,9 +2931,9 @@ Sub TNSearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=tnsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=tnsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -2944,9 +2944,9 @@ Sub TNSearch()
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnsearch&amp;s=<% =SessionID %>&amp;tnsearchby=2">Kunden-Name</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Kunden</a><br/>
 		<% Case "1" %>
-		<b>Customer ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Kunden-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Customer Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Kunden-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -3006,9 +3006,9 @@ Sub PJSearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=pjsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=pjsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -3019,9 +3019,9 @@ Sub PJSearch()
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjsearch&amp;s=<% =SessionID %>&amp;pjsearchby=2">Projekt-Name</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Projekte</a><br/>
 		<% Case "1" %>
-		<b>Project ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Projekt-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Project Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Projektname: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -3081,9 +3081,9 @@ Sub LASearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=lasearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=lasearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -3094,9 +3094,9 @@ Sub LASearch()
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lasearch&amp;s=<% =SessionID %>&amp;lasearchby=2">Arbeiter-Name</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lalookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Arbeiter</a><br/>
 		<% Case "1" %>
-		<b>Labor ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Arbeiter-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Labor Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Arbeiter-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -3156,9 +3156,9 @@ Sub INSearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=insearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=insearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -3171,13 +3171,13 @@ Sub INSearch()
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=4">Lieferanten-Artikel Nr.</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=inlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Artikel</a><br/>
 		<% Case "1" %>
-		<b>Item ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Artikel-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Item Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Artikel-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "3" %>
-		<b>Item Desc: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Artikel Beschreibung: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "4" %>
-		<b>Vendor Part #: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Lieferanten-Artikel Nr: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -3237,9 +3237,9 @@ Sub SRSearch()
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=srsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=srsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -3251,11 +3251,11 @@ Sub SRSearch()
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Standorte</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srlookup&amp;s=<% =SessionID %>&amp;searchby=3">Alle Standorte (Alle Reparaturzentren)</a><br/>
 		<% Case "1" %>
-		<b>Location ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Standort-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Location Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Standort-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "3" %>
-		<b>Click Submit to View All Stock Rooms at All RCs</b>
+		<b>Klicken Sie Zulassen an um alle Lagerräume an allen RCs zu sehen</b>
 		<% End Select %>
 		</p>
 		<%
@@ -3294,7 +3294,7 @@ End Sub
 Sub SearchSubmit()
 	%>
 	<div style='padding:15px;'>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="<% =GetSession("ParentCard" & (CardCurrentLevel-1)) %>"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="searchby" value="<% =searchby %>"/>
@@ -3363,7 +3363,7 @@ Sub ASPhoto()
 		If IsPocketIE or IsBlackBerry Then %>
 		<p align="center" mode="wrap">
 		<% If FromWO Then %>
-		<b><a href="default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=1">WO #<% =WOID %></a></b><br/>
+		<b><a href="default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=1">AA Nr.<% =WOID %></a></b><br/>
 		<% If Not AssetPK = "" Then %>
 		<% =HStyleBegin %><a href="default.asp?card=asoptions&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>"><% =AssetName %> (<% =AssetID %>)</a><% =HStyleEnd %><br/>
 		<% End If %>
@@ -3459,7 +3459,7 @@ Sub WOTasksOld()
 		Else %>
 			<% If IsPocketIE or IsBlackBerry Then %>
 			<p align="center" mode="wrap">
-			<b><a href="default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=1">WO #<% =WOID %></a></b><br/>
+			<b><a href="default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=1">AA Nr.<% =WOID %></a></b><br/>
 			<% If Not AssetPK = "" Then %>
 			<% =HStyleBegin %><a href="default.asp?card=asoptions&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>"><% =AssetName %> (<% =AssetID %>)</a><% =HStyleEnd %><br/>
 			<% End If %>
@@ -3689,7 +3689,7 @@ Sub WOTask()
 			Call OutputWAPMsg("The Task was not found")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
 			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'><% =NullCheck(rs("TaskNo")) & ": " %><% =Shorten(Replace(NullCheck(rs("TaskAction")),"%0D%0A",CHR(13) & CHR(10)),500) %></div>
 			<div style='clear:both;'></div>
 			</div>
@@ -3716,7 +3716,7 @@ End Sub
 
 Sub WOTaskSubmit(rs)
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="WOTasks"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="wopk" value="<% =WOPK %>"/>
@@ -3879,7 +3879,7 @@ Sub WOTasks()
 			<% If Not FromAsset Then %>
 				<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 					<div style='float:left; padding-left:4px; padding-top:2px; font-size:16pt;' class='Font1' onclick="location.href = 'default.asp?card=<% =GetSession("ParentCard" & (CardCurrentLevel-1)) %>&amp;s=<% =SessionID %>&amp;back=1';">
-						WO #<% =WOID %>
+						AA Nr.<% =WOID %>
 					</div>
 					<div style='float:right; padding-top:5px;'>Work Order Tasks</div>
 					<div style='clear:both;'></div>
@@ -3920,7 +3920,7 @@ Sub WOTasks()
 						If False and (IsPocketIE or IsBlackBerry) Then %>
 						<p align="center" mode="wrap"><%
 						End If %>
-						WO #<% =wopkc %><br/><%
+						AA Nr.<% =wopkc %><br/><%
 						If False and (IsPocketIE or IsBlackBerry) Then
 						Response.Write "</p>"
 						End If
@@ -4189,7 +4189,7 @@ Sub WOLaborRec()
 			Call OutputWAPMsg("The Labor was not found")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
 			<% If PK = "-1" Then %>
 				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Neuer Arbeiter</div>
 			<%Else%>
@@ -4235,7 +4235,7 @@ Sub WOLaborRecSubmit(rs)
 	Call OutputButtonOrLinkEnd("")
 	Else
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="WOLabor"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="wopk" value="<% =WOPK %>"/>
@@ -4548,7 +4548,7 @@ Sub WOLabor()
 			Call OutputWAPMsg("No Labor Found")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
 			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>WO Labor</div>
 			<div style='clear:both;'></div>
 			</div>
@@ -4737,7 +4737,7 @@ Sub WOPartRec()
 			Call OutputWAPMsg("Artikel konnte nicht gefunden werden")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
 			<% If PK = "-1" Then %>
 				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>New Item</div>
 			<%Else%>
@@ -4782,7 +4782,7 @@ Sub WOPartRecSubmit(rs)
 	Call OutputButtonOrLinkEnd("")
 	Else
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="WOPart"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="wopk" value="<% =WOPK %>"/>
@@ -5068,7 +5068,7 @@ Sub WOPart()
 			Call OutputWAPMsg("No Materials were Found")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
 			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Materials</div>
 			<div style='clear:both;'></div>
 			</div>
@@ -5231,7 +5231,7 @@ Sub WOMiscCostRec()
 			Call OutputWAPMsg("Weitere Kosten konnte nicht gefunden werden")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
 			<% If PK = "-1" Then %>
 				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Neue Weitere Kosten</div>
 			<%Else%>
@@ -5276,7 +5276,7 @@ Sub WOMiscCostRecSubmit(rs)
 	Call OutputButtonOrLinkEnd("")
 	Else
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="WOMiscCost"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="wopk" value="<% =WOPK %>"/>
@@ -5529,8 +5529,8 @@ Sub WOMiscCost()
 			Call OutputWAPMsg("No Other Costs were Found")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
-			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Other Costs</div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
+			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Weitere Kosten</div>
 			<div style='clear:both;'></div>
 			</div>
 			<% If Not AssetPK = "" Then %>
@@ -5736,7 +5736,7 @@ Sub ASSpecsSubmit(rs)
 	Call OutputButtonOrLinkEnd("")
 	Else
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="ASSpecs"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="Assetpk" value="<% =AssetPK %>"/>
@@ -6092,7 +6092,7 @@ Sub ASLaborSubmit(rs)
 	Call OutputButtonOrLinkEnd("")
 	Else
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="ASSpecs"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="Assetpk" value="<% =AssetPK %>"/>
@@ -6236,7 +6236,7 @@ Sub ASLabor()
 				<% =ParentLocationAll %><% =ParentEquipmentAll %><% =AssetName %> (<% =AssetID %>)
 			</div>
 			<div style='float:right;'>
-				Labor/Contacts
+				Arbeiter / Kontakte
 			</div>
 			<div style='clear:both;'></div>
 		</div>
@@ -6395,7 +6395,7 @@ Sub WOAssignRec()
 			Call OutputWAPMsg("The Assignment was not found")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
 			<% If PK = "-1" Then %>
 				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Neue Auftragszuweisung</div>
 			<%Else%>
@@ -6440,7 +6440,7 @@ Sub WOAssignRecSubmit(rs)
 	Call OutputButtonOrLinkEnd("")
 	Else
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="WOAssign"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="wopk" value="<% =WOPK %>"/>
@@ -6634,7 +6634,7 @@ Sub WOAssign()
 			Call OutputWAPMsg("Keine Zuordnungen gefunden")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
 			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>WO Assignments</div>
 			<div style='clear:both;'></div>
 			</div>
@@ -6918,7 +6918,7 @@ Sub WOStatusProcess(headertitle)
 			Call OutputWAPMsg("The WO was not found")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
 			<div class='Font1' style='float:right;font-size:14pt; padding-top:3px;'><% =HeaderTitle %></div>
 			<div style='clear:both;'></div>
 			</div>
@@ -6947,7 +6947,7 @@ End Sub
 
 Sub WOCloseSubmit(rs)
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<% If UCase(card) = "WOONHOLD" or UCase(card) = "WORESPOND" or UCase(card) = "WOISSUE" or UCase(card) = "WODETAILS" Then %>
 	<input type="hidden" name="card" value="<% =GetSession("ParentCard" & (CardCurrentLevel-1)) %>"/>
 	<% Else %>
@@ -7005,7 +7005,7 @@ Sub InventoryMenu()
 	Call StartMobileDocument(CardTitle)
 		If IsPocketIE or IsBlackBerry Then %>
 		<p align="center" mode="wrap">
-		<b>Inventory Menu</b>
+		<b>Inventar Menu</b>
 		</p><%
 		End If
         %>
@@ -7107,7 +7107,7 @@ Sub WONew()
 	Call IPadHeader(headerString, True)
 	%>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			New Work Order
+			Neuer Arbeitsauftrag
 		</div>
 
 		<div style='padding:5px;'>
@@ -7125,7 +7125,7 @@ End Sub
 
 Sub WONewSubmit(rs)
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="<% =GetSession("ParentCard" & (CardCurrentLevel-1)) %>"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="wonew" value="y"/>
@@ -7293,10 +7293,10 @@ Sub CountInventory()
 				</div>
 				<div style='float:right; text-align:right;'>
 					<div>
-						Count Inventory
+						Inventar zählen
 					</div>
 					<div class='Font1' style='font-size:11pt; padding-top:10px;'>
-						On-Hand: <%=rs("OnHand")%>
+						Verfügbar: <%=rs("OnHand")%>
 					</div>
 				</div>
 				<div style='clear:both;'></div>
@@ -7322,7 +7322,7 @@ End Sub
 Sub CountInventorySubmit(rs)
 	%>
 	<div style='padding:15px;'>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="CountInventory"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="pk" value="<% =pk %>"/>
@@ -7462,7 +7462,7 @@ Sub AssetTasksSubmit(rs)
 	Call OutputButtonOrLinkEnd("")
 	Else
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="AssetTasks"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="pk" value="<% =pk %>"/>
@@ -9277,7 +9277,7 @@ Sub Assets()
 							<% Else %>
 								<% =ParentAll %>
 							<% End If %>
-							<% =WAPValidate(rs("AssetName")) & " " %><% If Not BitNullCheck(rs("IsLocation")) Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Asset ID: " & WAPValidate(rs("AssetID")) & "</span>" End If %>
+							<% =WAPValidate(rs("AssetName")) & " " %><% If Not BitNullCheck(rs("IsLocation")) Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Ausrüstungs-ID " & WAPValidate(rs("AssetID")) & "</span>" End If %>
 						</div>
 					</div>
 					<% If NullCheck(rs("AssetLevel")) > 1 and RegNode Then %>
@@ -9482,7 +9482,7 @@ Sub ASLookup()
 							<% Else %>
 								<% =ParentAll %>
 							<% End If %>
-							<% =WAPValidate(rs("AssetName")) & " " %><% If Not BitNullCheck(rs("IsLocation")) Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Asset ID: " & WAPValidate(rs("AssetID")) & "</span>" End If %>
+							<% =WAPValidate(rs("AssetName")) & " " %><% If Not BitNullCheck(rs("IsLocation")) Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Ausrüstungs-ID " & WAPValidate(rs("AssetID")) & "</span>" End If %>
 						</div>
 					</div>
 					<% If NullCheck(rs("AssetLevel")) > 1 and RegNode Then %>
@@ -9684,7 +9684,7 @@ Sub CLLookup()
 								<% Else %>
 									<% =ParentAll %>
 								<% End If %>
-								<% =WAPValidate(rs("ClassificationName")) & " " %><% If Not IsLocation Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Classification ID: " & WAPValidate(rs("ClassificationID")) & "</span>" End If %>
+								<% =WAPValidate(rs("ClassificationName")) & " " %><% If Not IsLocation Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Klassifizierungs-ID: " & WAPValidate(rs("ClassificationID")) & "</span>" End If %>
 							</div>
 						</div>
 						<% If NullCheck(rs("ClassificationLevel")) > 1 and RegNode Then %>
