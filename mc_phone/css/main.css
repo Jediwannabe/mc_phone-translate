@@ -1,0 +1,98 @@
+html, form, body{
+	margin:0px;
+	padding:0px;
+}
+
+p{
+    font-family:tahoma,verdana,arial,sans-serif;
+    font-size:12pt;
+    color:#525252;
+}
+
+.Font1{
+    font-family:tahoma,verdana,arial,sans-serif;
+    font-size:9pt;
+    color:#525252;
+}
+
+.Font2{
+    font-family:tahoma,verdana,arial,sans-serif;
+    font-size:9pt;
+    color: #ff6500;
+}
+
+.Textbox_Normal{
+    font-family:tahoma,verdana,arial,sans-serif;
+    font-size:12pt;
+    color:#525252;
+    border: 1px solid #5283b0;
+}
+
+a:link,a:visited { text-decoration: none; }
+a:hover{
+    font-family:tahoma,verdana,arial,sans-serif;
+    color:#ff6500;
+}
+
+.Header{
+	background-color: #c7d4e1;
+	height:56px;
+}
+
+.loadingWindow{
+	position:absolute; z-index:1000; background-color:#ffffff; width:0px; height:0px; display:none; overflow:hidden;
+}
+
+.FieldFont{
+    padding-top:4px;
+    font-family:tahoma,verdana,arial,sans-serif;
+    font-size:14pt;
+    color: #05558a;
+    cursor: pointer;
+}
+
+.FieldFont2{
+    font-family:tahoma,verdana,arial,sans-serif;
+    font-size:14pt;
+    color: #898989;
+    cursor: default;
+}
+
+.Textbox_Field{
+    font-family:tahoma,verdana,arial,sans-serif;
+    font-size:14pt;
+    color:#525252;
+    border: 1px solid #5283b0;
+    width: 300px;
+}
+
+.CalOn{
+    font-family:tahoma,verdana,arial,sans-serif;
+    font-size:9pt;
+    color:#525252;
+	width:52px;
+	height:42px;
+}
+
+.CalOff{
+    font-family:tahoma,verdana,arial,sans-serif;
+    font-size:9pt;
+    color:#c9caca;
+	width:52px;
+	height:42px;
+}
+
+.CalHeader{
+    font-family:tahoma,verdana,arial,sans-serif;
+    font-size:9pt;
+    color:#525252;
+	width:52px;
+	height:42px;
+}
+
+.RowElisp{
+    overflow:hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
