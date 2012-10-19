@@ -1129,7 +1129,7 @@ Sub WOOptions(n)
 										<img src='images/icons/48/Status Flag Green.png' alt='' title='' />
 									</div>
 								<div class='Font1'>
-									Complete
+									Abgeschlossen
 								</div>
 							</td>
 								<% End If %>
