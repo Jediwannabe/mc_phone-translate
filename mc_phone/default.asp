@@ -50,8 +50,9 @@ case "login"
 					</tr>
 					<tr>
 						<td>
-							<div class="Font2" style='font-size:14pt; padding-top:40px; text-align:left;'>What is your member id?</div>
+							<div class="Font2" style='font-size:14pt; padding-top:40px; text-align:left;'>Was ist Ihre Benutzer ID?</div>
 						</td>
+						
 					</tr>
 					<tr>
 						<td>
@@ -60,7 +61,7 @@ case "login"
 					</tr>
 					<tr>
 						<td>
-							<div class="Font2" style='font-size:14pt; width;300px;'>What is your password?</div>
+							<div class="Font2" style='font-size:14pt; width;300px;'>Was ist Ihre Passwort?</div>
 						</td>
 					</tr>
 					<tr>
@@ -390,7 +391,7 @@ case "logoff"
 			</tr>
 			<tr>
 				<td>
-					<div class="Font2" style='font-size:14pt; padding-top:40px; text-align:center;'>Thank you for using<br />Maintenance Connection Mobile.</div>
+					<div class="Font2" style='font-size:14pt; padding-top:40px; text-align:center;'>Danke f&#252;r die Benutzung<br />Maintenance Connection Mobile.</div>
 				</td>
 			</tr>
 			<tr>
@@ -407,7 +408,7 @@ case "logoff"
 Case Else
 
 	Call StartMobileDocument("")
-		OutputWAPMsg("The card was not found: " & card)
+		OutputWAPMsg("Die Karte wurde nicht gefunden: " & card)
 		WAPbuttonsBegin
 		OutputBackButton
 		WAPbuttonsEnd
@@ -427,7 +428,7 @@ Sub MainMenu()
 	Dim WOA, WOE, WON, WOFilter, TWC_WOAllOpen, SYADJUSTIN, ASA, ASN
 
 	CardCurrent = "MainMenu"
-	CardTitle = "Home"
+	CardTitle = "Startseite"
 	CardCurrentLevel = 1
 
 	Call SetSession("ParentCard" & CardCurrentLevel,CardCurrent)
@@ -588,7 +589,7 @@ Sub MainMenu()
 
 	Call StartMobileDocument(CardTitle)
 	headerString ="<div onclick=""self.location.href='default.asp?card=mainmenu&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:1px;'><img src='images/icons/48/Refresh.png' alt='Refresh' title='Refresh' style='border:none; cursor:pointer;' /></div>"
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 
 		%>
@@ -596,10 +597,10 @@ Sub MainMenu()
 		<%
 		If GetSession("ed") = "Y" Then
 			If Not GetSession("searchby") = "" Then %>
-				<a class='Font2' style='float:left; font-size:12pt;' href="default.asp?card=authenticate&amp;s=<% =SessionID %>&amp;searchby=<% =GetSession("SearchBy") %>">[Change]</a>
+				<a class='Font2' style='float:left; font-size:12pt;' href="default.asp?card=authenticate&amp;s=<% =SessionID %>&amp;searchby=<% =GetSession("SearchBy") %>">[Ändern]</a>
 			<%
 			Else %>
-				<a class='Font2' style='float:left; font-size:12pt;' href="default.asp?card=authenticate&amp;s=<% =SessionID %>&amp;searchby=NONE">[Change]</a>
+				<a class='Font2' style='float:left; font-size:12pt;' href="default.asp?card=authenticate&amp;s=<% =SessionID %>&amp;searchby=NONE">[Ändern]</a>
 			<%
 			End If %>
 		<% End If %>
@@ -616,7 +617,7 @@ Sub MainMenu()
 						<img src='images/icons/48/User Labor Male.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						My Work Orders (<% =wocount %>)
+						Meine Arbeitsauftr&#228;ge (<% =wocount %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=allworkorders&amp;s=<% =SessionID %>';">
@@ -624,7 +625,7 @@ Sub MainMenu()
 						<img src='images/icons/48/User Group Labor.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						All Work Orders (<% =wocount2 %>)
+						Alle Arbeitsauftr&#228;ge (<% =wocount2 %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=allworkordersu&amp;s=<% =SessionID %>';">
@@ -632,7 +633,7 @@ Sub MainMenu()
 						<img src='images/icons/48/User Labor Female.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Unassigned Work Orders (<% =wocountu %>)
+						Nicht zugeordnete Arbeitsauftr&#228;ge (<% =wocountu %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=assettasks&amp;s=<% =SessionID %>';">
@@ -640,7 +641,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Hospital 2 Check.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Asset Tasks
+						Ausr&#252;stungs-Aufgabe
 					</div>
 				</td>
 			</tr>
@@ -651,7 +652,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Hospital 2.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Asset List
+						Ausr&#252;stungs-Liste
 					</div>
 				</td>
 
@@ -661,7 +662,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Configuration Tools.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						New Work Order
+						Neuer Arbeitsauftrag
 					</div>
 				</td>
 				<%End If%>
@@ -671,7 +672,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Hospital 2 Add.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						New Asset
+						Neue Ausr&#252;stung
 					</div>
 				</td>
 				<%End If%>
@@ -680,7 +681,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Coins.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Count Inventory
+						Inventar z&#228;hlen
 					</div>
 				</td>
 			</tr>
@@ -691,7 +692,7 @@ Sub MainMenu()
 						<img src='images/icons/48/Medical Invoice Flat.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Inventory Menu
+						Inventar Menu
 					</div>
 				</td>
 				<%End If%>
@@ -713,26 +714,26 @@ Sub MainMenu()
 		If WOFilter Then
 		    If rccount > 1 or shcount > 1 Then
 			%>
-				<div style='padding:2px; background-color:#c7d4e1; border-bottom:2px solid #005288; font-size:12pt;' class='Font1'>Dashboard Criteria</div>
+				<div style='padding:2px; background-color:#c7d4e1; border-bottom:2px solid #005288; font-size:12pt;' class='Font1'>Dashboard Kriterien</div>
 			<div style='padding:5px;'>
 			<%
 		    End If
 		    If rccount > 1 Then %>
 		    	<div class='Font1' style='font-size:14pt; cursor:pointer;' onclick="OpenWindow('Repair Center', 600, 400, 'default.asp', '&card=rclookup&amp;s=<% =SessionID %>');">
-					<div class='RowElisp' style='max-width:75%; float:left;'><% =GetSession("RCNM") %></div><div style='float:right;' class='Font2' style='font-size:12pt;'>[Change]</div><div style='clear:both;'></div>
+					<div class='RowElisp' style='max-width:75%; float:left;'><% =GetSession("RCNM") %></div><div style='float:right;' class='Font2' style='font-size:12pt;'>[Ändern]</div><div style='clear:both;'></div>
 		    	</div>
 		    	<div style='height:10px;'>&nbsp;</div>
 		    <%End If %>
 		    <% If shcount > 1 Then %>
 		    	<div class='Font1' style='font-size:14pt; cursor:pointer;' onclick="OpenWindow('Repair Center', 600, 400, 'default.asp', '&card=shlookup&amp;s=<% =SessionID %>');">
-					<div class='RowElisp' style='max-width:75%; float:left;'>Shop: <% =GetSession("SHID") %></div><div style='float:right;' class='Font2' style='font-size:12pt;'>[Change]</div><div style='clear:both;'></div>
+					<div class='RowElisp' style='max-width:75%; float:left;'>Shop: <% =GetSession("SHID") %></div><div style='float:right;' class='Font2' style='font-size:12pt;'>[Ändern]</div><div style='clear:both;'></div>
 		    	</div>
 
 			<%End If%>
 		    	</div>
 		    <%
 		End If
-		If False Then %><div><a class='Font1' style='font-size:12pt;' href="default.asp?card=entertime&amp;s=<% =SessionID %>">Enter Time</a></div><%
+		If False Then %><div><a class='Font1' style='font-size:12pt;' href="default.asp?card=entertime&amp;s=<% =SessionID %>">Geben Sie eine Zeit an</a></div><%
 		End If
 
 		rs.close()
@@ -777,7 +778,7 @@ Sub WOOptions(n)
 	Call CheckDB(db)
 
 	If rs.eof Then
-		Call OutputWAPError("The Work Order was not found.")
+		Call OutputWAPError("Der Arbeitsauftrag konnte nicht gefunden werden")
 	Else
 		woid = NullCheck(rs("WOID"))
 		reason = WAPValidate(Shorten(Replace(NullCheck(rs("Reason")),"%0D%0A",CHR(13) & CHR(10)),500))
@@ -962,7 +963,7 @@ Sub WOOptions(n)
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 	%>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
@@ -978,7 +979,7 @@ Sub WOOptions(n)
 		<%End If%>
 
 		<div style='float:left; padding-left:14px; padding-top:7px; font-size:16pt;' class='Font1' onclick="location.href = 'default.asp?card=<% =GetSession("ParentCard" & (CardCurrentLevel-1)) %>&amp;s=<% =SessionID %>&amp;back=1';">
-			WO #<% =WOID %>
+			AA Nr.<% =WOID %>
 		</div>
 		<div style='clear:both;'></div>
 		</div>
@@ -1003,12 +1004,12 @@ Sub WOOptions(n)
 		<div class='Font1' style='font-size:12pt;padding-top:10px; padding:3px;'>
 			<% If Not IsOpen Then %>
 				<div class='Font2'>
-					<b>Closed: </b><% =wostatusdate %>&nbsp;<% =wostatustime %>
+					<b>Geschlossen: </b><% =wostatusdate %>&nbsp;<% =wostatustime %>
 				</div>
 			<% Else %>
 				<div style='clear:both;'>
 					<div style='float:left;'>
-						<div style='float:left;width:120px;'>Target Date:</div><div style='float:left; padding-left:5px;'><% =TargetDate %></div><div style='clear:both;'></div>
+						<div style='float:left;width:120px;'>Zieldatum:</div><div style='float:left; padding-left:5px;'><% =TargetDate %></div><div style='clear:both;'></div>
 					</div>
 					<div style='clear:both;'></div>
 				</div>
@@ -1026,7 +1027,7 @@ Sub WOOptions(n)
 		<div style='height:20px;'>&nbsp;</div>
 
 		<div class='Font1' style='padding:5px;background-color:#f0f7fe; font-size:12pt; cursor:pointer;'>
-			Work Order Detail
+			Details des Arbeitsauftrags
 		</div>
 		<table cellpadding='2' cellspacing='0' style='width:100%;'>
 			<tr valign='top' align='center'>
@@ -1035,7 +1036,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/Medical Invoice 3D Edit.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Edit Details
+						Details bearbeiten
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=wotasks&amp;s=<% =SessionID %>&amp;wopk=<% =WOPK %>';">
@@ -1043,7 +1044,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/Clipboard.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Tasks (<% =wocount %>)
+						Aufgaben (<% =wocount %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=wolabor&amp;s=<% =SessionID %>&amp;wopk=<% =WOPK %>';">
@@ -1051,7 +1052,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/User Group Home.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Labor (<% =wocount2 %>)
+						Arbeiter (<% =wocount2 %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=wopart&amp;s=<% =SessionID %>&amp;wopk=<% =WOPK %>';">
@@ -1059,7 +1060,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/Toolbox.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Materials (<% =wocount3 %>)
+						Materialien (<% =wocount3 %>)
 					</div>
 				</td>
 				</tr>
@@ -1069,7 +1070,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/Coins.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Other Costs (<% =wocount4 %>)
+						Weitere Kosten (<% =wocount4 %>)
 					</div>
 				</td>
 				<% If AccessToAssign Then %>
@@ -1078,7 +1079,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/User Group Labor.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Assignments (<% =wocount6 %>)
+						Zuweisungen (<% =wocount6 %>)
 					</div>
 				</td>
 				<%End If%>
@@ -1086,7 +1087,7 @@ Sub WOOptions(n)
 		</table>
 		<div style='height:20px;'>&nbsp;</div>
 		<div class='Font1' style='padding:5px;background-color:#f0f7fe; font-size:12pt; cursor:pointer;'>
-			Work Order Actions
+			Arbeitsauftrag Vorg&#228;nge
 		</div>
 		<table cellpadding='2' cellspacing='0' style='width:100%;'>
 			<tr valign='top' align='center'>
@@ -1096,7 +1097,7 @@ Sub WOOptions(n)
 							<img src='images/icons/48/Thumbs Up.png' alt='' title='' />
 						</div>
 						<div class='Font1'>
-							Issue
+							Ausgabe
 						</div>
 					</td>
 					<% End If %>
@@ -1106,7 +1107,7 @@ Sub WOOptions(n)
 							<img src='images/icons/48/Notepad.png' alt='' title='' />
 						</div>
 						<div class='Font1'>
-							Respond
+							Antworten
 						</div>
 					</td>
 					<% End If %>
@@ -1116,7 +1117,7 @@ Sub WOOptions(n)
 							<img src='images/icons/48/Stop.png' alt='' title='' />
 						</div>
 					<div class='Font1'>
-						On-Hold
+						Warteschleife
 					</div>
 				</td>
 					<% End If %>
@@ -1128,7 +1129,7 @@ Sub WOOptions(n)
 										<img src='images/icons/48/Status Flag Green.png' alt='' title='' />
 									</div>
 								<div class='Font1'>
-									Complete
+									Abgeschlossen
 								</div>
 							</td>
 								<% End If %>
@@ -1140,7 +1141,7 @@ Sub WOOptions(n)
 										<img src='images/icons/48/Status Flag Red.png' alt='' title='' />
 									</div>
 								<div class='Font1'>
-									Close
+									Schlie&#223;en
 								</div>
 							</td>
 							<% End If %>
@@ -1150,7 +1151,7 @@ Sub WOOptions(n)
 						<img src='images/icons/48/Hospital 2 Rating.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Asset History (<% =wocount5 %>)
+						Ausr&#252;stungs-Verlauf (<% =wocount5 %>)
 					</div>
 				</td>
 				</tr>
@@ -1215,7 +1216,7 @@ Sub ASOptions()
             parentequipmentall = parentequipmentall & "<br/>"
         End If
 	Else
-		Call OutputWAPError("The Asset was not found.")
+		Call OutputWAPError("Keine Ausr&#252;stung gefunden.")
 	End If
 
 	sql = "SELECT ASCount = COUNT(PK) " &_
@@ -1332,7 +1333,7 @@ Sub ASOptions()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back();")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 	%>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
@@ -1345,7 +1346,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Medical Invoice 3D Edit.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Edit Details
+						Details bearbeiten
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=asmeters&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>';">
@@ -1353,7 +1354,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Configuration.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Meters
+						Z&#228;hler
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=asspecs&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>';">
@@ -1361,7 +1362,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Chart Dot.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Specifications (<% =ascount %>)
+						Spezifizierungen (<% =ascount %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=aslabor&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>';">
@@ -1369,7 +1370,7 @@ Sub ASOptions()
 						<img src='images/icons/48/User Group Home.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Labor / Contacts (<% =ascount2 %>)
+						Arbeiter / Kontakte (<% =ascount2 %>)
 					</div>
 				</td>
 			</tr>
@@ -1379,7 +1380,7 @@ Sub ASOptions()
 						<img src='images/icons/48/History.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						History (<% =ascount5 %>)
+						Verlauf (<% =ascount5 %>)
 					</div>
 				</td>
 				<td style='width:25%;'></td>
@@ -1389,7 +1390,7 @@ Sub ASOptions()
 		</table>
 		<% If False Then %>
 		<div class='Font1' style='padding:5px;background-color:#f0f7fe; font-size:12pt; cursor:pointer;'>
-			Asset Actions
+			Ausr&#252;stungs-Vorgang
 		</div>
 		<table cellpadding='2' cellspacing='0' style='width:100%;'>
 			<tr valign='top' align='center'>
@@ -1398,7 +1399,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Hammer.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Materials (<% =ascount6 %>)
+						Materialien (<% =ascount6 %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=ascontracts&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>';">
@@ -1406,7 +1407,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Contact Card.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Contracts (<% =ascount7 %>)
+						Vertr&#228;ge (<% =ascount7 %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=aspms&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>';">
@@ -1414,7 +1415,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Medical Chart Xray Configur.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						PMs (<% =ascount4 %>)
+						PW (<% =ascount4 %>)
 					</div>
 				</td>
 				<td style='width:25%; cursor:pointer;' onclick="location.href = 'default.asp?card=astasks&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>';">
@@ -1422,7 +1423,7 @@ Sub ASOptions()
 						<img src='images/icons/48/Notepad.png' alt='' title='' />
 					</div>
 					<div class='Font1'>
-						Tracked Tasks (<% =ascount3 %>)
+						Gefundene Aufgaben (<% =ascount3 %>)
 					</div>
 				</td>
 			</tr>
@@ -1481,7 +1482,7 @@ Sub ASDetails()
                 parentequipmentall = parentequipmentall & "<br/>"
             End If
 	    Else
-		    Call OutputWAPError("The Asset was not found.")
+		    Call OutputWAPError("Keine Ausr&#252;stung gefunden.")
 	    End If
 
 	    sql = _
@@ -1550,7 +1551,7 @@ Sub ASDetails()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back();")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 	Response.Write "<div style='padding:5px;'>"
 		If rseof and Not AssetPK = "-1" Then
@@ -1562,7 +1563,7 @@ Sub ASDetails()
 			</div>
 		<%Else%>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-				New Asset
+				Neue Ausr&#252;stung
 			</div>
 		<%End If%>
 			<%
@@ -1594,7 +1595,7 @@ Sub ASDetailsSubmit(rs)
 	Call OutputButtonOrLinkEnd("")
 	Else
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="ASOptions"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="Assetpk" value="<% =AssetPK %>"/>
@@ -1633,13 +1634,13 @@ Sub ASDetailsSave(ByRef db)
 					    Set rs2 = db.RunSQLReturnRS(sql,"")
 					    Call CheckDB(db)
 					    If rs2.eof Then
-						    HeaderMSG = "The Parent ID was not found."
+						    HeaderMSG = "Übergeordnete ID konnte nicht gefunden werden."
 						    ASDetails
 						Else
 						    ParentPK = rs2("AssetPK")
 					    End If
 					Else
-					    HeaderMSG = "The Parent ID is required."
+					    HeaderMSG = "Übergeordnete ID erforderlich."
 					    ASDetails
 					End If
 					Call SaveField(db,"ClassificationID","Classification ID","Classification","","LM","ASDetails",True)
@@ -1649,13 +1650,13 @@ Sub ASDetailsSave(ByRef db)
 					    Set rs2 = db.RunSQLReturnRS(sql,"")
 					    Call CheckDB(db)
 					    If Not rs2.eof Then
-						    HeaderMSG = "The Asset ID has already been assigned to another Asset (" & WAPValidate(NullCheck(rs2("AssetName"))) & ")."
+						    HeaderMSG = "Ausr&#252;stungs ID ist bereits einer anderen Ausr&#252;stung zugeordnet (" & WAPValidate(NullCheck(rs2("AssetName"))) & ")."
 						    ASDetails
 						Else
 						    rs("AssetID") = Trim(Request("AssetID"))
 					    End If
 					Else
-					    HeaderMSG = "The Asset ID is required."
+					    HeaderMSG = "Ausr&#252;stungs ID ist erforderlich."
 					    ASDetails
 					End If
                     Call SaveField(db,"AssetName","Asset Name","","","C","ASDetails",True)
@@ -1732,7 +1733,7 @@ Sub ASMeters()
 
     newcontextpage = True
 
-	CardTitle = "Asset Meters"
+	CardTitle = "Ausr&#252;stungsz&#228;hler"
 	CardCurrent = "ASMeters"
 	CardCurrentLevel = GetCardLevel()
 
@@ -1769,7 +1770,7 @@ Sub ASMeters()
                 parentequipmentall = parentequipmentall & "<br/>"
             End If
 	    Else
-		    Call OutputWAPError("The Asset was not found.")
+		    Call OutputWAPError("Keine Ausr&#252;stung gefunden.")
 	    End If
 
 	    sql = _
@@ -1797,7 +1798,7 @@ Sub ASMeters()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 
 		If rseof and Not AssetPK = "-1" Then
@@ -1808,7 +1809,7 @@ Sub ASMeters()
 				<% =ParentLocationAll %><% =ParentEquipmentAll %><% =AssetName %> (<% =AssetID %>)
 			</div>
 			<div style='float:right;'>
-				Meter Readings
+				Z&#228;hlerstand
 			</div>
 			<div style='clear:both;'></div>
 		</div>
@@ -1832,7 +1833,7 @@ End Sub
 Sub ASMetersSubmit(rs)
 	%>
 	<div style='padding:15px;'>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="ASOptions"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="Assetpk" value="<% =AssetPK %>"/>
@@ -1969,53 +1970,53 @@ Sub WOSearch()
 	searchby = UCase(Request("wosearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<div class='Font2' style='text-align:center;font-size:16pt;'>Search By:</div>
+		<div class='Font2' style='text-align:center;font-size:16pt;'>Suchen mit:</div>
 		<% Else %>
-		<div style='text-align:center;'><a class='Font2' style='font-size:16pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>">Search By:</a></div>
+		<div style='text-align:center;'><a class='Font2' style='font-size:16pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>">Suchen mit:</a></div>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=1">WO #</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=2">Reason</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=3">Asset ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=4">Asset Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=5">Procedure ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=6">Procedure Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=7">Type</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=8">Priority</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=9">Sub-Status</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=myworkorders&amp;s=<% =SessionID %>&amp;back=1">My WOs (<% =wocount %>)</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=1">AA Nr.</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=2">Grund</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=3">Ausr&#252;stungs-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=4">Ausr&#252;stungs-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=5">Verfahrens-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=6">Verfahrens-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=7">Typ </a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=8">Priorit&#228;t</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=wosearch&amp;s=<% =SessionID %>&amp;wosearchby=9">Sub-Zustand</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=myworkorders&amp;s=<% =SessionID %>&amp;back=1">Meine Aas (<% =wocount %>)</a><br/>
 		<% If TWC_WOAllOpen Then %>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=allworkorders&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All WOs (<% =wocount2 %>)</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=allworkordersu&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Unassigned WOs (<% =wocountu %>)</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=allworkorders&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle AAs (<% =wocount2 %>)</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=allworkordersu&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle nicht-zugewiesenen Arbeitsauftr&#228;ge (<% =wocountu %>)</a><br/>
 		<% End If %>
 		<% Case "1" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>WO&nbsp;#: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>AA&nbsp;#: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Reason: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Grund: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "3" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Asset ID: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Ausr&#252;stungs-ID: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "4" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Asset Name: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Ausr&#252;stungs-Name: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "5" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Procedure ID: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Verfahrens-ID: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "6" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Procedure Name: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Verfahrens-Name: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "7" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Type: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Typ : </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "8" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Priority: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Priorit&#228;t: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "9" %>
-		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Sub-Status: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b class='Font1' style='font-size:14pt; font-weight:normal;'>Sub-Zustand: </b><input class='Textbox_Normal' size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2034,7 +2035,7 @@ Sub CMSearch()
 	Dim db, sql, rs
 
 	CardCurrent = "CMSearch"
-	CardTitle = "Company Search"
+	CardTitle = "Suche nach Firma"
 	If CardFrom = CardCurrent and SearchBy = "" Then
 		CardCurrentLevel = CardFromLevel
 	Else
@@ -2048,27 +2049,27 @@ Sub CMSearch()
 	searchby = UCase(Request("cmsearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=cmsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=cmsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmsearch&amp;s=<% =SessionID %>&amp;cmsearchby=1">Company ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmsearch&amp;s=<% =SessionID %>&amp;cmsearchby=2">Company Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Companies</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmsearch&amp;s=<% =SessionID %>&amp;cmsearchby=1">Firmen-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmsearch&amp;s=<% =SessionID %>&amp;cmsearchby=2">Firmen-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cmlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Firmen</a><br/>
 		<% Case "1" %>
-		<b>Company ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Firmen-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Company Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Firmen-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2111,15 +2112,15 @@ Sub FASearch()
 	CardCurrent = Card
 	Select Case UCase(Card)
 		Case "FAPRSEARCH"
-			CardTitle = "Problem Search"
+			CardTitle = "Suche nach Problem"
 			desc = "Problems"
 			desc2 = "Problem"
 		Case "FAFASEARCH"
-			CardTitle = "Failure Search"
+			CardTitle = "Suche nach Fehler"
 			desc = "Failures"
 			desc2 = "Failure"
 		Case "FASOSEARCH"
-			CardTitle = "Solution Search"
+			CardTitle = "Suche nach L&#246;sung"
 			desc = "Solutions"
 			desc2 = "Solution"
 	End Select
@@ -2137,14 +2138,14 @@ Sub FASearch()
 	searchby = UCase(Request(LCase(Card)&"by"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=<% =card %>&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=<% =card %>&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
@@ -2153,7 +2154,7 @@ Sub FASearch()
 		%>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=<% =card %>&amp;s=<% =SessionID %>&amp;<% =LCase(card) %>by=1"><% =desc2 %> ID</a><br/>
 		<a class='Font1' style='font-size:14pt;' href="default.asp?card=<% =card %>&amp;s=<% =SessionID %>&amp;<% =LCase(card) %>by=2"><% =desc2 %> Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=<% =Replace(UCase(card),"SEARCH","LOOKUP") %>&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All <% =desc %></a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=<% =Replace(UCase(card),"SEARCH","LOOKUP") %>&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle <% =desc %></a><br/>
 		<% Case "1" %>
 		<b><% =desc2 %> ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
@@ -2198,7 +2199,7 @@ Sub ASSearch()
 	Dim db, sql, rs
 
 	CardCurrent = "ASSearch"
-	CardTitle = "Asset Search"
+	CardTitle = "Suche nach Ausr&#252;stung"
 	If CardFrom = CardCurrent and SearchBy = "" Then
 		CardCurrentLevel = CardFromLevel
 	Else
@@ -2212,27 +2213,27 @@ Sub ASSearch()
 	searchby = UCase(Request("assearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=assearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=assearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch&amp;s=<% =SessionID %>&amp;assearchby=1">Asset ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch&amp;s=<% =SessionID %>&amp;assearchby=2">Asset Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=aslookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Assets</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch&amp;s=<% =SessionID %>&amp;assearchby=1">Ausr&#252;stungs-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch&amp;s=<% =SessionID %>&amp;assearchby=2">Ausr&#252;stungs-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=aslookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Gesamte Ausr&#252;stung</a><br/>
 		<% Case "1" %>
-		<b>Asset ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Ausr&#252;stungs-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Asset Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Ausr&#252;stungs-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2273,7 +2274,7 @@ Sub ASSearch2()
 	Dim db, sql, rs
 
 	CardCurrent = "ASSearch2"
-	CardTitle = "Asset Search"
+	CardTitle = "Suche nach Ausr&#252;stung"
 	If CardFrom = CardCurrent and SearchBy = "" Then
 		CardCurrentLevel = CardFromLevel
 	Else
@@ -2287,28 +2288,28 @@ Sub ASSearch2()
 	searchby = UCase(Request("assearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=assearch2&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=assearch2&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch2&amp;s=<% =SessionID %>&amp;assearchby=1">Asset ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch2&amp;s=<% =SessionID %>&amp;assearchby=2">Asset Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assets&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Assets</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch2&amp;s=<% =SessionID %>&amp;assearchby=1">Ausr&#252;stungs-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assearch2&amp;s=<% =SessionID %>&amp;assearchby=2">Ausr&#252;stungs-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=assets&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Gesamte Ausr&#252;stung</a><br/>
 		<% Case "1" %>
-		<b>Asset ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Ausr&#252;stungs-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Asset Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Ausr&#252;stungs-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2328,7 +2329,7 @@ Sub CLSearch()
 	Dim db, sql, rs
 
 	CardCurrent = "CLSearch"
-	CardTitle = "Classification Search"
+	CardTitle = "Suche nach Klassifizierung"
 	If CardFrom = CardCurrent and SearchBy = "" Then
 		CardCurrentLevel = CardFromLevel
 	Else
@@ -2342,27 +2343,27 @@ Sub CLSearch()
 	searchby = UCase(Request("clsearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=clsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=clsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=clsearch&amp;s=<% =SessionID %>&amp;clsearchby=1">Classification ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=clsearch&amp;s=<% =SessionID %>&amp;clsearchby=2">Classification Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cllookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Classifications</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=clsearch&amp;s=<% =SessionID %>&amp;clsearchby=1">Klassifizierungs-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=clsearch&amp;s=<% =SessionID %>&amp;clsearchby=2">Klassifizierungs-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=cllookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Klassifizierungen</a><br/>
 		<% Case "1" %>
-		<b>Classification ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Klassifizierungs-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Classification Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Klassifizierungs-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2403,7 +2404,7 @@ Sub ACSearch()
 	Dim db, sql, rs
 
 	CardCurrent = "ACSearch"
-	CardTitle = "Account Search"
+	CardTitle = "Suche nach Kostenstelle"
 	If CardFrom = CardCurrent and SearchBy = "" Then
 		CardCurrentLevel = CardFromLevel
 	Else
@@ -2417,27 +2418,27 @@ Sub ACSearch()
 	searchby = UCase(Request("acsearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=acsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=acsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=acsearch&amp;s=<% =SessionID %>&amp;acsearchby=1">Account ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=acsearch&amp;s=<% =SessionID %>&amp;acsearchby=2">Account Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=aclookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Accounts</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=acsearch&amp;s=<% =SessionID %>&amp;acsearchby=1">Kostenstellen-IID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=acsearch&amp;s=<% =SessionID %>&amp;acsearchby=2">Kostenstellen-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=aclookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Kostenstellen</a><br/>
 		<% Case "1" %>
-		<b>Account ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Kostenstelle-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Account Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Kostenstelle-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2478,7 +2479,7 @@ Sub RCSearch()
 	Dim db, sql, rs
 
 	CardCurrent = "RCSearch"
-	CardTitle = "Repair Center Search"
+	CardTitle = "Suche nach Reparaturzentrum"
 	If CardFrom = CardCurrent and SearchBy = "" Then
 		CardCurrentLevel = CardFromLevel
 	Else
@@ -2492,27 +2493,27 @@ Sub RCSearch()
 	searchby = UCase(Request("rcsearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=rcsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=rcsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rcsearch&amp;s=<% =SessionID %>&amp;rcsearchby=1">Repair Center ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rcsearch&amp;s=<% =SessionID %>&amp;rcsearchby=2">Repair Center Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rclookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Repair Centers</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rcsearch&amp;s=<% =SessionID %>&amp;rcsearchby=1">Reparaturzentrum-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rcsearch&amp;s=<% =SessionID %>&amp;rcsearchby=2">Reparaturzentrum-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=rclookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Reparaturzentren</a><br/>
 		<% Case "1" %>
-		<b>Repair Center ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>ID des Reparaturzentrums: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Repair Center Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Name des Reparaturzentrums: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2535,7 +2536,7 @@ Sub SHSearch()
 	Dim db, sql, rs
 
 	CardCurrent = "SHSearch"
-	CardTitle = "Shop Search"
+	CardTitle = "Suche nach Werkstatt"
 	If CardFrom = CardCurrent and SearchBy = "" Then
 		CardCurrentLevel = CardFromLevel
 	Else
@@ -2549,27 +2550,27 @@ Sub SHSearch()
 	searchby = UCase(Request("shsearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=shsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=shsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shsearch&amp;s=<% =SessionID %>&amp;shsearchby=1">Shop ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shsearch&amp;s=<% =SessionID %>&amp;shsearchby=2">Shop Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Shops</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shsearch&amp;s=<% =SessionID %>&amp;shsearchby=1">Werkstatt-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shsearch&amp;s=<% =SessionID %>&amp;shsearchby=2">Werkstatt-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=shlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Shops</a><br/>
 		<% Case "1" %>
-		<b>Shop ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Werkstatt-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Shop Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Werkstatt Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2610,7 +2611,7 @@ Sub CASearch()
 	Dim db, sql, rs
 
 	CardCurrent = "CASearch"
-	CardTitle = "Category Search"
+	CardTitle = "Suche nach Kategorie"
 	If CardFrom = CardCurrent and SearchBy = "" Then
 		CardCurrentLevel = CardFromLevel
 	Else
@@ -2624,27 +2625,27 @@ Sub CASearch()
 	searchby = UCase(Request("casearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=casearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=casearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=casearch&amp;s=<% =SessionID %>&amp;casearchby=1">Category ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=casearch&amp;s=<% =SessionID %>&amp;casearchby=2">Category Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=calookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Categories</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=casearch&amp;s=<% =SessionID %>&amp;casearchby=1">Kategorien-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=casearch&amp;s=<% =SessionID %>&amp;casearchby=2">Kategorien-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=calookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Kategorien</a><br/>
 		<% Case "1" %>
-		<b>Category ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Kategorien-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Category Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Kategorien-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2685,7 +2686,7 @@ Sub ZNSearch()
 	Dim db, sql, rs
 
 	CardCurrent = "ZNSearch"
-	CardTitle = "Zone Search"
+	CardTitle = "Suche nach Zone"
 	If CardFrom = CardCurrent and SearchBy = "" Then
 		CardCurrentLevel = CardFromLevel
 	Else
@@ -2699,28 +2700,28 @@ Sub ZNSearch()
 	searchby = UCase(Request("znsearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=znsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=znsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znsearch&amp;s=<% =SessionID %>&amp;znsearchby=1">Zone ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znsearch&amp;s=<% =SessionID %>&amp;znsearchby=2">Zone Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Zones</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znsearch&amp;s=<% =SessionID %>&amp;znsearchby=1">Zonen-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znsearch&amp;s=<% =SessionID %>&amp;znsearchby=2">Zonen-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=znlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Werkst&#228;tte</a><br/>
 		<% Case "1" %>
-		<b>Zone ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Zonen-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Zone Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Zonenname: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2761,7 +2762,7 @@ Sub PRSearch()
 	Dim db, sql, rs
 
 	CardCurrent = "PRSearch"
-	CardTitle = "Procedure Search"
+	CardTitle = "Suche nach Verfahren"
 	If CardFrom = CardCurrent and SearchBy = "" Then
 		CardCurrentLevel = CardFromLevel
 	Else
@@ -2775,27 +2776,27 @@ Sub PRSearch()
 	searchby = UCase(Request("prsearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=prsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=prsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prsearch&amp;s=<% =SessionID %>&amp;prsearchby=1">Procedure ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prsearch&amp;s=<% =SessionID %>&amp;prsearchby=2">Procedure Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Procedures</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prsearch&amp;s=<% =SessionID %>&amp;prsearchby=1">Verfahrens-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prsearch&amp;s=<% =SessionID %>&amp;prsearchby=2">Verfahrens-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=prlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Verfahren</a><br/>
 		<% Case "1" %>
-		<b>Procedure ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Verfahrens-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Procedure Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Verfahrens-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2836,7 +2837,7 @@ Sub DPSearch()
 	Dim db, sql, rs
 
 	CardCurrent = "DPSearch"
-	CardTitle = "Department Search"
+	CardTitle = "Suche nach Abteilung"
 	If CardFrom = CardCurrent and SearchBy = "" Then
 		CardCurrentLevel = CardFromLevel
 	Else
@@ -2850,27 +2851,27 @@ Sub DPSearch()
 	searchby = UCase(Request("dpsearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=dpsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=dpsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dpsearch&amp;s=<% =SessionID %>&amp;dpsearchby=1">Department ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dpsearch&amp;s=<% =SessionID %>&amp;dpsearchby=2">Department Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dplookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Departments</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dpsearch&amp;s=<% =SessionID %>&amp;dpsearchby=1">Abteilungs-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dpsearch&amp;s=<% =SessionID %>&amp;dpsearchby=2">Abteilungs-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=dplookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Abteilungen</a><br/>
 		<% Case "1" %>
-		<b>Department ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Abteilungs-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Department Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Abteilungs-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2911,7 +2912,7 @@ Sub TNSearch()
 	Dim db, sql, rs
 
 	CardCurrent = "TNSearch"
-	CardTitle = "Customer Search"
+	CardTitle = "Suche nach Kunden"
 	If CardFrom = CardCurrent and SearchBy = "" Then
 		CardCurrentLevel = CardFromLevel
 	Else
@@ -2925,27 +2926,27 @@ Sub TNSearch()
 	searchby = UCase(Request("tnsearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=tnsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=tnsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnsearch&amp;s=<% =SessionID %>&amp;tnsearchby=1">Customer ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnsearch&amp;s=<% =SessionID %>&amp;tnsearchby=2">Customer Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Customers</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnsearch&amp;s=<% =SessionID %>&amp;tnsearchby=1">Kunden-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnsearch&amp;s=<% =SessionID %>&amp;tnsearchby=2">Kunden-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=tnlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Kunden</a><br/>
 		<% Case "1" %>
-		<b>Customer ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Kunden-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Customer Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Kunden-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -2986,7 +2987,7 @@ Sub PJSearch()
 	Dim db, sql, rs
 
 	CardCurrent = "PJSearch"
-	CardTitle = "Project Search"
+	CardTitle = "Suche nach Projekt"
 	If CardFrom = CardCurrent and SearchBy = "" Then
 		CardCurrentLevel = CardFromLevel
 	Else
@@ -3000,27 +3001,27 @@ Sub PJSearch()
 	searchby = UCase(Request("pjsearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=pjsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=pjsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjsearch&amp;s=<% =SessionID %>&amp;pjsearchby=1">Project ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjsearch&amp;s=<% =SessionID %>&amp;pjsearchby=2">Project Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Projects</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjsearch&amp;s=<% =SessionID %>&amp;pjsearchby=1">Projekt-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjsearch&amp;s=<% =SessionID %>&amp;pjsearchby=2">Projekt-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=pjlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Projekte</a><br/>
 		<% Case "1" %>
-		<b>Project ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Projekt-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Project Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Projektname: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -3061,7 +3062,7 @@ Sub LASearch()
 	Dim db, sql, rs
 
 	CardCurrent = "LASearch"
-	CardTitle = "Labor Search"
+	CardTitle = "Suche nach Arbeiter"
 	If CardFrom = CardCurrent and SearchBy = "" Then
 		CardCurrentLevel = CardFromLevel
 	Else
@@ -3075,27 +3076,27 @@ Sub LASearch()
 	searchby = UCase(Request("lasearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=lasearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=lasearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lasearch&amp;s=<% =SessionID %>&amp;lasearchby=1">Labor ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lasearch&amp;s=<% =SessionID %>&amp;lasearchby=2">Labor Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lalookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Labor</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lasearch&amp;s=<% =SessionID %>&amp;lasearchby=1">Arbeiter-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lasearch&amp;s=<% =SessionID %>&amp;lasearchby=2">Arbeiter-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=lalookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Arbeiter</a><br/>
 		<% Case "1" %>
-		<b>Labor ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Arbeiter-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Labor Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Arbeiter-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -3136,7 +3137,7 @@ Sub INSearch()
 	Dim db, sql, rs
 
 	CardCurrent = "INSearch"
-	CardTitle = "Item Search"
+	CardTitle = "Suche nach Artikel"
 	If CardFrom = CardCurrent and SearchBy = "" Then
 		CardCurrentLevel = CardFromLevel
 	Else
@@ -3150,33 +3151,33 @@ Sub INSearch()
 	searchby = UCase(Request("insearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=insearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=insearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=1">Part ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=2">Part Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=3">Part Desc</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=4">Vendor Part #</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=inlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Items</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=1">Artikel-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=2">Artikel-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=3">Artikelschreibung</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=insearch&amp;s=<% =SessionID %>&amp;insearchby=4">Lieferanten-Artikel Nr.</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=inlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Artikel</a><br/>
 		<% Case "1" %>
-		<b>Item ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Artikel-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Item Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Artikel-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "3" %>
-		<b>Item Desc: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Artikel Beschreibung: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "4" %>
-		<b>Vendor Part #: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Lieferanten-Artikel Nr: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% End Select %>
 		</p>
 		<%
@@ -3217,7 +3218,7 @@ Sub SRSearch()
 	Dim db, sql, rs
 
 	CardCurrent = "SRSearch"
-	CardTitle = "Location Search"
+	CardTitle = "Suche nach Standort"
 	If CardFrom = CardCurrent and SearchBy = "" Then
 		CardCurrentLevel = CardFromLevel
 	Else
@@ -3231,30 +3232,30 @@ Sub SRSearch()
 	searchby = UCase(Request("srsearchby"))
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		%>
 		<p align="center">
 		<% If searchby = "" Then %>
-		<b>Search By:</b>
+		<b>Suchen mit:</b>
 		<% Else %>
-		<b><a href="default.asp?card=srsearch&amp;s=<% =SessionID %>">Search By:</a></b>
+		<b><a href="default.asp?card=srsearch&amp;s=<% =SessionID %>">Suchen mit:</a></b>
 		<% End If %>
 		</p>
 		<p align="center">
 		<% Select Case searchby
 		   Case ""
 		%>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srsearch&amp;s=<% =SessionID %>&amp;srsearchby=1">Location ID</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srsearch&amp;s=<% =SessionID %>&amp;srsearchby=2">Location Name</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">All Locations</a><br/>
-		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srlookup&amp;s=<% =SessionID %>&amp;searchby=3">All Locations (All Repair Centers)</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srsearch&amp;s=<% =SessionID %>&amp;srsearchby=1">Standort-ID</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srsearch&amp;s=<% =SessionID %>&amp;srsearchby=2">Standort-Name</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srlookup&amp;s=<% =SessionID %>&amp;searchby=NONE&amp;back=1">Alle Standorte</a><br/>
+		<a class='Font1' style='font-size:14pt;' href="default.asp?card=srlookup&amp;s=<% =SessionID %>&amp;searchby=3">Alle Standorte (Alle Reparaturzentren)</a><br/>
 		<% Case "1" %>
-		<b>Location ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Standort-ID: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "2" %>
-		<b>Location Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
+		<b>Standort-Name: </b><input size="15" value="" tabindex="1" type="text" name="searchvalue<% =r %>" format="*M"/>
 		<% Case "3" %>
-		<b>Click Submit to View All Stock Rooms at All RCs</b>
+		<b>Klicken Sie Zulassen an um alle Lagerr&#228;ume an allen RCs zu sehen</b>
 		<% End Select %>
 		</p>
 		<%
@@ -3293,7 +3294,7 @@ End Sub
 Sub SearchSubmit()
 	%>
 	<div style='padding:15px;'>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="<% =GetSession("ParentCard" & (CardCurrentLevel-1)) %>"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="searchby" value="<% =searchby %>"/>
@@ -3308,7 +3309,7 @@ Sub ASPhoto()
 
 	Dim db, sql, rs, woid, assetid, assetname, reason, photo, FromWO
 
-	CardTitle = "Asset Photo"
+	CardTitle = "Ausr&#252;stungsfoto"
 	CardCurrent = "ASPhoto"
 	CardCurrentLevel = GetCardLevel()
 
@@ -3344,7 +3345,7 @@ Sub ASPhoto()
 	Call CheckDB(db)
 
 	If rs.eof Then
-		Call OutputWAPError("Asset Photo Not Found.")
+		Call OutputWAPError("Ausr&#252;stungsfoto nicht gefunden")
 	Else
 		If FromWO Then
 			woid = NullCheck(rs("WOID"))
@@ -3362,7 +3363,7 @@ Sub ASPhoto()
 		If IsPocketIE or IsBlackBerry Then %>
 		<p align="center" mode="wrap">
 		<% If FromWO Then %>
-		<b><a href="default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=1">WO #<% =WOID %></a></b><br/>
+		<b><a href="default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=1">AA Nr.<% =WOID %></a></b><br/>
 		<% If Not AssetPK = "" Then %>
 		<% =HStyleBegin %><a href="default.asp?card=asoptions&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>"><% =AssetName %> (<% =AssetID %>)</a><% =HStyleEnd %><br/>
 		<% End If %>
@@ -3392,7 +3393,7 @@ Sub WOTasksOld()
 	Dim db, sql, rs, woid, reason, assetid, assetname, photo
 	Dim CheckBoxType
 
-	CardTitle = "WO Tasks"
+	CardTitle = "Aufgaben des AA"
 	CardCurrent = "WOTasks"
 	CardCurrentLevel = GetCardLevel()
 
@@ -3454,11 +3455,11 @@ Sub WOTasksOld()
 
 	Call StartMobileDocument(CardTitle)
 		If rs.eof Then
-			Call OutputWAPMsg("No Tasks Found")
+			Call OutputWAPMsg("Keine Aufgaben gefunden")
 		Else %>
 			<% If IsPocketIE or IsBlackBerry Then %>
 			<p align="center" mode="wrap">
-			<b><a href="default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=1">WO #<% =WOID %></a></b><br/>
+			<b><a href="default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=1">AA Nr.<% =WOID %></a></b><br/>
 			<% If Not AssetPK = "" Then %>
 			<% =HStyleBegin %><a href="default.asp?card=asoptions&amp;s=<% =SessionID %>&amp;assetpk=<% =AssetPK %>"><% =AssetName %> (<% =AssetID %>)</a><% =HStyleEnd %><br/>
 			<% End If %>
@@ -3544,28 +3545,28 @@ Sub WOTaskSave(ByRef db)
 					rs("HoursActual") =	NullCheck(Request("HoursActual"))
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Hours Actual is invalid."
+					HeaderMSG = "Der Wert f&#252;r Tats&#228;chliche Stunden ist ung&#252;ltig."
 					WOTask
 				End If
 				If Not NullCheck(Request("Measurement")) = "" Then
 					rs("Measurement") =	NullCheck(Request("Measurement"))
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Measurement is invalid."
+					HeaderMSG = "Der Wert f&#252;r Ma&#223;e ist ung&#252;ltig."
 					WOTask
 				End If
 				If Not NullCheck(Request("Rate")) = "" Then
 					rs("Rate") = NullCheck(Request("Rate"))
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Rate is invalid."
+					HeaderMSG = "Der Wert f&#252;r Tarif ist ung&#252;ltig."
 					WOTask
 				End If
 				If Not NullCheck(Request("Comments")) = "" Then
 					rs("Comments") =	NullCheck(Request("Comments"))
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Comments is invalid."
+					HeaderMSG = "Der Wert f&#252;r Kommentare ist ung&#252;ltig."
 					WOTask
 				End If
 				If UCase(NullCheck(Request("Fail"))) = "Y" or UCase(NullCheck(Request("Fail"))) = "2" Then
@@ -3600,7 +3601,7 @@ Sub WOTask()
 
     newcontextpage = True
 
-	CardTitle = "WO Task"
+	CardTitle = "Aufgabe des AA"
 	CardCurrent = "WOTask"
 	CardCurrentLevel = GetCardLevel()
 
@@ -3681,14 +3682,14 @@ Sub WOTask()
 	'headerString = GetBackButton("self.location.href = 'default.asp?card=wooptions&amp;s=" & SessionID & "&amp;wopk=" & wopk & "';")
 	headerString = GetBackButton("self.location.href = 'default.asp?card=wotasks&amp;s=" & SessionID & "&amp;wopk=" & WOPK & "';")
 
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 
 		If rs.eof Then
-			Call OutputWAPMsg("The Task was not found")
+			Call OutputWAPMsg("Aufgabe nicht gefunden")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
 			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'><% =NullCheck(rs("TaskNo")) & ": " %><% =Shorten(Replace(NullCheck(rs("TaskAction")),"%0D%0A",CHR(13) & CHR(10)),500) %></div>
 			<div style='clear:both;'></div>
 			</div>
@@ -3715,7 +3716,7 @@ End Sub
 
 Sub WOTaskSubmit(rs)
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="WOTasks"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="wopk" value="<% =WOPK %>"/>
@@ -3733,7 +3734,7 @@ Sub WOTasks()
 	Dim db, sql, rs, woid, reason, assetid, assetname, photo
 	Dim CheckBoxType, FromAsset
 
-	CardTitle = "WO Tasks"
+	CardTitle = "Aufgaben des AA"
 	CardCurrent = "WOTasks"
 	CardCurrentLevel = GetCardLevel()
 
@@ -3869,18 +3870,18 @@ Sub WOTasks()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("self.location.href = 'default.asp?card=wooptions&amp;s=" & SessionID & "&amp;wopk=" & wopk & "';")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and False Then
-			Call OutputWAPMsg("No Tasks Found")
+			Call OutputWAPMsg("Keine Aufgaben gefunden")
 		Else
 		%>
 			<% If Not FromAsset Then %>
 				<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 					<div style='float:left; padding-left:4px; padding-top:2px; font-size:16pt;' class='Font1' onclick="location.href = 'default.asp?card=<% =GetSession("ParentCard" & (CardCurrentLevel-1)) %>&amp;s=<% =SessionID %>&amp;back=1';">
-						WO #<% =WOID %>
+						AA Nr.<% =WOID %>
 					</div>
-					<div style='float:right; padding-top:5px;'>Work Order Tasks</div>
+					<div style='float:right; padding-top:5px;'>Aufgaben des Arbeitsauftrags</div>
 					<div style='clear:both;'></div>
 				</div>
 
@@ -3919,7 +3920,7 @@ Sub WOTasks()
 						If False and (IsPocketIE or IsBlackBerry) Then %>
 						<p align="center" mode="wrap"><%
 						End If %>
-						WO #<% =wopkc %><br/><%
+						AA Nr.<% =wopkc %><br/><%
 						If False and (IsPocketIE or IsBlackBerry) Then
 						Response.Write "</p>"
 						End If
@@ -3960,11 +3961,11 @@ Sub WOTasks()
 					If rs("Spec") and Not NullCheck(rs("ValueLow")) = "" and Not NullCheck(rs("Measurement")) = "" Then
 						If IsNumeric(rs("Measurement")) and IsNumeric(rs("ValueLow")) Then
 							If CLng(rs("Measurement")) < CLng(rs("ValueLow")) Then
-								TaskText3 = " (Below minimum value of " & rs("ValueLow") & ")"
+								TaskText3 = " (Unter Minimalwert von " & rs("ValueLow") & ")"
 								LineTemplate2 = 11
 							Else
 								SpecLowOK = True
-								SpecText = SpecText & "Minimum Value: " & rs("ValueLow") & " "
+								SpecText = SpecText & "Minimaler Wert: " & rs("ValueLow") & " "
 							End If
 						End If
 					End If
@@ -3972,13 +3973,13 @@ Sub WOTasks()
 						If IsNumeric(rs("Measurement")) and IsNumeric(rs("ValueHi")) Then
 							If CLng(rs("Measurement")) > CLng(rs("ValueHi")) Then
 								LineTemplate2 = 11
-								TaskText3 = " (Above maximum value of " & rs("ValueHi") & ")"
+								TaskText3 = " (Über Maximalwert von " & rs("ValueHi") & ")"
 							Else
 								SpecHiOK = True
 								If SpecText = "" Then
-									SpecText = SpecText & "Maximum Value: " & rs("ValueLow")
+									SpecText = SpecText & "Maximaler Wert: " & rs("ValueLow")
 								Else
-									SpecText = "Range: " & rs("ValueLow") & " - " & rs("ValueHi")
+									SpecText = "Umfang: " & rs("ValueLow") & " - " & rs("ValueHi")
 								End If
 							End If
 						End If
@@ -4075,11 +4076,11 @@ Sub WOTasks()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -4100,7 +4101,7 @@ Sub WOLaborRec()
 
     newcontextpage = True
 
-	CardTitle = "WO Labor"
+	CardTitle = "AA Arbeiter"
 	CardCurrent = "WOLaborRec"
 	CardCurrentLevel = GetCardLevel()
 
@@ -4182,17 +4183,17 @@ Sub WOLaborRec()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("self.location.href = 'default.asp?card=wooptions&amp;s=" & SessionID & "&amp;wopk=" & wopk & "&amp;back=2';")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and Not PK = "-1" Then
-			Call OutputWAPMsg("The Labor was not found")
+			Call OutputWAPMsg("Arbeiter nicht gefunden")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
 			<% If PK = "-1" Then %>
-				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>New Labor</div>
+				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Neuer Arbeiter</div>
 			<%Else%>
-				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'><% =WAPValidate(NullCheck(rs("LaborName"))) %>: [<% =NullCheck(RS("EstimatedHours")) & " Est] [" & NullCheck(RS("TotalHours")) & " Actual" & "] " & DateNullCheck(RS("WorkDate")) %></div>
+				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'><% =WAPValidate(NullCheck(rs("LaborName"))) %>: [<% =NullCheck(RS("EstimatedHours")) & " Est] [" & NullCheck(RS("TotalHours")) & "Tats&#228;chlich" & "] " & DateNullCheck(RS("WorkDate")) %></div>
 			<%End If%>
 			<div style='clear:both;'></div>
 			</div>
@@ -4234,7 +4235,7 @@ Sub WOLaborRecSubmit(rs)
 	Call OutputButtonOrLinkEnd("")
 	Else
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="WOLabor"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="wopk" value="<% =WOPK %>"/>
@@ -4280,7 +4281,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Labor ID was not found."
+						HeaderMSG = "Arbeiter-ID konnte nicht gefunden werden."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4306,7 +4307,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not NullCheck(Request("RegularHours")) = "" Then
 					rs("RegularHours") = NullCheck(Request("RegularHours"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Regular Hours is invalid."
+						HeaderMSG = "Der Wert f&#252;r Regul&#228;re Stunden ist ung&#252;ltig."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4317,7 +4318,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not NullCheck(Request("OvertimeHours")) = "" Then
 					rs("OvertimeHours") =	NullCheck(Request("OvertimeHours"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Overtime Hours is invalid."
+						HeaderMSG = "Der Wert f&#252;r Überstunden ist ung&#252;ltig."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4328,7 +4329,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not NullCheck(Request("OtherHours")) = "" Then
 					rs("OtherHours") =	NullCheck(Request("OtherHours"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Other Hours is invalid."
+						HeaderMSG = "Der Wert f&#252;r Weitere Stunden ist ung&#252;ltig."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4339,7 +4340,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not WorkDate = "" Then
 					rs("WorkDate") = WorkDate
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Work Date is invalid."
+						HeaderMSG = "Der Wert f&#252;r Arbeitsdatum ist ung&#252;ltig."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4350,7 +4351,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not NullCheck(Request("TimeIn")) = "" Then
 					rs("TimeIn") =	NullCheck(Request("TimeIn"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Time In is invalid."
+						HeaderMSG = "Der Wert f&#252;r Zeit ist ung&#252;ltig."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4361,7 +4362,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				If Not NullCheck(Request("TimeOut")) = "" Then
 					rs("TimeOut") =	NullCheck(Request("TimeOut"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Time Out is invalid."
+						HeaderMSG = "Der Wert f&#252;r Zeitlimit ist ung&#252;ltig."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4374,7 +4375,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Account ID was not found."
+						HeaderMSG = "Keine Kostenstelle gefunden."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4386,7 +4387,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 						rs("AccountName") = rs2("AccountName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Account ID is invalid."
+						HeaderMSG = "Die angegebene Kostenstelle-ID ist ung&#252;ltig."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4399,7 +4400,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Category ID was not found."
+						HeaderMSG = "Kategorien-ID konnte nicht gefunden werden."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4411,7 +4412,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 						rs("CategoryName") = rs2("CategoryName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Category ID is invalid."
+						HeaderMSG = "Der Wert f&#252;r Kategorie-ID ist ung&#252;ltig."
 						If Not FromClose Then
 							WOLaborRec
 						Else
@@ -4423,7 +4424,7 @@ Sub WOLaborRecSave(ByRef db, FromClose, LaborID)
 				    rs("Comments") = NullCheck(Request("Comments"))
 			    End If
 			    If Err.Number <> 0 Then
-				    HeaderMSG = "The value provided for Comments is invalid."
+				    HeaderMSG = "Der Wert f&#252;r Kommentare ist ung&#252;ltig."
 					If Not FromClose Then
 						WOLaborRec
 					Else
@@ -4457,7 +4458,7 @@ Sub WOLabor()
 	Dim db, sql, rs, woid, reason, assetid, assetname, photo
 	Dim CheckBoxType
 
-	CardTitle = "WO Labor"
+	CardTitle = "AA Arbeiter"
 	CardCurrent = "WOLabor"
 	CardCurrentLevel = GetCardLevel()
 
@@ -4540,15 +4541,15 @@ Sub WOLabor()
 
 	headerString = GetBackButton("self.location.href = 'default.asp?card=wooptions&amp;s=" & SessionID & "&amp;wopk=" & wopk & "&amp;back=2';")
 	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=WOLaborRec&s=" & SessionID & "&wopk=" & wopk & "&pk=-1';"" style='float:left; padding-right:10px; padding-top:6px;'><img src='images/icons/48/add.png' alt='New' title='New' style='border:none; cursor:pointer; width:42px; height:42px;' /></div>"
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 
 		If rs.eof and False Then
-			Call OutputWAPMsg("No Labor Found")
+			Call OutputWAPMsg("Kein Arbeiter gefunden")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
-			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>WO Labor</div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
+			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>AA Arbeiter</div>
 			<div style='clear:both;'></div>
 			</div>
 			<% If Not AssetPK = "" Then %>
@@ -4590,7 +4591,7 @@ Sub WOLabor()
 					<div style='float:left;cursor:pointer;' onclick="<%=returnurl%>">
 						<% =WAPValidate(NullCheck(rs("LaborName"))) %>
 					</div>
-					<div style=' font-size:14pt;float:right;cursor:pointer;' onclick="<%=returnurl%>"><% =NullCheck(RS("EstimatedHours")) %>&nbsp;Est Hour(s)&nbsp;&nbsp;-&nbsp;&nbsp;<% =NullCheck(RS("TotalHours")) %>&nbsp;Total Hour(s)</div>
+					<div style=' font-size:14pt;float:right;cursor:pointer;' onclick="<%=returnurl%>"><% =NullCheck(RS("EstimatedHours")) %>&nbsp;Gesch&#228;tzte Stunde(n)&nbsp;&nbsp;-&nbsp;&nbsp;<% =NullCheck(RS("TotalHours")) %>&nbsp;Gesamtstunde(n)</div>
 					<div style='clear:both;'></div>
 				</div>
 
@@ -4612,11 +4613,11 @@ Sub WOLabor()
 		%><div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -4636,7 +4637,7 @@ Sub WOPartRec()
 
     newcontextpage = True
 
-	CardTitle = "WO Material"
+	CardTitle = "AA Material"
 	CardCurrent = "WOPartRec"
 	CardCurrentLevel = GetCardLevel()
 
@@ -4720,7 +4721,7 @@ Sub WOPartRec()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("self.location.href = 'default.asp?card=wooptions&amp;s=" & SessionID & "&amp;wopk=" & wopk & "&amp;back=2';")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 	%>
 		<script type='text/javascript'>
@@ -4733,14 +4734,14 @@ Sub WOPartRec()
 		</script>
 	<%
 		If rs.eof and Not PK = "-1" Then
-			Call OutputWAPMsg("The Item was not found")
+			Call OutputWAPMsg("Artikel konnte nicht gefunden werden")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
 			<% If PK = "-1" Then %>
-				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>New Item</div>
+				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Neuer Artikel</div>
 			<%Else%>
-				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>[<% =WAPValidate(NullCheck(rs("PartID"))) %>] [<% =WAPValidate(NullCheck(rs("PartName"))) %>] [<% =WAPValidate(NullCheck(RS("LocationID"))) %>] [<% =WAPValidate(NullCheck(RS("QuantityEstimated"))) %>&nbsp;Est] [<% =WAPValidate(NullCheck(RS("QuantityActual"))) %>&nbsp;Actual]</div>
+				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>[<% =WAPValidate(NullCheck(rs("PartID"))) %>] [<% =WAPValidate(NullCheck(rs("PartName"))) %>] [<% =WAPValidate(NullCheck(RS("LocationID"))) %>] [<% =WAPValidate(NullCheck(RS("QuantityEstimated"))) %>&nbsp;Gesch&#228;tzt] [<% =WAPValidate(NullCheck(RS("QuantityActual"))) %>&nbsp;Tats&#228;chlich]</div>
 			<%End If%>
 			<div style='clear:both;'></div>
 			</div>
@@ -4781,7 +4782,7 @@ Sub WOPartRecSubmit(rs)
 	Call OutputButtonOrLinkEnd("")
 	Else
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="WOPart"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="wopk" value="<% =WOPK %>"/>
@@ -4814,7 +4815,7 @@ Sub WOPartRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Part ID was not found."
+						HeaderMSG = "Artikel-ID konnte nicht gefunden werden."
 						WOPartRec
 					Else
 						If pk = "-1" Then
@@ -4833,7 +4834,7 @@ Sub WOPartRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Location ID was not found."
+						HeaderMSG = "Standort-ID konnte nicht gefunden werden."
 						WOPartRec
 					Else
 						rs("LocationPK") = rs2("LocationPK")
@@ -4842,7 +4843,7 @@ Sub WOPartRecSave(ByRef db)
 						LocationPK = rs2("LocationPK")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Location ID is invalid."
+						HeaderMSG = "Der Wert f&#252;r Standort-ID ist ung&#252;ltig."
 						WOPartRec
 					End If
 					If Not PartPK = "" and Not LocationPK = "" Then
@@ -4875,14 +4876,14 @@ Sub WOPartRecSave(ByRef db)
 				If Not NullCheck(Request("QuantityActual")) = "" Then
 					rs("QuantityActual") = NullCheck(Request("QuantityActual"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Actual Qty is invalid."
+						HeaderMSG = "Der Wert f&#252;r Tats&#228;chliche Menge ist ung&#252;ltig."
 						WOPartRec
 					End If
 				End If
 				If Not NullCheck(Request("OtherCost")) = "" Then
 					rs("OtherCost") =	NullCheck(Request("OtherCost"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Other Cost is invalid."
+						HeaderMSG = "Der Wert f&#252;r Weitere Kosten ist ung&#252;ltig."
 						WOPartRec
 					End If
 				End If
@@ -4891,7 +4892,7 @@ Sub WOPartRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Account ID was not found."
+						HeaderMSG = "Keine Kostenstelle gefunden."
 						WOPartRec
 					Else
 						rs("AccountPK") = rs2("AccountPK")
@@ -4899,7 +4900,7 @@ Sub WOPartRecSave(ByRef db)
 						rs("AccountName") = rs2("AccountName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Account ID is invalid."
+						HeaderMSG = "Die angegebene Kostenstelle-ID ist ung&#252;ltig."
 						WOPartRec
 					End If
 				End If
@@ -4908,7 +4909,7 @@ Sub WOPartRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Category ID was not found."
+						HeaderMSG = "Kategorien-ID konnte nicht gefunden werden."
 						WOPartRec
 					Else
 						rs("CategoryPK") = rs2("CategoryPK")
@@ -4916,14 +4917,14 @@ Sub WOPartRecSave(ByRef db)
 						rs("CategoryName") = rs2("CategoryName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Category ID is invalid."
+						HeaderMSG = "Der Wert f&#252;r Kategorie-ID ist ung&#252;ltig."
 						WOPartRec
 					End If
 				End If
 				If Not NullCheck(Request("Serial")) = "" Then
 					rs("Serial") =	NullCheck(Request("Serial"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Serial # is invalid."
+						HeaderMSG = "Der Wert f&#252;r Seriennummer ist ung&#252;ltig."
 						WOPartRec
 					End If
 				End If
@@ -4940,7 +4941,7 @@ Sub WOPartRecSave(ByRef db)
 				If Not NullCheck(Request("SerialReplaced")) = "" Then
 					rs("SerialReplaced") =	NullCheck(Request("SerialReplaced"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Existing Serial # is invalid."
+						HeaderMSG = "Der Wert f&#252;r vorhandene Seriennummer ist ung&#252;ltig."
 						WOPartRec
 					End If
 				End If
@@ -4949,13 +4950,13 @@ Sub WOPartRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Move Existing to Location was not found."
+						HeaderMSG = "Vorhandenes zum Standort bewegen' konnte nicht gefunden werden."
 						WOPartRec
 					Else
 						rs("SerialReplaceToLocationID") = NullCheck(Request("SerialReplaceToLocationID"))
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Move Existing to Location is invalid."
+						HeaderMSG = "Der Wert f&#252;r Vorhandenes zum Standort Verschieben ist ung&#252;ltig."
 						WOPartRec
 					End If
 				End If
@@ -4980,7 +4981,7 @@ Sub WOPart()
 	Dim db, sql, rs, woid, reason, assetid, assetname, photo
 	Dim CheckBoxType
 
-	CardTitle = "WO Materials"
+	CardTitle = "AA Materialien"
 	CardCurrent = "WOPart"
 	CardCurrentLevel = GetCardLevel()
 
@@ -5060,15 +5061,15 @@ Sub WOPart()
     End If
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("self.location.href = 'default.asp?card=wooptions&amp;s=" & SessionID & "&amp;wopk=" & wopk & "&amp;back=2';")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=WOPartRec&amp;s=" & SessionID & "&amp;wopk=" & wopk & "&amp;pk=-1';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Add.png' alt='Add' title='Add' style='border:none; cursor:pointer;' /></div>"
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=WOPartRec&amp;s=" & SessionID & "&amp;wopk=" & wopk & "&amp;pk=-1';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Add.png' alt='Hinzuf&#252;gen' title='Hinzuf&#252;gen' style='border:none; cursor:pointer;' /></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and False Then
 			Call OutputWAPMsg("No Materials were Found")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
-			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Materials</div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
+			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Materialien</div>
 			<div style='clear:both;'></div>
 			</div>
 			<% If Not AssetPK = "" Then %>
@@ -5099,7 +5100,7 @@ Sub WOPart()
 					<div><% =WAPValidate(NullCheck(rs("PartID"))) %>: <% =WAPValidate(NullCheck(rs("PartName"))) %></div>
 					<div class='Font2' style='font-size:12pt;'><% =WAPValidate(NullCheck(RS("LocationID"))) %></div>
 				</div>
-				<div style=' font-size:14pt;float:right;cursor:pointer;' onclick="<%=returnurl%>"><% =WAPValidate(NullCheck(RS("QuantityEstimated"))) %>&nbsp;Est&nbsp;&nbsp;|&nbsp;&nbsp;<% =WAPValidate(NullCheck(RS("QuantityActual"))) %>&nbsp;Actual</div>
+				<div style=' font-size:14pt;float:right;cursor:pointer;' onclick="<%=returnurl%>"><% =WAPValidate(NullCheck(RS("QuantityEstimated"))) %>&nbsp;Gesch&#228;tzt&nbsp;&nbsp;|&nbsp;&nbsp;<% =WAPValidate(NullCheck(RS("QuantityActual"))) %>&nbsp;Tats&#228;chlich</div>
 				<div style='clear:both;'></div>
 			</div>
 
@@ -5123,11 +5124,11 @@ Sub WOPart()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -5148,7 +5149,7 @@ Sub WOMiscCostRec()
 
     newcontextpage = True
 
-	CardTitle = "WO Other Cost"
+	CardTitle = "Weitere Kosten des AA"
 	CardCurrent = "WOMiscCostRec"
 	CardCurrentLevel = GetCardLevel()
 
@@ -5224,17 +5225,17 @@ Sub WOMiscCostRec()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("self.location.href = 'default.asp?card=wooptions&amp;s=" & SessionID & "&amp;wopk=" & wopk & "&amp;back=2';")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and Not PK = "-1" Then
-			Call OutputWAPMsg("The Other Cost was not found")
+			Call OutputWAPMsg("Weitere Kosten konnte nicht gefunden werden")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
 			<% If PK = "-1" Then %>
-				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>New Other Cost</div>
+				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Neue Weitere Kosten</div>
 			<%Else%>
-				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>[<% =WAPValidate(NullCheck(rs("MiscCostName"))) %>] [<% =DateNullCheck(RS("MiscCostDate")) %>] [<% =FormatNumber(WAPValidate(NullCheck(RS("EstimatedCost"))),2,-2,0,0) %>&nbsp;Est] [<% =FormatNumber(WAPValidate(NullCheck(RS("ActualCost"))),2,-2,0,0) %>&nbsp;Actual]</div>
+				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>[<% =WAPValidate(NullCheck(rs("MiscCostName"))) %>] [<% =DateNullCheck(RS("MiscCostDate")) %>] [<% =FormatNumber(WAPValidate(NullCheck(RS("EstimatedCost"))),2,-2,0,0) %>&nbsp;Gesch&#228;tzt] [<% =FormatNumber(WAPValidate(NullCheck(RS("ActualCost"))),2,-2,0,0) %>&nbsp;Tats&#228;chlich]</div>
 			<%End If%>
 			<div style='clear:both;'></div>
 			</div>
@@ -5275,7 +5276,7 @@ Sub WOMiscCostRecSubmit(rs)
 	Call OutputButtonOrLinkEnd("")
 	Else
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="WOMiscCost"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="wopk" value="<% =WOPK %>"/>
@@ -5309,14 +5310,14 @@ Sub WOMiscCostRecSave(ByRef db)
 				If Not NullCheck(Request("MiscCostName")) = "" Then
 					rs("MiscCostName") = NullCheck(Request("MiscCostName"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Name is invalid."
+						HeaderMSG = "Der Wert f&#252;r Name ist ung&#252;ltig."
 						WOMiscCostRec
 					End If
 				End If
 				If Not NullCheck(Request("MiscCostDesc")) = "" Then
 					rs("MiscCostDesc") = NullCheck(Request("MiscCostDesc"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Description is invalid."
+						HeaderMSG = "Der Wert f&#252;r Beschreibung ist ung&#252;ltig."
 						WOMiscCostRec
 					End If
 				End If
@@ -5325,7 +5326,7 @@ Sub WOMiscCostRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Company ID was not found."
+						HeaderMSG = "Firmen-ID konnte nicht gefunden werden."
 						WOMiscCostRec
 					Else
 						rs("CompanyPK") = rs2("CompanyPK")
@@ -5333,7 +5334,7 @@ Sub WOMiscCostRecSave(ByRef db)
 						rs("CompanyName") = rs2("CompanyName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Company ID is invalid."
+						HeaderMSG = "Der Wert f&#252;r Firmen-ID ist ung&#252;ltig."
 						WOMiscCostRec
 					End If
 				End If
@@ -5342,7 +5343,7 @@ Sub WOMiscCostRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Labor ID was not found."
+						HeaderMSG = "Arbeiter-ID konnte nicht gefunden werden."
 						WOMiscCostRec
 					Else
 						rs("LaborPK") = rs2("LaborPK")
@@ -5350,21 +5351,21 @@ Sub WOMiscCostRecSave(ByRef db)
 						rs("LaborName") = rs2("LaborName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Labor ID is invalid."
+						HeaderMSG = "Der Wert f&#252;r Arbeiter-ID ist ung&#252;ltig."
 						WOMiscCostRec
 					End If
 				End If
 				If Not NullCheck(Request("InvoiceNumber")) = "" Then
 					rs("InvoiceNumber") = NullCheck(Request("InvoiceNumber"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Invoice # is invalid."
+						HeaderMSG = "Der Wert f&#252;r Rechnungsnummer ist ung&#252;ltig."
 						WOMiscCostRec
 					End If
 				End If
 				If Not NullCheck(Request("MiscCostDate")) = "" Then
 					rs("MiscCostDate") = SQLdatetimeADO(Request("MiscCostDate"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Date is invalid."
+						HeaderMSG = "Das angegebene Datum ist ung&#252;ltig."
 						WOMiscCostRec
 					End If
 				End If
@@ -5373,7 +5374,7 @@ Sub WOMiscCostRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Account ID was not found."
+						HeaderMSG = "Keine Kostenstelle gefunden."
 						WOMiscCostRec
 					Else
 						rs("AccountPK") = rs2("AccountPK")
@@ -5381,7 +5382,7 @@ Sub WOMiscCostRecSave(ByRef db)
 						rs("AccountName") = rs2("AccountName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Account ID is invalid."
+						HeaderMSG = "Die angegebene Kostenstelle-ID ist ung&#252;ltig."
 						WOMiscCostRec
 					End If
 				End If
@@ -5390,7 +5391,7 @@ Sub WOMiscCostRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Category ID was not found."
+						HeaderMSG = "Kategorien-ID konnte nicht gefunden werden."
 						WOMiscCostRec
 					Else
 						rs("CategoryPK") = rs2("CategoryPK")
@@ -5398,14 +5399,14 @@ Sub WOMiscCostRecSave(ByRef db)
 						rs("CategoryName") = rs2("CategoryName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Category ID is invalid."
+						HeaderMSG = "Der Wert f&#252;r Kategorie-ID ist ung&#252;ltig."
 						WOMiscCostRec
 					End If
 				End If
 				If Not NullCheck(Request("ActualCost")) = "" Then
 					rs("ActualCost") = NullCheck(Request("ActualCost"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Actual Cost is invalid."
+						HeaderMSG = "Der Wert f&#252;r Tats&#228;chliche Kosten ist ung&#252;ltig."
 						WOMiscCostRec
 					End If
 				End If
@@ -5413,7 +5414,7 @@ Sub WOMiscCostRecSave(ByRef db)
 					rs("Comments") =	NullCheck(Request("Comments"))
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Comments is invalid."
+					HeaderMSG = "Der Wert f&#252;r Kommentare ist ung&#252;ltig."
 					WOMiscCostRec
 				End If
 				On Error Goto 0
@@ -5423,7 +5424,7 @@ Sub WOMiscCostRecSave(ByRef db)
 				'pl = rs("pk")
 			Else
 				If InStr(db.derror,"NULL") > 0 Then
-					HeaderMSG = "A value must be provided for Name."
+					HeaderMSG = "Muss mit einem Wert f&#252;r Namen versehen werden."
 					WOMiscCostRec
 				Else
 					Call OutputWAPError(db.derror)
@@ -5442,7 +5443,7 @@ Sub WOMiscCost()
 	Dim db, sql, rs, woid, reason, assetid, assetname, photo
 	Dim CheckBoxType
 
-	CardTitle = "WO Other Costs"
+	CardTitle = "Weitere Kosten des AA"
 	CardCurrent = "WOMiscCost"
 	CardCurrentLevel = GetCardLevel()
 
@@ -5522,14 +5523,14 @@ Sub WOMiscCost()
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("self.location.href = 'default.asp?card=wooptions&amp;s=" & SessionID & "&amp;wopk=" & wopk & "';")
 	headerString = headerString & GetAddButton("self.location.href = 'default.asp?card=WOMiscCostRec&amp;s=" & SessionID & "&amp;wopk=" & wopk & "&pk=-1';")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and False Then
-			Call OutputWAPMsg("No Other Costs were Found")
+			Call OutputWAPMsg("Keine weiteren Kosten gefunden")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
-			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Other Costs</div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
+			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Weitere Kosten</div>
 			<div style='clear:both;'></div>
 			</div>
 			<% If Not AssetPK = "" Then %>
@@ -5561,7 +5562,7 @@ Sub WOMiscCost()
 					<div><% =WAPValidate(NullCheck(rs("MiscCostName"))) %></div>
 					<div class='Font2' style='font-size:12pt;'><% =DateNullCheck(RS("MiscCostDate")) %></div>
 				</div>
-				<div style=' font-size:14pt;float:right;cursor:pointer;' onclick="<%=returnurl%>"><% =FormatNumber(WAPValidate(NullCheck(RS("EstimatedCost"))),2,-2,0,0) %>&nbsp;Est&nbsp;&nbsp;-&nbsp;&nbsp;<% =FormatNumber(WAPValidate(NullCheck(RS("ActualCost"))),2,-2,0,0) %>&nbsp;Actual</div>
+				<div style=' font-size:14pt;float:right;cursor:pointer;' onclick="<%=returnurl%>"><% =FormatNumber(WAPValidate(NullCheck(RS("EstimatedCost"))),2,-2,0,0) %>&nbsp;Gesch&#228;tzt&nbsp;&nbsp;-&nbsp;&nbsp;<% =FormatNumber(WAPValidate(NullCheck(RS("ActualCost"))),2,-2,0,0) %>&nbsp;Tats&#228;chlich</div>
 				<div style='clear:both;'></div>
 			</div>
 
@@ -5582,11 +5583,11 @@ Sub WOMiscCost()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -5608,7 +5609,7 @@ Sub ASSpecsRec()
 
     newcontextpage = True
 
-	CardTitle = "Asset Specification"
+	CardTitle = "Ausr&#252;stungsspezifizierung"
 	CardCurrent = "ASSpecsRec"
 	CardCurrentLevel = GetCardLevel()
 
@@ -5666,7 +5667,7 @@ Sub ASSpecsRec()
                 parentequipmentall = parentequipmentall & "<br/>"
             End If
 	    Else
-		    Call OutputWAPError("The Asset was not found.")
+		    Call OutputWAPError("Keine Ausr&#252;stung gefunden.")
 	    End If
 
 	    sql = _
@@ -5691,18 +5692,18 @@ Sub ASSpecsRec()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back();")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 
 		If rseof and Not AssetPK = "-1" Then
-			Call OutputWAPMsg("The Asset Specification was not found")
+			Call OutputWAPMsg("Ausr&#252;stungsspezifizierung nicht gefunden")
 		Else %>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div style='float:left;'>
 				<% =ParentLocationAll %><% =ParentEquipmentAll %><% =AssetName %> (<% =AssetID %>)
 			</div>
 			<div style='float:right;'>
-				Specification: <%=SpecificationName%>
+				Spezifizierung: <%=SpecificationName%>
 			</div>
 			<div style='clear:both;'></div>
 		</div>
@@ -5735,7 +5736,7 @@ Sub ASSpecsSubmit(rs)
 	Call OutputButtonOrLinkEnd("")
 	Else
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="ASSpecs"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="Assetpk" value="<% =AssetPK %>"/>
@@ -5791,7 +5792,7 @@ Sub ASSpecs()
 	Dim db, sql, rs, ASE, assetid, assetname, photo, parentlocationall, parentequipmentall, newrec, IsLocation, rseof
 	Dim CheckBoxType
 
-	CardTitle = "Asset Specifications"
+	CardTitle = "Ausr&#252;stungsspezifizierungen"
 	CardCurrent = "ASSpecs"
 	CardCurrentLevel = GetCardLevel()
 
@@ -5832,7 +5833,7 @@ Sub ASSpecs()
             parentequipmentall = parentequipmentall & "<br/>"
         End If
     Else
-	    Call OutputWAPError("The Asset was not found.")
+	    Call OutputWAPError("Keine Ausr&#252;stung gefunden.")
     End If
 
 	sql = _
@@ -5858,17 +5859,17 @@ Sub ASSpecs()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back();")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and False Then
-			Call OutputWAPMsg("No Specifications were Found")
+			Call OutputWAPMsg("Keine Spezifikationen gefunden")
 		Else %>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div style='float:left;'>
 				<% =ParentLocationAll %><% =ParentEquipmentAll %><% =AssetName %> (<% =AssetID %>)
 			</div>
 			<div style='float:right;'>
-				Specifications
+				Spezifizierung
 			</div>
 			<div style='clear:both;'></div>
 		</div>
@@ -5943,11 +5944,11 @@ Sub ASSpecs()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&assetpk=<%=assetpk%>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&assetpk=<%=assetpk%>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&assetpk=<%=assetpk%>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&assetpk=<%=assetpk%>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -5967,7 +5968,7 @@ Sub ASLaborRec()
 
     newcontextpage = True
 
-	CardTitle = "Asset Labor / Contacts"
+	CardTitle = "Ausr&#252;stung Arbeiter / Kontakte"
 	CardCurrent = "ASLaborRec"
 	CardCurrentLevel = GetCardLevel()
 
@@ -6014,7 +6015,7 @@ Sub ASLaborRec()
                 parentequipmentall = parentequipmentall & "<br/>"
             End If
 	    Else
-		    Call OutputWAPError("The Asset was not found.")
+		    Call OutputWAPError("Keine Ausr&#252;stung gefunden.")
 	    End If
 
 	    sql = _
@@ -6047,16 +6048,16 @@ Sub ASLaborRec()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rseof and Not AssetPK = "-1" Then
-			Call OutputWAPMsg("The Asset Labor / Contact was not found")
+			Call OutputWAPMsg("Ausr&#252;stungs-Arbeiter / Kontakt konnte nicht gefunden werden")
 		Else %>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div style='float:left;'>
 				<% =ParentLocationAll %><% =ParentEquipmentAll %><% =AssetName %> (<% =AssetID %>)
 			</div>
-			<div style='float:right;'>Labor Record</div>
+			<div style='float:right;'>Arbeiter-Daten</div>
 			<div style='clear:both;'></div>
 		</div>
 		<div style='padding:8px;'>
@@ -6091,7 +6092,7 @@ Sub ASLaborSubmit(rs)
 	Call OutputButtonOrLinkEnd("")
 	Else
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="ASSpecs"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="Assetpk" value="<% =AssetPK %>"/>
@@ -6143,7 +6144,7 @@ Sub ASLabor()
 	Dim db, sql, rs, ASE, assetid, assetname, photo, parentlocationall, parentequipmentall, newrec, IsLocation, rseof
 	Dim CheckBoxType
 
-	CardTitle = "Asset Labor / Contacts"
+	CardTitle = "Ausr&#252;stung Arbeiter / Kontakte"
 	CardCurrent = "ASLabor"
 	CardCurrentLevel = GetCardLevel()
 
@@ -6194,7 +6195,7 @@ Sub ASLabor()
             parentequipmentall = parentequipmentall & "<br/>"
         End If
     Else
-	    Call OutputWAPError("The Asset was not found.")
+	    Call OutputWAPError("Keine Ausr&#252;stung gefunden.")
     End If
 
 	sql = _
@@ -6224,18 +6225,18 @@ Sub ASLabor()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 
 		If rs.eof and False Then
-			Call OutputWAPMsg("No Specifications were Found")
+			Call OutputWAPMsg("Keine Spezifikationen gefunden")
 		Else %>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<div style='float:left;'>
 				<% =ParentLocationAll %><% =ParentEquipmentAll %><% =AssetName %> (<% =AssetID %>)
 			</div>
 			<div style='float:right;'>
-				Labor/Contacts
+				Arbeiter / Kontakte
 			</div>
 			<div style='clear:both;'></div>
 		</div>
@@ -6262,7 +6263,7 @@ Sub ASLabor()
 				<div style='float:left;cursor:pointer;' onclick="<%=returnurl%>">
 					<% =WAPValidate(NullCheck(rs("LaborName"))) %>
 				</div>
-				<div style=' font-size:14pt;float:right;cursor:pointer;' onclick="<%=returnurl%>">Work:&nbsp;<% =WAPValidate(NullCheck(rs("PhoneWork"))) %>&nbsp;&nbsp;-&nbsp;&nbsp;Mobile:&nbsp;<% =NullCheck(RS("PhoneMobile")) %></div>
+				<div style=' font-size:14pt;float:right;cursor:pointer;' onclick="<%=returnurl%>">Arbeit:&nbsp;<% =WAPValidate(NullCheck(rs("PhoneWork"))) %>&nbsp;&nbsp;-&nbsp;&nbsp;Mobil:&nbsp;<% =NullCheck(RS("PhoneMobile")) %></div>
 				<div style='clear:both;'></div>
 			</div>
 
@@ -6283,11 +6284,11 @@ Sub ASLabor()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&assetpk=<%=assetpk%>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&assetpk=<%=assetpk%>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&assetpk=<%=assetpk%>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&assetpk=<%=assetpk%>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -6308,7 +6309,7 @@ Sub WOAssignRec()
 
     newcontextpage = True
 
-	CardTitle = "WO Assign"
+	CardTitle = "AA Zuweisen"
 	CardCurrent = "WOAssignRec"
 	CardCurrentLevel = GetCardLevel()
 
@@ -6388,17 +6389,17 @@ Sub WOAssignRec()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("self.location.href = 'default.asp?card=wooptions&amp;s=" & SessionID & "&amp;wopk=" & wopk & "&amp;back=2';")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and Not PK = "-1" Then
-			Call OutputWAPMsg("The Assignment was not found")
+			Call OutputWAPMsg("Zuweisung nicht gefunden")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
 			<% If PK = "-1" Then %>
-				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>New Assignment</div>
+				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>Neue Auftragszuweisung</div>
 			<%Else%>
-				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>[<% =WAPValidate(NullCheck(rs("LaborName"))) %>] [<% =DateNullCheck(RS("AssignedDate")) %>] [<% =NullCheck(RS("AssignedHours")) %>&nbsp;Hour(s)]</div>
+				<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>[<% =WAPValidate(NullCheck(rs("LaborName"))) %>] [<% =DateNullCheck(RS("AssignedDate")) %>] [<% =NullCheck(RS("AssignedHours")) %>&nbsp;Stunde(n)]</div>
 			<%End If%>
 			<div style='clear:both;'></div>
 			</div>
@@ -6439,7 +6440,7 @@ Sub WOAssignRecSubmit(rs)
 	Call OutputButtonOrLinkEnd("")
 	Else
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="WOAssign"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="wopk" value="<% =WOPK %>"/>
@@ -6475,7 +6476,7 @@ Sub WOAssignRecSave(ByRef db)
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Labor ID was not found."
+						HeaderMSG = "Arbeiter-ID konnte nicht gefunden werden."
 						WOAssignRec
 					Else
 						rs("LaborPK") = rs2("LaborPK")
@@ -6483,28 +6484,28 @@ Sub WOAssignRecSave(ByRef db)
 						rs("LaborName") = rs2("LaborName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Labor ID is invalid."
+						HeaderMSG = "Der Wert f&#252;r Arbeiter-ID ist ung&#252;ltig."
 						WOAssignRec
 					End If
 				End If
 				If Not NullCheck(Request("AssignedDate")) = "" Then
 					rs("AssignedDate") = SQLdatetimeADO(Request("AssignedDate"))
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Assigned Date is invalid."
+						HeaderMSG = "Das zugeordnete Datum ist ung&#252;ltig."
 						WOAssignRec
 					End If
 				Else
-					HeaderMSG = "A value must be provided for Assigned Date."
+					HeaderMSG = "Muss mit einem Wert f&#252;r die Vergabe von Datum versehen werden."
 					WOAssignRec
 				End If
 				If Not NullCheck(Request("AssignedHours")) = "" Then
 				    rs("AssignedHours") = Request("AssignedHours")
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Assigned Hours is invalid."
+						HeaderMSG = "Der Wert f&#252;r zugeordnete Stunden ist ung&#252;ltig."
 						WOAssignRec
 					End If
 				Else
-					HeaderMSG = "A value must be provided for Assigned Hours."
+					HeaderMSG = "Muss mit einem Wert f&#252;r die Vergabe von Stunden versehen werden."
 					WOAssignRec
 				End If
 				If Not NullCheck(Request("AssignedLead")) = "" Then
@@ -6514,7 +6515,7 @@ Sub WOAssignRecSave(ByRef db)
 				        rs("AssignedLead") = False
 				    End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Assigned Lead is invalid."
+						HeaderMSG = "Der Wert f&#252;r die zugeordnete F&#252;hrung ist ung&#252;ltig."
 						WOAssignRec
 					End If
 				End If
@@ -6525,7 +6526,7 @@ Sub WOAssignRecSave(ByRef db)
 				        rs("AssignedPDA") = False
 				    End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Assigned PDA is invalid."
+						HeaderMSG = "Der Wert f&#252;r die zugeordnete PDA ist ung&#252;ltig."
 						WOAssignRec
 					End If
 				End If
@@ -6537,7 +6538,7 @@ Sub WOAssignRecSave(ByRef db)
 				'pl = rs("pk")
 			Else
 				If InStr(db.derror,"NULL") > 0 Then
-					HeaderMSG = "A value must be provided for Labor ID."
+					HeaderMSG = "Muss mit einem Wert f&#252;r Arbeiter ID versehen werden."
 					WOAssignRec
 				Else
 					Call OutputWAPError(db.derror)
@@ -6556,7 +6557,7 @@ Sub WOAssign()
 	Dim db, sql, rs, woid, reason, assetid, assetname, photo
 	Dim CheckBoxType
 
-	CardTitle = "WO Assignments"
+	CardTitle = "AA Zuweisungen"
 	CardCurrent = "WOAssign"
 	CardCurrentLevel = GetCardLevel()
 
@@ -6626,15 +6627,15 @@ Sub WOAssign()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("self.location.href = 'default.asp?card=wooptions&amp;s=" & SessionID & "&amp;wopk=" & wopk & "&amp;back=2';")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=WOAssignRec&amp;s=" & SessionID & "&amp;wopk=" & wopk & "&amp;pk=-1';"" style='float:left; padding-right:10px; padding-top:6px;'><img src='images/icons/48/add.png' alt='Add' title='Add' style='border:none; cursor:pointer; width:42px; height:42px;' /></div>"
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=WOAssignRec&amp;s=" & SessionID & "&amp;wopk=" & wopk & "&amp;pk=-1';"" style='float:left; padding-right:10px; padding-top:6px;'><img src='images/icons/48/add.png' alt='Hinzuf&#252;gen' title='Hinzuf&#252;gen' style='border:none; cursor:pointer; width:42px; height:42px;' /></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and False Then
-			Call OutputWAPMsg("No Assignments were Found")
+			Call OutputWAPMsg("Keine Zuordnungen gefunden")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
-			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>WO Assignments</div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
+			<div class='Font1' style='float:right; padding-top:3px; font-size:14pt;'>AA Zuweisungen</div>
 			<div style='clear:both;'></div>
 			</div>
 			<% If Not AssetPK = "" Then %>
@@ -6667,7 +6668,7 @@ Sub WOAssign()
 				<div style='float:left;cursor:pointer;' onclick="<%=returnurl%>">
 					<% =WAPValidate(NullCheck(rs("LaborName"))) %>
 				</div>
-				<div style=' font-size:14pt;float:right;cursor:pointer;' onclick="<%=returnurl%>"><% =DateNullCheck(RS("AssignedDate")) %>&nbsp;&nbsp;-&nbsp;&nbsp;<% =NullCheck(RS("AssignedHours")) %>&nbsp;Hour(s)</div>
+				<div style=' font-size:14pt;float:right;cursor:pointer;' onclick="<%=returnurl%>"><% =DateNullCheck(RS("AssignedDate")) %>&nbsp;&nbsp;-&nbsp;&nbsp;<% =NullCheck(RS("AssignedHours")) %>&nbsp;Stunde(n)]</div>
 				<div style='clear:both;'></div>
 			</div>
 
@@ -6693,11 +6694,11 @@ Sub WOAssign()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&wopk=<%=wopk%>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -6714,32 +6715,32 @@ End Sub
 
 Sub WOIssue()
 	Dim HeaderTitle
-	CardTitle = "WO Issue"
-	HeaderTitle = "Issue WO"
+	CardTitle = "AA ausstellen"
+	HeaderTitle = "AA ausstellen"
 	CardCurrent = "WOIssue"
 	Call WOStatusProcess(HeaderTitle)
 End Sub
 
 Sub WOOnHold()
 	Dim HeaderTitle
-	CardTitle = WAPValidate("WO On-Hold")
-	HeaderTitle = WAPValidate("Place WO On-Hold")
+	CardTitle = WAPValidate("AA Warteschleife")
+	HeaderTitle = WAPValidate("AA in die Warteschleife setzen")
 	CardCurrent = "WOOnHold"
 	Call WOStatusProcess(HeaderTitle)
 End Sub
 
 Sub WORespond()
 	Dim HeaderTitle
-	CardTitle = "WO Respond"
-	HeaderTitle = "Respond to WO"
+	CardTitle = "AA beantworten"
+	HeaderTitle = "AA beantworten"
 	CardCurrent = "WORespond"
 	Call WOStatusProcess(HeaderTitle)
 End Sub
 
 Sub WOComplete()
 	Dim HeaderTitle
-	CardTitle = "WO Complete"
-	HeaderTitle = "Complete WO"
+	CardTitle = "AA fertiggestellt"
+	HeaderTitle = "AA fertigstellen"
 	CardCurrent = "WOComplete"
 	Call WOStatusProcess(HeaderTitle)
 End Sub
@@ -6747,7 +6748,7 @@ End Sub
 Sub WOClose()
 	Dim HeaderTitle
 	CardTitle = "WO Close"
-	HeaderTitle = "Close WO"
+	HeaderTitle = "AA schlie&#223;en"
 	CardCurrent = "WOClose"
 	Call WOStatusProcess(HeaderTitle)
 End Sub
@@ -6777,7 +6778,7 @@ Sub WOStatusProcess(headertitle)
 	Call CheckDB(db)
 
 	If rs.eof Then
-		Call OutputWAPMsg("The Work Order was not found")
+		Call OutputWAPMsg("Der Arbeitsauftrag konnte nicht gefunden werden")
 	Else
 		woid = NullCheck(rs("WOID"))
 		reason = WAPValidate(Shorten(Replace(NullCheck(rs("Reason")),"%0D%0A",CHR(13) & CHR(10)),35))
@@ -6911,13 +6912,13 @@ Sub WOStatusProcess(headertitle)
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("self.location.href = 'default.asp?card=wooptions&amp;s=" & SessionID & "&amp;wopk=" & wopk & "&amp;back=2';")
 	'headerString = headerString & GetSearchButton()
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 		If rs.eof and Not PK = "-1" Then
-			Call OutputWAPMsg("The WO was not found")
+			Call OutputWAPMsg("AA nicht gefunden")
 		Else %>
 			<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">WO #<% =WOID %></div>
+			<div class='Font1' style='float:left;cursor:pointer;padding-left:4px; padding-top:3px; font-size:16pt;' onclick="self.location.href='default.asp?card=wooptions&amp;s=<% =SessionID %>&amp;wopk=<% =wopk %>&amp;back=2';">AA Nr.<% =WOID %></div>
 			<div class='Font1' style='float:right;font-size:14pt; padding-top:3px;'><% =HeaderTitle %></div>
 			<div style='clear:both;'></div>
 			</div>
@@ -6946,7 +6947,7 @@ End Sub
 
 Sub WOCloseSubmit(rs)
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<% If UCase(card) = "WOONHOLD" or UCase(card) = "WORESPOND" or UCase(card) = "WOISSUE" or UCase(card) = "WODETAILS" Then %>
 	<input type="hidden" name="card" value="<% =GetSession("ParentCard" & (CardCurrentLevel-1)) %>"/>
 	<% Else %>
@@ -6964,7 +6965,7 @@ Sub AssetMenu()
 
 	Dim db, sql, rs
 
-	CardTitle = "AssetMenu"
+	CardTitle = "Ausr&#252;stungsmen&#252;"
 	CardCurrent = "Asset Menu"
 	CardCurrentLevel = GetCardLevel()
 
@@ -6976,9 +6977,9 @@ Sub AssetMenu()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back();")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
-	Call OutputWAPMsg("There are currently no items in the asset menu.")
+	Call OutputWAPMsg("Derzeit sind keine Artikel im Ausr&#252;stungsmen&#252;.")
 		Set db = Nothing
 		SetContext
 	EndWMLDocument
@@ -6991,7 +6992,7 @@ Sub InventoryMenu()
 
 	Dim db, sql, rs
 
-	CardTitle = "Inventory"
+	CardTitle = "Inventar"
 	CardCurrent = "Inventory"
 	CardCurrentLevel = GetCardLevel()
 
@@ -7004,15 +7005,15 @@ Sub InventoryMenu()
 	Call StartMobileDocument(CardTitle)
 		If IsPocketIE or IsBlackBerry Then %>
 		<p align="center" mode="wrap">
-		<b>Inventory Menu</b>
+		<b>Inventar Menu</b>
 		</p><%
 		End If
         %>
         <p align="center">
-        <a href="default.asp?card=viewinventory&amp;s=<% =SessionID %>">View Inventory</a><br/>
-        <a href="default.asp?card=newitem&amp;s=<% =SessionID %>">New Inventory Item</a><br/>
-   		<a href="default.asp?card=adjustinventory&amp;s=<% =SessionID %>">Adjust Inventory</a><br/>
-   		<a href="default.asp?card=countinventory&amp;s=<% =SessionID %>">Count Inventory</a><br/>
+        <a href="default.asp?card=viewinventory&amp;s=<% =SessionID %>">Inventar Ansehen</a><br/>
+        <a href="default.asp?card=newitem&amp;s=<% =SessionID %>">Neues InventarArtikel</a><br/>
+   		<a href="default.asp?card=adjustinventory&amp;s=<% =SessionID %>">Inventar anpassen</a><br/>
+   		<a href="default.asp?card=countinventory&amp;s=<% =SessionID %>">Inventar z&#228;hlen</a><br/>
    		</p>
         <%
 		If lang = "WML" Then
@@ -7041,7 +7042,7 @@ Sub WONew()
 
     newcontextpage = True
 
-	CardTitle = "New Work Order"
+	CardTitle = "Neuer AA"
 	CardCurrent = "WONew"
 	CardCurrentLevel = GetCardLevel()
 
@@ -7102,11 +7103,11 @@ Sub WONew()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back();")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 	%>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
-			New Work Order
+			Neuer Arbeitsauftrag
 		</div>
 
 		<div style='padding:5px;'>
@@ -7124,7 +7125,7 @@ End Sub
 
 Sub WONewSubmit(rs)
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="<% =GetSession("ParentCard" & (CardCurrentLevel-1)) %>"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="wonew" value="y"/>
@@ -7147,7 +7148,7 @@ Sub CountInventory()
     Else
 	    CardCurrent = "CountInventory"
     End If
-	CardTitle = "Count Inventory"
+	CardTitle = "Inventar z&#228;hlen"
 	CardCurrentLevel = GetCardLevel()
 
 	Set db = New ADOHelper
@@ -7166,14 +7167,14 @@ Sub CountInventory()
             Set rs = db.RunSQLReturnRS(sql,"")
 	        Call CheckDB(db)
 	        If rs.Eof Then
-	            HeaderMsg = "Part ID Does Not Exist."
+	            HeaderMsg = "Artikel-ID existiert nicht."
 	        End If
 	        If HeaderMsg = "" Then
                 sql = "SELECT LocationPK FROM Location WITH (NOLOCK) WHERE LocationID = '" & Request("LocationID") & "'"
                 Set rs = db.RunSQLReturnRS(sql,"")
 	            Call CheckDB(db)
 	            If rs.Eof Then
-    	            HeaderMsg = "Location ID Does Not Exist."
+    	            HeaderMsg = "Standort-ID ist nicht vorhanden."
 	            End If
 	        End If
 	        If HeaderMsg = "" Then
@@ -7186,7 +7187,7 @@ Sub CountInventory()
                 Set rs = db.RunSQLReturnRS(sql,"")
 	            Call CheckDB(db)
 	            If rs.Eof Then
-    	            HeaderMsg = "The Part ID specified is not stocked at the Location ID specified."
+    	            HeaderMsg = "Spezifische Artikel-ID ist nicht bei spezifischer Standort-ID vorhanden."
 	            End If
 	        End If
             If Not HeaderMSG = "" Then
@@ -7195,7 +7196,7 @@ Sub CountInventory()
 	        End If
 	    Else
 	        If CardCurrent = "CountInventory2" Then
-	            HeaderMSG = "You must specify both Part ID and Location ID."
+	            HeaderMSG = "Bitte geben Sie die Artikel-ID und die Standort-ID genauer an."
                 CardCurrent = "CountInventory"
                 CardCurrentLevel = GetCardLevel()
             End If
@@ -7265,7 +7266,7 @@ Sub CountInventory()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back();")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 	%>
 		<script type='text/javascript'>
@@ -7292,10 +7293,10 @@ Sub CountInventory()
 				</div>
 				<div style='float:right; text-align:right;'>
 					<div>
-						Count Inventory
+						Inventar z&#228;hlen
 					</div>
 					<div class='Font1' style='font-size:11pt; padding-top:10px;'>
-						On-Hand: <%=rs("OnHand")%>
+						Verf&#252;gbar: <%=rs("OnHand")%>
 					</div>
 				</div>
 				<div style='clear:both;'></div>
@@ -7321,7 +7322,7 @@ End Sub
 Sub CountInventorySubmit(rs)
 	%>
 	<div style='padding:15px;'>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="CountInventory"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="pk" value="<% =pk %>"/>
@@ -7350,7 +7351,7 @@ Sub InventoryCountSave(ByRef db)
                 rs("OnHandPending") = Null
             End If
 			If Err.Number <> 0 Then
-				HeaderMSG = "The value provided for New Count is invalid."
+				HeaderMSG = "Der Wert f&#252;r Neue Z&#228;hlung ist ung&#252;ltig."
 				Exit Sub
 			End If
 
@@ -7360,7 +7361,7 @@ Sub InventoryCountSave(ByRef db)
 		        rs("Bin") = Null
             End If
 			If Err.Number <> 0 Then
-				HeaderMSG = "The value provided for Bin is invalid."
+				HeaderMSG = "Der Wert f&#252;r M&#252;lleimer ist ung&#252;ltig."
 				Exit Sub
 			End If
 
@@ -7385,7 +7386,7 @@ Sub AssetTasks()
     newcontextpage = True
 
     CardCurrent = "AssetTasks"
-	CardTitle = "Asset Tasks"
+	CardTitle = "Ausr&#252;stungs-Aufgaben"
 	CardCurrentLevel = GetCardLevel()
 
 	Set db = New ADOHelper
@@ -7396,7 +7397,7 @@ Sub AssetTasks()
 		Set rs = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs.Eof Then
-			HeaderMsg = "Asset ID Does Not Exist."
+			HeaderMsg = "Ausr&#252;stungs-ID ist nicht vorhanden."
 		Else
 			Call SetSession("ParentCard2",CardCurrent)
 			Call SetSession("CardFrom",CardCurrent)
@@ -7407,7 +7408,7 @@ Sub AssetTasks()
 		End If
 	Else
 		If Not Request("Posted") = "" Then
-			HeaderMSG = "You must specify Asset ID."
+			HeaderMSG = "Bitte geben Sie die Ausr&#252;stungs-ID genauer an."
 		End If
 	End If
 
@@ -7422,7 +7423,7 @@ Sub AssetTasks()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back();")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 	%>
 		<script type='text/javascript'>
@@ -7461,7 +7462,7 @@ Sub AssetTasksSubmit(rs)
 	Call OutputButtonOrLinkEnd("")
 	Else
 	%>
-	<input style="width:100%;" type="submit" name="submit" value="Submit"/>
+	<input style="width:100%;" type="submit" name="submit" value="Zulassen"/>
 	<input type="hidden" name="card" value="AssetTasks"/>
 	<input type="hidden" name="s" value="<% =SessionID %>"/>
 	<input type="hidden" name="pk" value="<% =pk %>"/>
@@ -7537,7 +7538,7 @@ Sub WOCloseSave(ByRef db)
 				Set rs2 = db.RunSQLReturnRS(sql,"")
 				Call CheckDB(db)
 				If rs2.eof Then
-					HeaderMSG = "The Account ID was not found."
+					HeaderMSG = "Keine Kostenstelle gefunden."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7558,7 +7559,7 @@ Sub WOCloseSave(ByRef db)
 				Set rs2 = db.RunSQLReturnRS(sql,"")
 				Call CheckDB(db)
 				If rs2.eof Then
-					HeaderMSG = "The Category ID was not found."
+					HeaderMSG = "Kategorien-ID konnte nicht gefunden werden."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7579,7 +7580,7 @@ Sub WOCloseSave(ByRef db)
 				Set rs2 = db.RunSQLReturnRS(sql,"")
 				Call CheckDB(db)
 				If rs2.eof Then
-					HeaderMSG = "The Problem ID was not found."
+					HeaderMSG = "Problem-ID konnte nicht gefunden werden."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7600,7 +7601,7 @@ Sub WOCloseSave(ByRef db)
 				Set rs2 = db.RunSQLReturnRS(sql,"")
 				Call CheckDB(db)
 				If rs2.eof Then
-					HeaderMSG = "The Failure ID was not found."
+					HeaderMSG = "Fehler-ID konnte nicht gefunden werden."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7621,7 +7622,7 @@ Sub WOCloseSave(ByRef db)
 				Set rs2 = db.RunSQLReturnRS(sql,"")
 				Call CheckDB(db)
 				If rs2.eof Then
-					HeaderMSG = "The Solution ID was not found."
+					HeaderMSG = "L&#246;sungs-ID konnte nicht gefunden werden."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7641,7 +7642,7 @@ Sub WOCloseSave(ByRef db)
 				txtdate = DateNullCheck(Date())
 			Else
 				If Not IsDate(Request("date")) Then
-					HeaderMSG = "The value for Date can not be blank."
+					HeaderMSG = "Der Wert f&#252;r Datum muss ausgef&#252;llt werden."
 					If Not UCase(card) = "WOOPTIONS" Then
 						CardSkipLevel = 1
 					End If
@@ -7917,14 +7918,14 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Asset ID was not found."
+						HeaderMSG = "Ausr&#252;stungs-ID nicht gefunden"
 					Else
 						AssetPK = rs2("AssetPK")
 						AssetID = rs2("AssetID")
 						AssetName = rs2("AssetName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Asset ID is invalid."
+						HeaderMSG = "Der Wert f&#252;r Ausr&#252;stungs-ID ist ung&#252;ltig."
 					End If
 				End If
 
@@ -7933,13 +7934,13 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Priority was not found."
+						HeaderMSG = "Priorit&#228;t konnte nicht gefunden werden."
 					Else
 						txtPriority = rs2("CodeName")
 						txtPriorityDesc = rs2("CodeDesc")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Priority is invalid."
+						HeaderMSG = "Der Wert f&#252;r Priorit&#228;t ist ung&#252;ltig."
 					End If
 				End If
 
@@ -7948,13 +7949,13 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Type was not found."
+						HeaderMSG = "Typ konnte nicht gefunden werden."
 					Else
 						txtType = rs2("CodeName")
 						txtTypeDesc = rs2("CodeDesc")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Type is invalid."
+						HeaderMSG = "Der Wert f&#252;r Typ ist ung&#252;ltig."
 					End If
 				End If
 
@@ -7963,14 +7964,14 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Project ID was not found."
+						HeaderMSG = "Projekt-ID konnte nicht gefunden werden."
 					Else
 						ProjectPK = rs2("ProjectPK")
 						ProjectID = rs2("ProjectID")
 						ProjectName = rs2("ProjectName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Project ID is invalid."
+						HeaderMSG = "Der Wert f&#252;r Projekt-ID ist ung&#252;ltig."
 					End If
 				End If
 
@@ -7979,14 +7980,14 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Department ID was not found."
+						HeaderMSG = "Abteilungs-ID konnte nicht gefunden werden."
 					Else
 						DepartmentPK = rs2("DepartmentPK")
 						DepartmentID = rs2("DepartmentID")
 						DepartmentName = rs2("DepartmentName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Department ID is invalid."
+						HeaderMSG = "Der Wert f&#252;r Abteilungs-ID ist ung&#252;ltig."
 					End If
 				End If
 
@@ -7995,14 +7996,14 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Customer ID was not found."
+						HeaderMSG = "Kunden-ID konnte nicht gefunden werden."
 					Else
 						TenantPK = rs2("TenantPK")
 						TenantID = rs2("TenantID")
 						TenantName = rs2("TenantName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Customer ID is invalid."
+						HeaderMSG = "Der Wert f&#252;r Kunden-ID ist ung&#252;ltig."
 					End If
 				End If
 
@@ -8011,14 +8012,14 @@ If UCase(woaction) = "WODETAILS" Then
 					Set rs2 = db.RunSQLReturnRS(sql,"")
 					Call CheckDB(db)
 					If rs2.eof Then
-						HeaderMSG = "The Shop ID was not found."
+						HeaderMSG = "Werkstatt-ID konnte nicht gefunden werden."
 					Else
 						ShopPK = rs2("ShopPK")
 						ShopID = rs2("ShopID")
 						ShopName = rs2("ShopName")
 					End If
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Shop ID is invalid."
+						HeaderMSG = "Der Wert f&#252;r Werkstatt-ID ist ung&#252;ltig."
 					End If
 				End If
 
@@ -8059,14 +8060,14 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("AssetName") = NullCheck(AssetName)	' Nullable: YES Type: nvarchar
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Asset ID is invalid."
+					HeaderMSG = "Der Wert f&#252;r Ausr&#252;stungs-ID ist ung&#252;ltig."
 				End If
 
 				If Not txtType = "" Then
 					rs("Type") = Trim(Mid(txtType,1,25))	' Nullable: YES Type: nvarchar
 					rs("TypeDesc") = NullCheck(txtTypeDesc)	' Nullable: YES Type: nvarchar
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Type is invalid."
+						HeaderMSG = "Der Wert f&#252;r Typ ist ung&#252;ltig."
 					End If
 				End If
 
@@ -8074,7 +8075,7 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("Priority") = Trim(Mid(txtPriority,1,25))	' Nullable: No Type: nvarchar
 					rs("PriorityDesc") = NullCheck(txtPriorityDesc)	' Nullable: YES Type: nvarchar
 					If Err.Number <> 0 Then
-						HeaderMSG = "The value provided for Priority is invalid."
+						HeaderMSG = "Der Wert f&#252;r Priorit&#228;t ist ung&#252;ltig."
 					End If
 				End If
 
@@ -8084,7 +8085,7 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("ShopName") = ShopName
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Shop ID is invalid."
+					HeaderMSG = "Der Wert f&#252;r Werkstatt-ID ist ung&#252;ltig."
 				End If
 
 				If Not DepartmentPK = "" Then
@@ -8093,7 +8094,7 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("DepartmentName") = DepartmentName
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Department ID is invalid."
+					HeaderMSG = "Der Wert f&#252;r Abteilungs-ID ist ung&#252;ltig."
 				End If
 
 				If Not TenantPK = "" Then
@@ -8102,7 +8103,7 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("TenantName") = TenantName
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Customer ID is invalid."
+					HeaderMSG = "Der Wert f&#252;r Kunden-ID ist ung&#252;ltig."
 				End If
 
 				If Not ProjectPK = "" Then
@@ -8111,7 +8112,7 @@ If UCase(woaction) = "WODETAILS" Then
 					rs("ProjectName") = ProjectName
 				End If
 				If Err.Number <> 0 Then
-					HeaderMSG = "The value provided for Project ID is invalid."
+					HeaderMSG = "Der Wert f&#252;r Projekt-ID ist ung&#252;ltig."
 				End If
 
 				rs("RowVersionAction") = "EDIT"
@@ -8242,7 +8243,7 @@ Sub MyWorkOrders()
 
 	Dim db, sql, rs, parentlocationall, parentequipmentall, parentall
 
-	CardTitle = "My WOs"
+	CardTitle = "Meine AAs"
 	CardCurrent = "MyWorkOrders"
 	CardCurrentLevel = GetCardLevel()
 
@@ -8330,7 +8331,7 @@ Sub MyWorkOrders()
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back();")
 	headerString = headerString & GetSearchButton()
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 
 	Dim iCount
@@ -8341,7 +8342,7 @@ Sub MyWorkOrders()
 	</div>
 	<% End If
 	If rs.eof Then
-		Call OutputWAPMsg("There were no Work Order Assignments found.")
+		Call OutputWAPMsg("Keine Zuweisung von Arbeitsauftr&#228;gen gefunden.")
 	Else %>
 		<div>
 		<%
@@ -8425,11 +8426,11 @@ Sub MyWorkOrders()
 	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -8447,7 +8448,7 @@ Sub AllWorkOrders()
 
 	Dim db, sql, rs, parentlocationall, parentequipmentall, parentall
 
-	CardTitle = "All WOs"
+	CardTitle = "Alle AAs"
 	CardCurrent = "AllWorkOrders"
 	CardCurrentLevel = GetCardLevel()
 
@@ -8540,7 +8541,7 @@ Sub AllWorkOrders()
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back();")
 	headerString = headerString & GetSearchButton()
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 
 		If Not sqlewhere = "" Then %>
@@ -8549,7 +8550,7 @@ Sub AllWorkOrders()
 			</div>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Work Orders found.")
+			Call OutputWAPMsg("Es konnten keine Arbeitsauftr&#228;ge gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -8631,10 +8632,10 @@ Sub AllWorkOrders()
 				<% If False Then %>
 				<div style='display:none;'>
 				<select tabindex="2" name="S<% =rs("WOPK") %>" value="I">
-				<option value="IS">Issued</option>
-				<option value="OH">On-Hold</option>
-				<option value="CO">Completed</option>
-				<option value="CL">Closed</option>
+				<option value="IS">Ausgestellt</option>
+				<option value="OH">Warteschleife</option>
+				<option value="CO">Abgeschlossen</option>
+				<option value="CL">Geschlossen</option>
 				</select>
 				Hours: <input tabindex="1" size="2" name="H<% =rs("WOPK") %>" value=""/>
 				<br/>
@@ -8660,11 +8661,11 @@ Sub AllWorkOrders()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -8684,7 +8685,7 @@ Sub AllWorkOrdersU()
 
 	Dim db, sql, rs, parentlocationall, parentequipmentall, parentall
 
-	CardTitle = "All Unassigned WOs"
+	CardTitle = "Alle nicht zugewiesenen AAs"
 	CardCurrent = "AllWorkOrdersU"
 	CardCurrentLevel = GetCardLevel()
 
@@ -8778,7 +8779,7 @@ Sub AllWorkOrdersU()
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back();")
 	headerString = headerString & GetSearchButton()
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 
 		If Not sqlewhere = "" Then %>
@@ -8787,7 +8788,7 @@ Sub AllWorkOrdersU()
 		</div>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Work Orders found.")
+			Call OutputWAPMsg("Es konnten keine Arbeitsauftr&#228;ge gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -8837,10 +8838,10 @@ Sub AllWorkOrdersU()
 				<% If False Then %>
 				<div style='display:none;'>
 				<select tabindex="2" name="S<% =rs("WOPK") %>" value="I">
-				<option value="IS">Issued</option>
-				<option value="OH">On-Hold</option>
-				<option value="CO">Completed</option>
-				<option value="CL">Closed</option>
+				<option value="IS">Ausgestellt</option>
+				<option value="OH">Warteschleife</option>
+				<option value="CO">Abgeschlossen</option>
+				<option value="CL">Geschlossen</option>
 				</select>
 				Hours: <input tabindex="1" size="2" name="H<% =rs("WOPK") %>" value=""/>
 				<br/>
@@ -8865,11 +8866,11 @@ Sub AllWorkOrdersU()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -8888,7 +8889,7 @@ Sub CMLookup()
 
 	Dim db, sql, rs
 
-	CardTitle = "Company Lookup"
+	CardTitle = "Suchfeld f&#252;r Firmen"
 	CardCurrent = "CMLookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -8924,7 +8925,7 @@ Sub CMLookup()
 
 	Call StartMobileDocument(CardTitle)
 	'headerString = GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, False)
 		Dim iCount, altStyle
 		iCount = 0
@@ -8934,7 +8935,7 @@ Sub CMLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Companies found.")
+			Call OutputWAPMsg("Es konnte keine Firma gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -8977,11 +8978,11 @@ Sub CMLookup()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -9003,15 +9004,15 @@ Sub FALookup()
 	CardCurrent = Card
 	Select Case UCase(Card)
 		Case "FAPRLOOKUP"
-			CardTitle = "Problem Lookup"
+			CardTitle = "Suchfeld f&#252;r Probleme"
 			desc = "Problems"
 			desc2 = "Problem"
 		Case "FAFALOOKUP"
-			CardTitle = "Failure Lookup"
+			CardTitle = "Suchfeld f&#252;r Fehler"
 			desc = "Failures"
 			desc2 = "Failure"
 		Case "FASOLOOKUP"
-			CardTitle = "Solution Lookup"
+			CardTitle = "Suchfeld f&#252;r L&#246;sungen"
 			desc = "Solutions"
 			desc2 = "Solution"
 	End Select
@@ -9049,7 +9050,7 @@ Sub FALookup()
 
 	Call StartMobileDocument(CardTitle)
 	'headerString = headerString & GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, False)
 		Dim iCount, altStyle
 		iCount = 0
@@ -9059,7 +9060,7 @@ Sub FALookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no " & desc & " found.")
+			Call OutputWAPMsg( desc &"  konnte nicht gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -9103,11 +9104,11 @@ Sub FALookup()
 		%><div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -9128,7 +9129,7 @@ Sub Assets()
 	LStyleBegin = ""
 	LStyleEnd = ""
 
-	CardTitle = "Assets"
+	CardTitle = "Ausr&#252;stung"
 	CardCurrent = "Assets"
 	CardCurrentLevel = GetCardLevel()
 
@@ -9195,7 +9196,7 @@ Sub Assets()
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back();")
 	headerString = headerString & GetSearchButton()
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 
 		If Not sqlewhere = "" Then %>
@@ -9204,7 +9205,7 @@ Sub Assets()
 	</div>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Assets found.")
+			Call OutputWAPMsg("Es konnte keine Ausr&#252;stung gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -9217,7 +9218,7 @@ Sub Assets()
             If Not ParentPK = "" Then %>
 				<div class='Font1' style='white-space: nowrap; clear:both;padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;' onclick="location.href = 'default.asp?card=assets&amp;s=<% =SessionID %>&amp;assetpk=<% =ParentPK %>&amp;pagepos=0&amp;searchby=NONE&amp;flipit=<% =RandomString(3) %>';">
 					<div style="float:left;">
-						Up one level
+						Eine Ebene hoch
 					</div>
 					<div style="float:right;">
 						<img src="images/icons/48/Navigation 2 Left.png" style='width:36px; height:36px; border:none;' />
@@ -9228,7 +9229,7 @@ Sub Assets()
             <% If False Then %>
             	<% If lang="HTML" Then %>&nbsp;<% End If %>
             		<div class='Font1 RowElisp' style='clear:both;padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer; max-width:75%;' onclick="location.href = 'default.asp?card=assets&amp;s=<% =SessionID %>&amp;assetpk=&amp;pagepos=0&amp;searchby=NONE&amp;flipit=<% =RandomString(3) %>';>
-            			Back to Top
+            			Zur&#252;ck zum Anfang
             		</div>
             	<% End If %>
             	<% =LStyleEnd %>
@@ -9276,7 +9277,7 @@ Sub Assets()
 							<% Else %>
 								<% =ParentAll %>
 							<% End If %>
-							<% =WAPValidate(rs("AssetName")) & " " %><% If Not BitNullCheck(rs("IsLocation")) Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Asset ID: " & WAPValidate(rs("AssetID")) & "</span>" End If %>
+							<% =WAPValidate(rs("AssetName")) & " " %><% If Not BitNullCheck(rs("IsLocation")) Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Ausr&#252;stungs-ID " & WAPValidate(rs("AssetID")) & "</span>" End If %>
 						</div>
 					</div>
 					<% If NullCheck(rs("AssetLevel")) > 1 and RegNode Then %>
@@ -9313,11 +9314,11 @@ Sub Assets()
 	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&assetpk=<% =AssetPK %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&assetpk=<% =AssetPK %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&assetpk=<% =AssetPK %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&assetpk=<% =AssetPK %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -9335,7 +9336,7 @@ Sub ASLookup()
 
 	Dim db, sql, rs, rsp, assetpk, regnode, parentpk
 
-	CardTitle = "Asset Lookup"
+	CardTitle = "Suchfeld f&#252;r Ausr&#252;stung"
 	CardCurrent = "ASLookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -9404,7 +9405,7 @@ Sub ASLookup()
 
 	Call StartMobileDocument(CardTitle)
 	'headerString = headerString & GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, False)
 
 		If Not sqlewhere = "" Then %>
@@ -9413,7 +9414,7 @@ Sub ASLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Assets found.")
+			Call OutputWAPMsg("Es konnte keine Ausr&#252;stung gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -9426,7 +9427,7 @@ Sub ASLookup()
             If Not ParentPK = "" Then %>
 				<div class='Font1' style='white-space: nowrap; clear:both;padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;' onclick="location.href = 'default.asp?card=aslookup&amp;s=<% =SessionID %>&amp;assetpk=<% =ParentPK %>&amp;pagepos=0&amp;searchby=NONE&amp;flipit=<% =RandomString(3) %>';">
 					<div style="float:left;">
-						Up one level
+						Eine Ebene hoch
 					</div>
 					<div style="float:right;">
 						<img src="images/icons/48/Navigation 2 Left.png" style='width:36px; height:36px; border:none;' />
@@ -9481,7 +9482,7 @@ Sub ASLookup()
 							<% Else %>
 								<% =ParentAll %>
 							<% End If %>
-							<% =WAPValidate(rs("AssetName")) & " " %><% If Not BitNullCheck(rs("IsLocation")) Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Asset ID: " & WAPValidate(rs("AssetID")) & "</span>" End If %>
+							<% =WAPValidate(rs("AssetName")) & " " %><% If Not BitNullCheck(rs("IsLocation")) Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Ausr&#252;stungs-ID " & WAPValidate(rs("AssetID")) & "</span>" End If %>
 						</div>
 					</div>
 					<% If NullCheck(rs("AssetLevel")) > 1 and RegNode Then %>
@@ -9519,11 +9520,11 @@ Sub ASLookup()
 		%><div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&assetpk=<% =AssetPK %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&assetpk=<% =AssetPK %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&assetpk=<% =AssetPK %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&assetpk=<% =AssetPK %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -9541,7 +9542,7 @@ Sub CLLookup()
 
 	Dim db, sql, rs, rsp, classificationpk, regnode, parentpk
 
-	CardTitle = "Classification Lookup"
+	CardTitle = "Suchfeld f&#252;r Klassifizierung"
 	CardCurrent = "CLLookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -9606,7 +9607,7 @@ Sub CLLookup()
     End If
 
 	Call StartMobileDocument(CardTitle)
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, False)
 		If Not sqlewhere = "" Then %>
 		<p>
@@ -9614,7 +9615,7 @@ Sub CLLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Classifications found.")
+			Call OutputWAPMsg("Es konnte keine Klassifizierung gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -9627,7 +9628,7 @@ Sub CLLookup()
             If Not ParentPK = "" Then %>
 				<div class='Font1' style='white-space: nowrap; clear:both;padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;' onclick="location.href = 'default.asp?card=cllookup&amp;s=<% =SessionID %>&amp;classificationpk=<% =ParentPK %>&amp;pagepos=0&amp;searchby=NONE&amp;flipit=<% =RandomString(3) %>';">
 					<div style="float:left;">
-						Up one level
+						Eine Ebene hoch
 					</div>
 					<div style="float:right;">
 						<img src="images/icons/48/Navigation 2 Left.png" style='width:36px; height:36px; border:none;' />
@@ -9637,7 +9638,7 @@ Sub CLLookup()
 
             <% If False Then %>
             		<div class='Font1' style='white-space: nowrap; clear:both;padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;' onclick="location.href = 'default.asp?card=cllookup&amp;s=<% =SessionID %>&amp;classificationpk=&amp;pagepos=0&amp;searchby=NONE&amp;flipit=<% =RandomString(3) %>';>
-            			Back to Top
+            			Zur&#252;ck zum Anfang
             		</div>
             	<%
             	End if
@@ -9683,7 +9684,7 @@ Sub CLLookup()
 								<% Else %>
 									<% =ParentAll %>
 								<% End If %>
-								<% =WAPValidate(rs("ClassificationName")) & " " %><% If Not IsLocation Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Classification ID: " & WAPValidate(rs("ClassificationID")) & "</span>" End If %>
+								<% =WAPValidate(rs("ClassificationName")) & " " %><% If Not IsLocation Then Response.Write "<br /><span class='Font2' style='font-size:12pt;padding-left:10px;'>Klassifizierungs-ID: " & WAPValidate(rs("ClassificationID")) & "</span>" End If %>
 							</div>
 						</div>
 						<% If NullCheck(rs("ClassificationLevel")) > 1 and RegNode Then %>
@@ -9722,11 +9723,11 @@ Sub CLLookup()
 	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&amp;Classificationpk=<% =ClassificationPK %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>&amp;Classificationpk=<% =ClassificationPK %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&amp;Classificationpk=<% =ClassificationPK %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>&amp;Classificationpk=<% =ClassificationPK %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -9745,7 +9746,7 @@ Sub ASForSerialPartLookup()
 
 	Dim db, sql, rs
 
-	CardTitle = "Asset Lookup"
+	CardTitle = "Suchfeld f&#252;r Ausr&#252;stung"
 	CardCurrent = "ASForSerialPartLookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -9779,7 +9780,7 @@ Sub ASForSerialPartLookup()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, True)
 		If Not sqlewhere = "" Then %>
 		<p>
@@ -9787,7 +9788,7 @@ Sub ASForSerialPartLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Assets found.")
+			Call OutputWAPMsg("Es konnte keine Ausr&#252;stung gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -9832,11 +9833,11 @@ Sub ASForSerialPartLookup()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -9855,7 +9856,7 @@ Sub LTLookup()
 
 	Dim db, sql, rs
 
-	CardTitle = "Lookup"
+	CardTitle = "Suchfeld"
 	CardCurrent = "LTLookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -9883,7 +9884,7 @@ Sub LTLookup()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = headerString & GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, False)
 
 		Dim iCount, altStyle
@@ -9894,7 +9895,7 @@ Sub LTLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no values found.")
+			Call OutputWAPMsg("Es konnten keine Werte gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -9913,7 +9914,7 @@ Sub LTLookup()
 				<div class='Font1' style='padding:5px;background-color:<%=altStyle%>; font-size:14pt; cursor:pointer;' onclick="<% =returnurl %>">
 					<div style='float:left;'>
 						<div>
-							<% If rs("CodeDesc") = "" Then %>(Not Specified)<% Else %><% =WAPValidate(rs("CodeDesc")) & " " %>(<% =WAPValidate(rs("CodeName")) & ")" %><% End If %>
+							<% If rs("CodeDesc") = "" Then %>(Nicht festgelegt)<% Else %><% =WAPValidate(rs("CodeDesc")) & " " %>(<% =WAPValidate(rs("CodeName")) & ")" %><% End If %>
 						</div>
 					</div>
 					<div style='clear:both;'></div>
@@ -9937,11 +9938,11 @@ Sub LTLookup()
 		%>		<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?lt=<%=request("lt")%>&amp;lf=<%=request("lf")%>&amp;lr=<%=request("lr")%>&amp;card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?lt=<%=request("lt")%>&amp;lf=<%=request("lf")%>&amp;lr=<%=request("lr")%>&amp;card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?lt=<%=request("lt")%>&amp;lf=<%=request("lf")%>&amp;lr=<%=request("lr")%>&amp;card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?lt=<%=request("lt")%>&amp;lf=<%=request("lf")%>&amp;lr=<%=request("lr")%>&amp;card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -9959,7 +9960,7 @@ Sub ACLookup()
 
 	Dim db, sql, rs
 
-	CardTitle = "Account Lookup"
+	CardTitle = "Suchfeld f&#252;r Kostenstelle"
 	CardCurrent = "ACLookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -9992,7 +9993,7 @@ Sub ACLookup()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = headerString & GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, True)
 		Dim iCount, altStyle
 		iCount = 0
@@ -10002,7 +10003,7 @@ Sub ACLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Accounts found.")
+			Call OutputWAPMsg("Es konnte keine Kostenstelle gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -10048,11 +10049,11 @@ Sub ACLookup()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -10071,7 +10072,7 @@ Sub RCLookup()
 
 	Dim db, sql, rs, rs2, anchoroutput
 
-	CardTitle = "Repair Center Lookup"
+	CardTitle = "Suchfeld f&#252;r Reparaturzentrum"
 	CardCurrent = "RCLookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -10104,7 +10105,7 @@ Sub RCLookup()
 
 	Call StartMobileDocument(CardTitle)
 	'headerString = GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, False)
 	If Not sqlewhere = "" Then %>
 		<p>
@@ -10112,7 +10113,7 @@ Sub RCLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Repair Centers found.")
+			Call OutputWAPMsg("Es konnten keine Reparaturzentren gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -10179,11 +10180,11 @@ Sub RCLookup()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -10202,7 +10203,7 @@ Sub SHLookup()
 
 	Dim db, sql, rs, rs2, anchoroutput, addall
 
-	CardTitle = "Shop Lookup"
+	CardTitle = "Suchfeld f&#252;r Werkstatt"
 	CardCurrent = "SHLookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -10242,7 +10243,7 @@ Sub SHLookup()
 
 	Call StartMobileDocument(CardTitle)
 	'headerString = GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, False)
 
 		If Not sqlewhere = "" Then %>
@@ -10253,7 +10254,7 @@ Sub SHLookup()
 		dim iCount, altStyle
 		iCount = 0
 		If rs.eof and Not AddAll Then
-			Call OutputWAPMsg("There were no Shops found.")
+			Call OutputWAPMsg("Es konnte keine Werkstatt gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -10355,11 +10356,11 @@ Sub SHLookup()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -10378,7 +10379,7 @@ Sub CALookup()
 
 	Dim db, sql, rs
 
-	CardTitle = "Category Lookup"
+	CardTitle = "Suchfeld f&#252;r Kategorie"
 	CardCurrent = "CALookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -10411,7 +10412,7 @@ Sub CALookup()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, True)
 
 		If Not sqlewhere = "" Then %>
@@ -10420,7 +10421,7 @@ Sub CALookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Categories found.")
+			Call OutputWAPMsg("Es konnten keine Kategorien gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -10468,11 +10469,11 @@ Sub CALookup()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -10491,7 +10492,7 @@ Sub ZNLookup()
 
 	Dim db, sql, rs
 
-	CardTitle = "Zone Lookup"
+	CardTitle = "Suchfeld f&#252;r Zone"
 	CardCurrent = "ZNLookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -10524,7 +10525,7 @@ Sub ZNLookup()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, True)
 		If Not sqlewhere = "" Then %>
 		<p>
@@ -10532,7 +10533,7 @@ Sub ZNLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Zones found.")
+			Call OutputWAPMsg("Es konnten keine Zonen gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -10576,11 +10577,11 @@ Sub ZNLookup()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -10600,7 +10601,7 @@ Sub PRLookup()
 
 	Dim db, sql, rs
 
-	CardTitle = "Procedure Lookup"
+	CardTitle = "Suchfeld f&#252;r Verfahren"
 	CardCurrent = "PRLookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -10634,7 +10635,7 @@ Sub PRLookup()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = headerString & GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, True)
 
 		If Not sqlewhere = "" Then %>
@@ -10645,7 +10646,7 @@ Sub PRLookup()
 		Dim iCount, altStyle
 		iCount = 0
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Procedures found.")
+			Call OutputWAPMsg("Es konnten keine Verfahren gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -10689,11 +10690,11 @@ Sub PRLookup()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -10711,7 +10712,7 @@ Sub DPLookup()
 
 	Dim db, sql, rs
 
-	CardTitle = "Department Lookup"
+	CardTitle = "Suchfeld f&#252;r Abteilung"
 	CardCurrent = "DPLookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -10744,7 +10745,7 @@ Sub DPLookup()
 
 	Call StartMobileDocument(CardTitle)
 	'headerString = GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, False)
 		Dim iCount, altStyle
 		iCount = 0
@@ -10754,7 +10755,7 @@ Sub DPLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Departments found.")
+			Call OutputWAPMsg("Es konnten keine Abteilungen gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -10799,11 +10800,11 @@ Sub DPLookup()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -10822,7 +10823,7 @@ Sub TNLookup()
 
 	Dim db, sql, rs
 
-	CardTitle = "Customer Lookup"
+	CardTitle = "Suchfeld f&#252;r Kunden"
 	CardCurrent = "TNLookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -10855,7 +10856,7 @@ Sub TNLookup()
 
 	Call StartMobileDocument(CardTitle)
 	'headerString = GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, False)
 
 		If Not sqlewhere = "" Then %>
@@ -10866,7 +10867,7 @@ Sub TNLookup()
 		Dim iCount, altStyle
 		iCount = 0
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Customers found.")
+			Call OutputWAPMsg("Es konnten keine Kunden gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -10909,11 +10910,11 @@ Sub TNLookup()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -10932,7 +10933,7 @@ Sub PJLookup()
 
 	Dim db, sql, rs
 
-	CardTitle = "Project Lookup"
+	CardTitle = "Suchfeld f&#252;r Projekt"
 	CardCurrent = "PJLookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -10965,7 +10966,7 @@ Sub PJLookup()
 
 	Call StartMobileDocument(CardTitle)
 	'headerString = GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, False)
 		Dim iCount, altStyle
 		iCount = 0
@@ -10975,7 +10976,7 @@ Sub PJLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Projects found.")
+			Call OutputWAPMsg("Es konnten keine Projekte gefunden werden.")
 		Else %>
 			<p mode="nowrap">
 			<%
@@ -11019,11 +11020,11 @@ Sub PJLookup()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -11043,7 +11044,7 @@ Sub LALookup()
 
 	Dim db, sql, rs
 
-	CardTitle = "Labor Lookup"
+	CardTitle = "Suchfeld f&#252;r Arbeiter"
 	CardCurrent = "LALookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -11094,7 +11095,7 @@ Sub LALookup()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, True)
 		If Not sqlewhere = "" Then %>
 		<p>
@@ -11105,7 +11106,7 @@ Sub LALookup()
 		iCount = 0
 
 		If rs.eof Then
-			Call OutputWAPMsg("There was no Labor found.")
+			Call OutputWAPMsg("Es konnte kein Arbeiter gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -11150,11 +11151,11 @@ Sub LALookup()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -11173,7 +11174,7 @@ Sub INLookup()
 
 	Dim db, sql, rs
 
-	CardTitle = "Item Lookup"
+	CardTitle = "Suchfeld f&#252;r Artikel"
 	CardCurrent = "INLookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -11209,7 +11210,7 @@ Sub INLookup()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, True)
 		If Not sqlewhere = "" Then %>
 		<p>
@@ -11221,7 +11222,7 @@ Sub INLookup()
 			</div>
 			<div style='float:right; text-align:right;'>
 				<div>
-					Inventory
+					Inventar
 				</div>
 			</div>
 			<div style='clear:both;'></div>
@@ -11229,7 +11230,7 @@ Sub INLookup()
 
 		<%
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Items found.")
+			Call OutputWAPMsg("Es konnten keine Artikel gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -11292,11 +11293,11 @@ Sub INLookup()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -11315,7 +11316,7 @@ Sub SRLookup()
 
 	Dim db, sql, rs
 
-	CardTitle = "Location Lookup"
+	CardTitle = "Suchfeld f&#252;r Standort"
 	CardCurrent = "SRLookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -11356,7 +11357,7 @@ Sub SRLookup()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetSearchButton()
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, True)
 		If Not sqlewhere = "" Then %>
 		<p>
@@ -11364,7 +11365,7 @@ Sub SRLookup()
 		</p>
 		<% End If
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Locations found.")
+			Call OutputWAPMsg("Es konnten keine Standorte gefunden werden.")
 		Else %>
 			<div>
 			<%
@@ -11409,11 +11410,11 @@ Sub SRLookup()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -11432,7 +11433,7 @@ Sub ASHistory()
 
 	Dim db, sql, rs
 
-	CardTitle = "Asset History"
+	CardTitle = "Ausr&#252;stungs-Verlauf"
 	CardCurrent = "ASHistory"
 	CardCurrentLevel = GetCardLevel()
 
@@ -11500,11 +11501,11 @@ Sub ASHistory()
 
 	Call StartMobileDocument(CardTitle)
 	headerString = GetBackButton("history.back(1);")
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 
 		If rs.eof Then
-			Call OutputWAPMsg("There were no Work Orders found for the specified Asset.")
+			Call OutputWAPMsg("Es konnten keine Arbeitsauftr&#228;ge f&#252;r die spezifische Ausr&#252;stung gefunden werden.")
 		Else %>
 		<div class='Font1' style='padding:5px;background-color:#fbebc5; font-size:14pt; cursor:pointer;'>
 			<% =rs("ParentLocationAll") %><% =rs("ParentEquipmentAll") %><% =rs("AssetName") %> (<% =rs("AssetID") %>)
@@ -11555,11 +11556,11 @@ Sub ASHistory()
 		%>	<div style='float:right;padding-right:20px; padding-top:20px;'>
 	<%
 	If PagePos >= PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Back' title='Back' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos-PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Left Green.png' alt='Zur&#252;ck' title='Zur&#252;ck' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	If TabIndex = PageSize Then
-	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Next' title='Next' style='border:none; cursor:pointer;' /></a>
+	%><a href="default.asp?card=<% =CardCurrent %>&amp;pagepos=<% =CStr(PagePos+PageSize) %>&amp;s=<% =SessionID %>"><img src='images/icons/48/Navigation 1 Right Green.png' alt='Weiter' title='Weiter' style='border:none; cursor:pointer;' /></a>
 	<%
 	End If
 	%></div><div style="clear:both;"></div>
@@ -11576,7 +11577,7 @@ Sub CalendarLookup()
 	Dim db, sql, rs
 	Dim datToday, intThisMonth, intThisYear, strMonthName, datFirstDay, intFirstWeekDay, intLastDay, intPrevMonth, intPrintDay, LastMonthDate, NextMonthDate, dFirstDay, dLastDay, EndRows, intLoopDay, intPrevYear, intNextMonth, intNextYear, intLastMonth, dToday, bEvents
 
-	CardTitle = "Calendar"
+	CardTitle = "Kalender"
 	CardCurrent = "CalendarLookup"
 	CardCurrentLevel = GetCardLevel()
 
@@ -11673,23 +11674,23 @@ Sub CalendarLookup()
 	'Rs.Open sSQL, sDSN, adOpenStatic, adLockReadOnly, adCmdText
 
 	Call StartMobileDocument(CardTitle)
-	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Close Window' title='Close Window' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
+	headerString = headerString & "<div onclick='parent.CloseWindow();' style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Symbol Restricted.png' alt='Fenster schlie&#223;en' title='Fenster schlie&#223;en' style='border:none; cursor:pointer; width:46px; height:46px;' /></div>"
 	Call IPadHeader(headerString, False)
     %>
 	<div>
 	<div class='Font2' style='text-align:center;'>
-    <a class='Font1' href="default.asp?card=<% =CardCurrent %>&amp;s=<% =SessionID %>&amp;month=<% =IntPrevMonth %>&amp;year=<% =IntPrevYear %>">[Prev]</a>
+    <a class='Font1' href="default.asp?card=<% =CardCurrent %>&amp;s=<% =SessionID %>&amp;month=<% =IntPrevMonth %>&amp;year=<% =IntPrevYear %>">[vorheriger]</a>
     &nbsp;&nbsp;<b><% = strMonthName & " " & intThisYear %></b>&nbsp;&nbsp;
-    <a class='Font1' href="default.asp?card=<% =CardCurrent %>&amp;s=<% =SessionID %>&amp;month=<% =IntNextMonth %>&amp;year=<% =IntNextYear %>">[Next]</a>
+    <a class='Font1' href="default.asp?card=<% =CardCurrent %>&amp;s=<% =SessionID %>&amp;month=<% =IntNextMonth %>&amp;year=<% =IntNextYear %>">[n&#228;chster]</a>
 
     </div>
     <div style='padding-left:25px; white-space:nowrap; padding-top:10px;'>
     <div>
-    	<div class='CalHeader' style='float:left;'>Su</div>
+    	<div class='CalHeader' style='float:left;'>So</div>
     	<div class='CalHeader' style='float:left;'>Mo</div>
-    	<div class='CalHeader' style='float:left;'>Tu</div>
-    	<div class='CalHeader' style='float:left;'>We</div>
-    	<div class='CalHeader' style='float:left;'>Th</div>
+    	<div class='CalHeader' style='float:left;'>Di</div>
+    	<div class='CalHeader' style='float:left;'>Mi</div>
+    	<div class='CalHeader' style='float:left;'>Do</div>
     	<div class='CalHeader' style='float:left;'>Fr</div>
     	<div class='CalHeader' style='float:left;'>Sa</div>
     	<div style='clear:both;'></div>
@@ -11888,7 +11889,7 @@ Sub WOSave(db)
 	txtTaskPKs = ""
 
 	If Request("Reason").Item = "" Then
-		HeaderMSG = "The Reason can not be left blank."
+		HeaderMSG = "Der Grund muss ausgef&#252;llt werden."
 		Call WONew()
 	End If
 
@@ -11897,7 +11898,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Asset ID was not found."
+			HeaderMSG = "Ausr&#252;stungs-ID nicht gefunden"
 			Call WONew()
 		Else
 			AssetPK = rs2("AssetPK")
@@ -11905,7 +11906,7 @@ Sub WOSave(db)
 			AssetName = rs2("AssetName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Asset ID is invalid."
+			HeaderMSG = "Der Wert f&#252;r Ausr&#252;stungs-ID ist ung&#252;ltig."
 			Call WONew()
 		End If
 	End If
@@ -11915,7 +11916,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Problem ID was not found."
+			HeaderMSG = "Problem-ID konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			ProblemPK = rs2("FailurePK")
@@ -11923,7 +11924,7 @@ Sub WOSave(db)
 			ProblemName = rs2("FailureName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Problem ID is invalid."
+			HeaderMSG = "Der Wert f&#252;r Problem-ID ist ung&#252;ltig."
 			Call WONew()
 		End If
 	End If
@@ -11933,7 +11934,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Procedure ID was not found."
+			HeaderMSG = "Vorgangs-ID konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			ProcedurePK = rs2("ProcedurePK")
@@ -11941,7 +11942,7 @@ Sub WOSave(db)
 			ProcedureName = rs2("ProcedureName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Procedure ID is invalid."
+			HeaderMSG = "Der Wert f&#252;r Verfahrens-ID ist ung&#252;ltig."
 			Call WONew()
 		End If
 	End If
@@ -11951,7 +11952,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Category ID was not found."
+			HeaderMSG = "Kategorien-ID konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			CategoryPK = rs2("CategoryPK")
@@ -11959,7 +11960,7 @@ Sub WOSave(db)
 			CategoryName = rs2("CategoryName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Category ID is invalid."
+			HeaderMSG = "Der Wert f&#252;r Kategorie-ID ist ung&#252;ltig."
 			Call WONew()
 		End If
 	End If
@@ -11969,7 +11970,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Account ID was not found."
+			HeaderMSG = "Keine Kostenstelle gefunden."
 			Call WONew()
 		Else
 			AccountPK = rs2("AccountPK")
@@ -11977,7 +11978,7 @@ Sub WOSave(db)
 			AccountName = rs2("AccountName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Account ID is invalid."
+			HeaderMSG = "Die angegebene Kostenstelle-ID ist ung&#252;ltig."
 			Call WONew()
 		End If
 	End If
@@ -11987,14 +11988,14 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Priority was not found."
+			HeaderMSG = "Priorit&#228;t konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			txtPriority = rs2("CodeName")
 			txtPriorityDesc = rs2("CodeDesc")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Priority is invalid."
+			HeaderMSG = "Der Wert f&#252;r Priorit&#228;t ist ung&#252;ltig."
 			Call WONew()
 		End If
 	End If
@@ -12004,14 +12005,14 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Type was not found."
+			HeaderMSG = "Typ konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			txtType = rs2("CodeName")
 			txtTypeDesc = rs2("CodeDesc")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Type is invalid."
+			HeaderMSG = "Der Wert f&#252;r Typ ist ung&#252;ltig."
 			Call WONew()
 		End If
 	End If
@@ -12021,7 +12022,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Project ID was not found."
+			HeaderMSG = "Projekt-ID konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			ProjectPK = rs2("ProjectPK")
@@ -12029,7 +12030,7 @@ Sub WOSave(db)
 			ProjectName = rs2("ProjectName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Project ID is invalid."
+			HeaderMSG = "Der Wert f&#252;r Projekt-ID ist ung&#252;ltig."
 			Call WONew()
 		End If
 	End If
@@ -12039,7 +12040,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Department ID was not found."
+			HeaderMSG = "Abteilungs-ID konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			DepartmentPK = rs2("DepartmentPK")
@@ -12047,7 +12048,7 @@ Sub WOSave(db)
 			DepartmentName = rs2("DepartmentName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Department ID is invalid."
+			HeaderMSG = "Der Wert f&#252;r Abteilungs-ID ist ung&#252;ltig."
 			Call WONew()
 		End If
 	End If
@@ -12057,7 +12058,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Customer ID was not found."
+			HeaderMSG = "Kunden-ID konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			TenantPK = rs2("TenantPK")
@@ -12065,7 +12066,7 @@ Sub WOSave(db)
 			TenantName = rs2("TenantName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Customer ID is invalid."
+			HeaderMSG = "Der Wert f&#252;r Kunden-ID ist ung&#252;ltig."
 			Call WONew()
 		End If
 	End If
@@ -12075,7 +12076,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Shop ID was not found."
+			HeaderMSG = "Werkstatt-ID konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			ShopPK = rs2("ShopPK")
@@ -12083,7 +12084,7 @@ Sub WOSave(db)
 			ShopName = rs2("ShopName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Shop ID is invalid."
+			HeaderMSG = "Der Wert f&#252;r Werkstatt-ID ist ung&#252;ltig."
 			Call WONew()
 		End If
 	End If
@@ -12093,7 +12094,7 @@ Sub WOSave(db)
 		Set rs2 = db.RunSQLReturnRS(sql,"")
 		Call CheckDB(db)
 		If rs2.eof Then
-			HeaderMSG = "The Assigned ID was not found."
+			HeaderMSG = "Zugeordnete ID konnte nicht gefunden werden."
 			Call WONew()
 		Else
 			LaborPK = rs2("LaborPK")
@@ -12101,7 +12102,7 @@ Sub WOSave(db)
 			LaborName = rs2("LaborName")
 		End If
 		If Err.Number <> 0 Then
-			HeaderMSG = "The value provided for Assigned ID is invalid."
+			HeaderMSG = "Der Wert f&#252;r zugeordnete ID ist ung&#252;ltig."
 			Call WONew()
 		End If
 	End If
@@ -12353,32 +12354,32 @@ Sub WOSave(db)
 		rs("Reason") = SEZ(Trim(Mid(Replace(Request("Reason").Item,Chr(13)+Chr(10),"%0D%0A"),1,2000)))	' Nullable: YES Type: nvarchar
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Reason is invalid."
+	    HeaderMSG = "Der angegebene Grund ist ung&#252;ltig."
 	    Call WONew()
     End If
 
 	rs("Status") = Trim(Mid("REQUESTED",1,15))	' Nullable: No Type: nvarchar
 	rs("StatusDesc") = Trim(Mid("Requested",1,50))	' Nullable: YES Type: nvarchar
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Status is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Zustand ist ung&#252;ltig."
 	    Call WONew()
     End If
 
 	If GetSession("WOAuthReq") = "0" Then
 		rs("AuthStatus") = Trim(Mid("NOTREQUIRED",1,15))	' Nullable: No Type: nvarchar
-		rs("AuthStatusDesc") = Trim(Mid("(not required)",1,50))	' Nullable: YES Type: nvarchar
+		rs("AuthStatusDesc") = Trim(Mid("(nicht erforderlich)",1,50))	' Nullable: YES Type: nvarchar
 	Else
 		rs("AuthStatus") = Trim(Mid("REQUIRED" & GetSession("WOAuthReq"),1,15))	' Nullable: No Type: nvarchar
-		rs("AuthStatusDesc") = Trim(Mid("Required - Level " & GetSession("WOAuthReq"),1,50))	' Nullable: YES Type: nvarchar
+		rs("AuthStatusDesc") = Trim(Mid("Erforderlich - Ebene" & GetSession("WOAuthReq"),1,50))	' Nullable: YES Type: nvarchar
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Auth Status is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Auth Zustand ist ung&#252;ltig."
 	    Call WONew()
     End If
 
 	rs("StatusDate") = SQLdatetimeADO(DateTimeNullCheck(Now()))	' Nullable: YES Type: datetime
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Status Date is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Zustands-Datum ist ung&#252;ltig."
 	    Call WONew()
     End If
 
@@ -12392,7 +12393,7 @@ Sub WOSave(db)
 	rs("RequesterEmail") = RequesterEmail	' Nullable: YES Type: nvarchar
 	rs("RequesterPhone") = RequesterPhone	' Nullable: YES Type: nvarchar
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Requester ID is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Anforderer-ID ist ung&#252;ltig."
 	    Call WONew()
     End If
 
@@ -12405,7 +12406,7 @@ Sub WOSave(db)
 		'rs("Instructions") = Trim(Mid(Replace(txtLocationManual,Chr(13)+Chr(10),"%0D%0A"),1,1000))
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Asset ID is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Ausr&#252;stungs-ID ist ung&#252;ltig."
 	    Call WONew()
     End If
 
@@ -12415,21 +12416,21 @@ Sub WOSave(db)
 	    rs("TargetDate") = SQLdatetimeADO(Request("TargetDate"))
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Target Date is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Zieldatum ist ung&#252;ltig."
 	    Call WONew()
     End If
 
 	rs("Type") = Trim(Mid(txtType,1,25))	' Nullable: YES Type: nvarchar
 	rs("TypeDesc") = NullCheck(txtTypeDesc)	' Nullable: YES Type: nvarchar
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Type is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Typ ist ung&#252;ltig."
 	    Call WONew()
     End If
 
 	rs("Priority") = Trim(Mid(txtPriority,1,25))	' Nullable: No Type: nvarchar
 	rs("PriorityDesc") = NullCheck(txtPriorityDesc)	' Nullable: YES Type: nvarchar
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Priority is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Priorit&#228;t ist ung&#252;ltig."
 	    Call WONew()
     End If
 
@@ -12443,7 +12444,7 @@ Sub WOSave(db)
 		rs("RepairCenterName") = RCNM	' Nullable: YES Type: nvarchar
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Repair Center ID is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Reparaturzentrums-ID ist ung&#252;ltig."
 	    Call WONew()
     End If
 
@@ -12459,7 +12460,7 @@ Sub WOSave(db)
 		rs("ShopName") = ShopName
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Shop ID is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Werkstatt-ID ist ung&#252;ltig."
 	    Call WONew()
     End If
 
@@ -12475,7 +12476,7 @@ Sub WOSave(db)
 		rs("SupervisorName") = SupervisorName
 	End If
 	If Err.Number <> 0 Then
-		HeaderMSG = "The value provided for Supervisor ID is invalid."
+		HeaderMSG = "Der Wert f&#252;r Leiter-ID ist ung&#252;ltig."
 		Call WONew()
 	End If
 
@@ -12485,7 +12486,7 @@ Sub WOSave(db)
 		rs("DepartmentName") = DepartmentName
 	End If
 	If Err.Number <> 0 Then
-		HeaderMSG = "The value provided for Department ID is invalid."
+		HeaderMSG = "Der Wert f&#252;r Abteilungs-ID ist ung&#252;ltig."
 		Call WONew()
 	End If
 
@@ -12495,7 +12496,7 @@ Sub WOSave(db)
 		rs("TenantName") = TenantName
 	End If
 	If Err.Number <> 0 Then
-		HeaderMSG = "The value provided for Customer ID is invalid."
+		HeaderMSG = "Der Wert f&#252;r Kunden-ID ist ung&#252;ltig."
 		Call WONew()
 	End If
 
@@ -12505,7 +12506,7 @@ Sub WOSave(db)
 		rs("AccountName") = AccountName
 	End If
 	If Err.Number <> 0 Then
-		HeaderMSG = "The value provided for Account ID is invalid."
+		HeaderMSG = "Die angegebene Kostenstelle-ID ist ung&#252;ltig."
 		Call WONew()
 	End If
 
@@ -12515,7 +12516,7 @@ Sub WOSave(db)
 		rs("CategoryName") = CategoryName
 	End If
 	If Err.Number <> 0 Then
-		HeaderMSG = "The value provided for Category ID is invalid."
+		HeaderMSG = "Der Wert f&#252;r Kategorie-ID ist ung&#252;ltig."
 		Call WONew()
 	End If
 
@@ -12523,7 +12524,7 @@ Sub WOSave(db)
 		rs("TargetHours") = TargetHours
 	End If
 	If Err.Number <> 0 Then
-		HeaderMSG = "The value provided for Target Hours is invalid."
+		HeaderMSG = "Der Wert f&#252;r Ziel-Stunden ist ung&#252;ltig."
 		Call WONew()
 	End If
 
@@ -12532,13 +12533,13 @@ Sub WOSave(db)
 		rs("Survey_ID") = prefpk
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Survey is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Gutachten ist ung&#252;ltig."
 	    Call WONew()
     End If
 
 	rs("Requested") = SQLdatetimeADO(DateTimeNullCheck(Now()))
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Requested is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Angefordert ist ung&#252;ltig."
 	    Call WONew()
     End If
 
@@ -12550,7 +12551,7 @@ Sub WOSave(db)
 
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Problem ID is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Problem-ID ist ung&#252;ltig."
 	    Call WONew()
     End If
 
@@ -12562,7 +12563,7 @@ Sub WOSave(db)
 
     End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Procedure ID is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Verfahrens-ID ist ung&#252;ltig."
 	    Call WONew()
     End If
 
@@ -12577,7 +12578,7 @@ Sub WOSave(db)
 		rs("ProjectName") = ProcedureName
 	End If
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Project ID is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Projekt-ID ist ung&#252;ltig."
 	    Call WONew()
     End If
 
@@ -12595,27 +12596,27 @@ Sub WOSave(db)
 
     rs("ShutdownBox") = ShutdownBox
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Shutdown is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Abschalten ist ung&#252;ltig."
 	    Call WONew()
     End If
     rs("WarrantyBox") = WarrantyBox
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Warranty is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Garantie ist ung&#252;ltig."
 	    Call WONew()
     End If
     rs("FollowupWork") = FollowupWork
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Follow-up Work is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Aufgabe weiter bearbeiten ist ung&#252;ltig."
 	    Call WONew()
     End If
     rs("LockoutTagoutBox") = LockoutTagoutBox
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Lockout/Tagout is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Blockierung ist ung&#252;ltig."
 	    Call WONew()
     End If
     rs("Chargeable") = ChargeableBox
     If Err.Number <> 0 Then
-	    HeaderMSG = "The value provided for Chargeable is invalid."
+	    HeaderMSG = "Der Wert f&#252;r Kostenpflichtig ist ung&#252;ltig."
 	    Call WONew()
     End If
 
@@ -12765,13 +12766,13 @@ End Sub
 
 Sub WODetails()
 	Dim HeaderTitle
-	CardTitle = "WO Details"
-	HeaderTitle = "WO Details"
+	CardTitle = "AA Details"
+	HeaderTitle = "AA Details"
 	CardCurrent = "WODetails"
 	Call WOStatusProcess(HeaderTitle)
 	headerString = GetBackButton("history.back();")
 	headerString = headerString & GetSearchButton()
-	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Logout' title='Logout' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
+	headerString = headerString & "<div onclick=""self.location.href='default.asp?card=logoff&s=" & SessionID & "';"" style='float:left; padding-right:10px; padding-top:3px;'><img src='images/icons/48/Logout.png' alt='Abmelden' title='Abmelden' style='border:none; cursor:pointer;' /></div><div style='clear:both;'></div>"
 	Call IPadHeader(headerString, True)
 End Sub
 
